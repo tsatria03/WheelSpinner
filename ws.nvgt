@@ -313,7 +313,7 @@ wait(spinBaseDelay + i * spinGrowth);
 }
 string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary("sounds/wheelding.wav",false);
-dlg("The wheel landed on " + result + "!");
+dlg("The wheel landed on " + result + ".");
 wheelgame();
 }
 

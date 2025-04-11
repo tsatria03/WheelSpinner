@@ -1,0 +1,61 @@
+void readdata()
+{
+sd.load();
+wheels.clear();
+if (sd.d.exists("wheel_count")) {
+int count = sd.read_int("wheel_count");
+
+for (uint i = 0; i < count; i++)
+{
+string keyName = "wheel_" + i + "_name";
+string valueName = "wheel_" + i + "_options";
+if (sd.d.exists(keyName) && sd.d.exists(valueName))
+{
+string name = sd.read_string(keyName);
+string options = sd.read_string(valueName);
+wheels[name] = options;
+}
+}
+}
+}
+void writedata()
+{
+sd.add("wheel_count", wheels.get_keys().length());
+array<string>@ keys = wheels.get_keys();
+for (uint i = 0; i < keys.length(); i++)
+{
+string key = "wheel_" + i + "_name";
+string value = "wheel_" + i + "_options";
+sd.add(key, keys[i]);
+sd.add(value, string(wheels[keys[i]]));
+}
+sd.save();
+}
+void readpreffs()
+{
+st.load();
+if (st.d.exists("spinBaseDelay"))
+{
+spinBaseDelay = st.read_int("spinBaseDelay");
+}
+if (st.d.exists("spinGrowth"))
+{
+spinGrowth = st.read_int("spinGrowth");
+}
+if (st.d.exists("spinBaseTicks"))
+{
+spinBaseTicks = st.read_int("spinBaseTicks");
+}
+if (st.d.exists("spinRandomRange"))
+{
+spinRandomRange = st.read_int("spinRandomRange");
+}
+}
+void writepreffs()
+{
+st.add("spinBaseDelay", spinBaseDelay);
+st.add("spinGrowth", spinGrowth);
+st.add("spinBaseTicks", spinBaseTicks);
+st.add("spinRandomRange", spinRandomRange);
+st.save();
+}

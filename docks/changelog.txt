@@ -1,3 +1,9 @@
+new in 1.1
+Fixed an issue where pressing Escape in the Edit Choices input box would overwrite and erase existing entries. Existing choices are now preserved unless explicitly changed.
+You can now type spaces after commas when adding choices for wheels.
+Added the ability to respin a wheel. After a wheel has spun, a menu prompt will pop up asking the user if they would like to spin it again.
+You can now see how many choices per wheel you have in the edit and spin wheel screens.
+You can now see how many wheels you have in the edit and spin wheel screens.
 new in 1.0
 Improved the spin base delay and spin growth calculation methods.
 Added a dedicated Spin Settings screen with sliders for adjusting Spin base delay, Spin growth, Spin tick count, and Spin randomness. All of these values can be saved and loaded across sessions.

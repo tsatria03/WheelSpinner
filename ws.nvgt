@@ -4,6 +4,8 @@
 #include "speech.nvgt"
 #include "includes/dlg.nvgt"
 #include "includes/form_menu.nvgt"
+#include"includes/menu.nvgt"
+#include"includes/savefuncks.nvgt"
 #include"includes/savedata.nvgt"
 #include "includes/virtual_dialogs.nvgt"
 int spinBaseTicks = 50;
@@ -19,49 +21,18 @@ sound_pool pool;
 savedata sd("data/wheels.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
 savedata st("data/preffs.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
 virtual_dialogs vd;
-string trim(const string&in str) {
+string trim(const string&in str)
+{
 string result = str;
-while (result.length() > 0 && (string_left(result, 1) == " " || string_left(result, 1) == "\n" || string_left(result, 1) == "\r")) {
+while (result.length() > 0 && (string_left(result, 1) == " " || string_left(result, 1) == "\n" || string_left(result, 1) == "\r"))
+{
 result = string_trim_left(result, 1);
 }
-while (result.length() > 0 && (string_right(result, 1) == " " || string_right(result, 1) == "\n" || string_right(result, 1) == "\r")) {
+while (result.length() > 0 && (string_right(result, 1) == " " || string_right(result, 1) == "\n" || string_right(result, 1) == "\r"))
+{
 result = string_trim_right(result, 1);
 }
 return result;
-}
-void spinsettings()
-{
-form.reset();
-form.create_window("Spin Settings", false);
-int baseSlider = form.create_slider("Spin base delay.", spinBaseDelay, 1, 100, 1);
-int growthSlider = form.create_slider("Spin growth factor.", spinGrowth, 1, 100, 1);
-int ticksSlider = form.create_slider("Spin tick count.", spinBaseTicks, 1, 100, 1);
-int rangeSlider = form.create_slider("Spin randomness.", spinRandomRange, 1, 100, 1);
-int apply = form.create_button("&Apply");
-int cancel = form.create_button("&Cancel");
-form.focus(baseSlider);
-while (true) {
-wait(5);
-form.monitor();
-if(key_pressed(KEY_ESCAPE))
-{
-wheelgame();
-}
-if (form.is_pressed(apply))
-{
-spinBaseDelay = form.get_slider(baseSlider);
-spinGrowth = form.get_slider(growthSlider);
-spinBaseTicks = form.get_slider(ticksSlider);
-spinRandomRange = form.get_slider(rangeSlider);
-alert("Updated", "Spin settings updated!");
-writepreffs();
-wheelgame();
-}
-if (form.is_pressed(cancel))
-{
-wheelgame();
-}
-}
 }
 void setupmenu(bool music_added = true)
 {
@@ -76,73 +47,12 @@ m.reset();
 m.automatic_intro = true;
 m.focus_first_item = false;
 m.wrap = true;
-m.click_sound = "menuclick.ogg";
-m.close_sound = "menuclose.ogg";
-m.edge_sound = "menuedge.ogg";
-m.enter_sound = "menuenter.ogg";
-m.open_sound = "menuopen.ogg";
-m.wrap_sound = "menuwrap.ogg";
-}
-void readdata()
-{
-sd.load();
-wheels.clear();
-if (sd.d.exists("wheel_count")) {
-int count = sd.read_int("wheel_count");
-
-for (uint i = 0; i < count; i++)
-{
-string keyName = "wheel_" + i + "_name";
-string valueName = "wheel_" + i + "_options";
-if (sd.d.exists(keyName) && sd.d.exists(valueName))
-{
-string name = sd.read_string(keyName);
-string options = sd.read_string(valueName);
-wheels[name] = options;
-}
-}
-}
-}
-void writedata()
-{
-sd.add("wheel_count", wheels.get_keys().length());
-array<string>@ keys = wheels.get_keys();
-for (uint i = 0; i < keys.length(); i++)
-{
-string key = "wheel_" + i + "_name";
-string value = "wheel_" + i + "_options";
-sd.add(key, keys[i]);
-sd.add(value, string(wheels[keys[i]]));
-}
-sd.save();
-}
-void readpreffs()
-{
-st.load();
-if (st.d.exists("spinBaseDelay"))
-{
-spinBaseDelay = st.read_int("spinBaseDelay");
-}
-if (st.d.exists("spinGrowth"))
-{
-spinGrowth = st.read_int("spinGrowth");
-}
-if (st.d.exists("spinBaseTicks"))
-{
-spinBaseTicks = st.read_int("spinBaseTicks");
-}
-if (st.d.exists("spinRandomRange"))
-{
-spinRandomRange = st.read_int("spinRandomRange");
-}
-}
-void writepreffs()
-{
-st.add("spinBaseDelay", spinBaseDelay);
-st.add("spinGrowth", spinGrowth);
-st.add("spinBaseTicks", spinBaseTicks);
-st.add("spinRandomRange", spinRandomRange);
-st.save();
+m.click_sound = "sounds/menuclick.ogg";
+m.close_sound = "sounds/menuclose.ogg";
+m.edge_sound = "sounds/menuedge.ogg";
+m.enter_sound = "sounds/menuenter.ogg";
+m.open_sound = "sounds/menuopen.ogg";
+m.wrap_sound = "sounds/menuwrap.ogg";
 }
 void main()
 {
@@ -156,10 +66,10 @@ else
 {
 readdata();
 readpreffs();
-wheelgame();
+wheelspin();
 }
 }
-void wheelgame()
+void wheelspin()
 {
 form.reset();
 form.create_window("Wheel Spinner", false);
@@ -201,120 +111,3 @@ exit();
 }
 }
 }
-void add_wheel()
-{
-string name = vd.input_box("New Wheel", "Enter a name for your new wheel:");
-if (name == "" || wheels.exists(name))
-{
-alert("Error", "Invalid or duplicate name.");
-wheelgame();
-}
-string options = vd.input_box("Choices", "Separate your decisions by commas:");
-wheels[name] = options;
-alert("Saved", "Wheel added!");
-writedata();
-wheelgame();
-}
-void edit_wheel()
-{
-array<string>@ keys = wheels.get_keys();
-if (keys.length() == 0)
-{
-alert("Error", "No wheels available to edit.");
-wheelgame();
-}
-setupmenu(false);
-for (uint i = 0; i < keys.length(); i++) {
-m.add_item(keys[i], keys[i]);
-}
-m.add_item("Back", "Back");
-m.intro_text = "Select a wheel to manage:";
-int res = m.run();
-if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
-{
-wheelgame();
-}
-string selected = m.get_item_id(m.get_selected_item());
-setupmenu(false);
-m.add_item("Edit choices", "edit");
-m.add_item("Rename wheel", "rename");
-m.add_item("Delete wheel", "delete");
-m.add_item("Back", "back");
-m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
-int actionRes = m.run();
-string action = m.get_item_id(m.get_selected_item());
-if (action == "edit")
-{
-string current = string(wheels[selected]);
-string edited = vd.input_box("Edit", "Edit your choices:", current);
-wheels[selected] = edited;
-alert("Saved", "Changes saved.");
-writedata();
-}
-else if (action == "rename")
-{
-string newName = vd.input_box("Rename", "Enter a new name for this wheel:", selected);
-if (newName != "" && !wheels.exists(newName))
-{
-wheels[newName] = wheels[selected];
-wheels.erase(selected);
-alert("Renamed", "Wheel has been renamed.");
-writedata();
-}
-else
-{
-alert("Error", "Invalid or duplicate name.");
-}
-}
-else if (action == "delete")
-{
-if (yes_no("Are you sure you want to delete the wheel '" + selected + "'?"))
-{
-wheels.erase(selected);
-alert("Deleted", "Wheel has been deleted.");
-writedata();
-}
-}
-wheelgame();
-}
-void spin_wheel()
-{
-array<string>@ keys = wheels.get_keys();
-if (keys.length() == 0)
-{
-alert("Error", "No wheels to spin.");
-wheelgame();
-}
-setupmenu(false);
-for (uint i = 0; i < keys.length(); i++)
-{
-m.add_item(keys[i], keys[i]);
-}
-m.add_item("Back", "Back");
-m.intro_text = "Pick a wheel to spin:";
-int res = m.run();
-if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
-{
-wheelgame();
-}
-string chosen = m.get_item_id(m.get_selected_item());
-array<string>@ options = string_split(string(wheels[chosen]), ",");
-if (options.length() < 2)
-{
-alert("Invalid", "Need at least 2 options to spin.");
-wheelgame();
-}
-int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-speak("spinning");
-for (uint i = 0; i < spinTicks; i++)
-{
-uint idx = random(0, options.length() - 1);
-pool.play_stationary("sounds/"+wheeltype+"spin.ogg", false);
-wait(spinBaseDelay + i * spinGrowth);
-}
-string result = trim(options[random(0, options.length() - 1)]);
-pool.play_stationary("sounds/wheelding.wav",false);
-dlg("The wheel landed on " + result + ".");
-wheelgame();
-}
-

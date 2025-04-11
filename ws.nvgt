@@ -12,7 +12,9 @@ int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
+string version="1.2";
 string wheeltype="wheel1";
+dictionary lockedWheels;
 dictionary wheels;
 audio_form form;
 instance app("wspin");
@@ -56,7 +58,7 @@ m.wrap_sound = "sounds/menuwrap.ogg";
 }
 void main()
 {
-show_game_window("WheelSpinner");
+show_game_window("WheelSpinner, version "+version);
 if (app.is_already_running)
 {
 alert("Error", "Only one instance can run at a time.");

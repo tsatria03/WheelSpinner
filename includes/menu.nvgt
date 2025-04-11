@@ -25,7 +25,9 @@ for (uint i = 0; i < keys.length(); i++)
 {
     string key = keys[i];
     array<string>@ opts = string_split(string(wheels[key]), ", ");
-    m.add_item(key + " (" + opts.length() + " choices)", key);
+    bool locked = lockedWheels.exists(key);
+    string status = locked ? "Locked" : "Unlocked";
+    m.add_item(key + " (" + opts.length() + " choices. " + status + ")", key);
 }
 m.add_item("Back", "Back");
 m.intro_text = "Select a wheel to manage. You have " + keys.length() + " wheels.";
@@ -36,10 +38,18 @@ wheelspin();
 }
 string selected = m.get_item_id(m.get_selected_item());
 setupmenu(false);
-m.add_item("Edit choices", "edit");
-m.add_item("Rename wheel", "rename");
-m.add_item("Delete wheel", "delete");
+bool isLocked = lockedWheels.exists(selected);
+
+if (!isLocked)
+{
+    m.add_item("Edit choices", "edit");
+    m.add_item("Rename wheel", "rename");
+    m.add_item("Delete wheel", "delete");
+}
+
+m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
 m.add_item("Back", "back");
+
 m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
 int actionRes = m.run();
 string action = m.get_item_id(m.get_selected_item());
@@ -93,6 +103,23 @@ if (m.get_item_id(m.get_selected_item()) == "delete")
 else
 {
 wheelspin();
+}
+}
+else if (action == "togglelock")
+{
+    if (lockedWheels.exists(selected))
+    {
+        lockedWheels.erase(selected);
+        alert("Unlocked", "Wheel '" + selected + "' has been unlocked.");
+    writedata();
+    wheelspin();
+}
+    else
+    {
+        lockedWheels[selected] = true;
+        alert("Locked", "Wheel '" + selected + "' has been locked.");
+        writedata();
+    wheelspin();
 }
 }
 }

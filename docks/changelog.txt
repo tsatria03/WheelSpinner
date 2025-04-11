@@ -1,0 +1,6 @@
+new in 1.0
+Improved the spin base delay and spin growth calculation methods.
+Added a dedicated Spin Settings screen with sliders for adjusting Spin base delay, Spin growth, Spin tick count, and Spin randomness. All of these values can be saved and loaded across sessions.
+Added the ability to save all wheels to a file. This also includes wheel related settings as well.
+Added the ability to delete and rename wheels in the new and improved wheel manager.
+Added the ability to exit the app by pressing escape in the main screen. You can also press the quit button to exit as well.

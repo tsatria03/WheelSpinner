@@ -305,6 +305,7 @@ alert("Invalid", "Need at least 2 options to spin.");
 wheelgame();
 }
 int spinTicks = spinBaseTicks + random(0, spinRandomRange);
+speak("spinning");
 for (uint i = 0; i < spinTicks; i++)
 {
 uint idx = random(0, options.length() - 1);

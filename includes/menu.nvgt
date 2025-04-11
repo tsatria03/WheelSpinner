@@ -14,133 +14,161 @@ wheelspin();
 }
 void edit_wheel()
 {
-array<string>@ keys = wheels.get_keys();
-keys.sort_ascending();
-if (keys.length() == 0)
-{
-alert("Error", "No wheels available to edit.");
-wheelspin();
-}
-setupmenu(false);
-for (uint i = 0; i < keys.length(); i++)
-{
-    string key = keys[i];
-    array<string>@ opts = string_split(string(wheels[key]), ", ");
-    bool locked = lockedWheels.exists(key);
-    string status = locked ? "Locked" : "Unlocked";
-    m.add_item(key + " (" + opts.length() + " choices. " + status + ")", key);
-}
-m.add_item("Lock all wheels", "lockall");
-m.add_item("Unlock all wheels", "unlockall");
-m.add_item("Back", "Back");
-m.intro_text = "Select a wheel to manage. You have " + keys.length() + " wheels.";
-int res = m.run();
-if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
-{
-wheelspin();
-}
-string selected = m.get_item_id(m.get_selected_item());
-setupmenu(false);
-if (selected == "lockall")
-{
     array<string>@ keys = wheels.get_keys();
+    keys.sort_ascending();
+    if (keys.length() == 0)
+    {
+        alert("Error", "No wheels available to edit.");
+        wheelspin();
+    }
+    setupmenu(false);
     for (uint i = 0; i < keys.length(); i++)
     {
-        lockedWheels[keys[i]] = true;
+        string key = keys[i];
+        array<string>@ opts = string_split(string(wheels[key]), ", ");
+        bool locked = lockedWheels.exists(key);
+        string status = locked ? "Locked" : "Unlocked";
+        m.add_item(key + " (" + opts.length() + " choices. " + status + ")", key);
     }
-    alert("All wheels locked", "All wheels have been locked. They can no longer be edited or deleted.");
-    writedata();
-    wheelspin();
-}
-if (selected == "unlockall")
-{
-    lockedWheels.clear();
-    alert("All wheels unlocked", "All wheels have been unlocked. They can now be edited or deleted.");
-    writedata();
-    wheelspin();
-}
-bool isLocked = lockedWheels.exists(selected);
-if (!isLocked)
-{
-    m.add_item("Edit choices", "edit");
-    m.add_item("Rename wheel", "rename");
-    m.add_item("Delete wheel", "delete");
-}
-m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
-m.add_item("Back", "back");
-m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
-int actionRes = m.run();
-string action = m.get_item_id(m.get_selected_item());
-if (action == "edit")
-{
-string current = string(wheels[selected]);
-string edited = vd.input_box("Edit", "Edit your choices:", current);
-if (edited == "" && current != "")
-{
-    alert("Cancelled", "No changes were made.");
-wheelspin();
-}
-else
-{
-    wheels[selected] = edited;
-    alert("Saved", "Changes saved.");
-    writedata();
-wheelspin();
-}
-}
-else if (action == "rename")
-{
-string newName = vd.input_box("Rename", "Enter a new name for this wheel:", selected);
-if (newName != "" && !wheels.exists(newName))
-{
-wheels[newName] = wheels[selected];
-wheels.erase(selected);
-alert("Renamed", "Wheel has been renamed.");
-writedata();
-wheelspin();
-}
-else
-{
-alert("Error", "Invalid or duplicate name.");
-wheelspin();
-}
-}
-else if (action == "delete")
-{
-setupmenu(false);
-m.add_item("yes", "delete");
-m.add_item("no", "cancel");
-m.intro_text = "Are you sure you want to delete the wheel '" + selected + "'?";
-int confirm = m.run();
-if (m.get_item_id(m.get_selected_item()) == "delete")
-{
-    wheels.erase(selected);
-    alert("Deleted", "Wheel has been deleted.");
-    writedata();
-wheelspin();
-}
-else
-{
-wheelspin();
-}
-}
-else if (action == "togglelock")
-{
-    if (lockedWheels.exists(selected))
+    bool allLocked = true;
+    for (uint i = 0; i < keys.length(); i++)
     {
-        lockedWheels.erase(selected);
-        alert("Unlocked", "Wheel '" + selected + "' has been unlocked. It can now be edited or deleted.");
-    writedata();
-    wheelspin();
-}
-    else
+        if (!lockedWheels.exists(keys[i]))
+        {
+            allLocked = false;
+            break;
+        }
+    }
+    string toggleLabel = allLocked ? "Unlock all wheels" : "Lock all wheels";
+    m.add_item(toggleLabel, "togglelockall");
+    m.add_item("Back", "Back");
+
+    m.intro_text = "Select a wheel to manage. You have " + keys.length() + " wheels.";
+    int res = m.run();
+    if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
     {
-        lockedWheels[selected] = true;
-        alert("Locked", "Wheel '" + selected + "' has been locked. It can no longer be edited or deleted.");
-        writedata();
-    wheelspin();
-}
-}
+        wheelspin();
+    }
+    string selected = m.get_item_id(m.get_selected_item());
+    if (selected == "togglelockall")
+    {
+        setupmenu(false);
+        if (allLocked)
+        {
+            m.add_item("yes", "confirm");
+            m.add_item("no", "cancel");
+            m.intro_text = "Are you sure you want to unlock all wheels?";
+        }
+        else
+        {
+            m.add_item("yes", "confirm");
+            m.add_item("no", "cancel");
+            m.intro_text = "Are you sure you want to lock all wheels?";
+        }
+        int confirm = m.run();
+        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        {
+            if (allLocked)
+            {
+                lockedWheels.clear();
+                alert("All wheels unlocked", "All wheels have been unlocked. They can now be edited or deleted.");
+            }
+            else
+            {
+                for (uint i = 0; i < keys.length(); i++)
+                {
+                    lockedWheels[keys[i]] = true;
+                }
+                alert("All wheels locked", "All wheels have been locked. They can no longer be edited or deleted.");
+            }
+            writedata();
+        }
+        wheelspin();
+    }
+    setupmenu(false);
+    bool isLocked = lockedWheels.exists(selected);
+    if (!isLocked)
+    {
+        m.add_item("Edit choices", "edit");
+        m.add_item("Rename wheel", "rename");
+        m.add_item("Delete wheel", "delete");
+    }
+    m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
+    m.add_item("Back", "back");
+    m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
+    int actionRes = m.run();
+    string action = m.get_item_id(m.get_selected_item());
+    if (action == "edit")
+    {
+        string current = string(wheels[selected]);
+        string edited = vd.input_box("Edit", "Edit your choices:", current);
+        if (edited == "" && current != "")
+        {
+            alert("Cancelled", "No changes were made.");
+        }
+        else
+        {
+            wheels[selected] = edited;
+            alert("Saved", "Changes saved.");
+            writedata();
+        }
+        wheelspin();
+    }
+    else if (action == "rename")
+    {
+        string newName = vd.input_box("Rename", "Enter a new name for this wheel:", selected);
+        if (newName != "" && !wheels.exists(newName))
+        {
+            wheels[newName] = wheels[selected];
+            wheels.erase(selected);
+            alert("Renamed", "Wheel has been renamed.");
+            writedata();
+        }
+        else
+        {
+            alert("Error", "Invalid or duplicate name.");
+        }
+        wheelspin();
+    }
+    else if (action == "delete")
+    {
+        setupmenu(false);
+        m.add_item("yes", "delete");
+        m.add_item("no", "cancel");
+        m.intro_text = "Are you sure you want to delete the wheel '" + selected + "'?";
+        int confirm = m.run();
+        if (m.get_item_id(m.get_selected_item()) == "delete")
+        {
+            wheels.erase(selected);
+            alert("Deleted", "Wheel has been deleted.");
+            writedata();
+        }
+        wheelspin();
+    }
+    else if (action == "togglelock")
+    {
+        string promptText = isLocked ? "Are you sure you want to unlock the wheel '" + selected + "'?" : "Are you sure you want to lock the wheel '" + selected + "'?";
+        setupmenu(false);
+        m.add_item("yes", "confirm");
+        m.add_item("no", "cancel");
+        m.intro_text = promptText;
+        int confirm = m.run();
+        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        {
+            if (isLocked)
+            {
+                lockedWheels.erase(selected);
+                alert("Unlocked", "Wheel '" + selected + "' has been unlocked. It can now be edited or deleted.");
+            }
+            else
+            {
+                lockedWheels[selected] = true;
+                alert("Locked", "Wheel '" + selected + "' has been locked. It can no longer be edited or deleted.");
+            }
+            writedata();
+        }
+        wheelspin();
+    }
 }
 void spin_wheel()
 {

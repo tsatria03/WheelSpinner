@@ -1,4 +1,5 @@
 new in 1.2
+Added the ability to lock or unlock all of your wheels at once from being edited or deleted at the botum of the edit wheels menu.
 Added the ability to lock and unlock individual wheels to prevent accidental edits or deletion. The Locked status is now shown in the edit wheel menu as "Locked" or "Unlocked" next to the choice count.
 new in 1.1
 Fixed an issue where pressing Escape in the Edit Choices input box would overwrite and erase existing entries. Existing choices are now preserved unless explicitly changed.

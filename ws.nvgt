@@ -61,13 +61,14 @@ void main()
 show_game_window("WheelSpinner, version "+version);
 if (app.is_already_running)
 {
-alert("Error", "Only one instance can run at a time.");
+alert("Error", "Only one instance of this app can run at a time.");
 exit();
 }
 else
 {
 readdata();
 readpreffs();
+pool.play_stationary_extended("sounds/launch.ogg", false, 0, 0, -5, 100, false);
 wheelspin();
 }
 }

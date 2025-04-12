@@ -24,6 +24,12 @@ sound_pool pool;
 savedata sd("data/saves/wheels.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
 savedata st("data/saves/preffs.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
 virtual_dialogs vd;
+bool compareBySpinCount(const string &in a, const string &in b)
+{
+    int countA = spinCounts.exists(a) ? int(spinCounts[a]) : 0;
+    int countB = spinCounts.exists(b) ? int(spinCounts[b]) : 0;
+    return countA > countB;
+}
 string trim(const string&in str)
 {
 string result = str;

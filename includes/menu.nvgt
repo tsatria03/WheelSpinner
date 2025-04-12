@@ -278,65 +278,23 @@ else if (selected == "import_selected")
 }
 void spin_wheel()
 {
-array<string>@ keys = wheels.get_keys();
-keys.sort_ascending();
-if (keys.length() == 0)
-{
-alert("Error", "No wheels to spin.");
-wheelspin();
-}
-setupmenu(false);
-for (uint i = 0; i < keys.length(); i++)
-{
-    string key = keys[i];
-    array<string>@ opts = string_split(string(wheels[key]), ", ");
-int spins = spinCounts.exists(key) ? int(spinCounts[key]) : 0;
-m.add_item(key + " (" + opts.length() + " choices. " + ", " + spins + " spins)", key);
-}
-m.add_item("random", "random");
-m.add_item("Back", "Back");
-m.intro_text = "Please pick a wheel to spin. You have " + keys.length() + " wheels.";
-int res = m.run();
-if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
+    setupmenu(false);
+    m.add_item("All Wheels", "all");
+    m.add_item("Most Spun Wheels", "top");
+    m.add_item("Back", "back");
+    m.intro_text = "Choose how you'd like to pick a wheel to spin:";
+    int res = m.run();
+    string pick = m.get_item_id(m.get_selected_item());
+    if (pick == "back")
 {
 wheelspin();
 }
-string chosen = m.get_item_id(m.get_selected_item());
-if (chosen == "random")
+    else if (pick == "all")
 {
-    chosen = keys[random(0, keys.length() - 1)];
+spin_from_list(false);
 }
-array<string>@ options = string_split(string(wheels[chosen]), ", ");
-if (options.length() < 2)
-{
-alert("Invalid", "Need at least 2 options to spin.");
-wheelspin();
-}
-int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-speak("Spinning " + chosen);
-for (uint i = 0; i < spinTicks; i++)
-{
-uint idx = random(0, options.length() - 1);
-pool.play_stationary("sounds/"+wheeltype+"spin.ogg", false);
-wait(spinBaseDelay + i * spinGrowth);
-}
-string result = trim(options[random(0, options.length() - 1)]);
-pool.play_stationary("sounds/wheelding"+random(1,3)+".ogg",false);
-dlg("The wheel landed on " + result + ".");
-spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
-writedata();
-setupmenu(false);
-m.add_item("yes", "again");
-m.add_item("no", "back");
-m.intro_text = "Would you like to spin the wheel again?";
-int choice = m.run();
-if (m.get_item_id(m.get_selected_item()) == "again")
-{
-    spin_same_wheel(chosen);
-}
-else
-{
-    wheelspin();
+    else if (pick == "top") {
+spin_from_list(true);
 }
 }
 void spin_same_wheel(string chosen)
@@ -360,6 +318,80 @@ pool.play_stationary("sounds/wheelding"+random(1,3)+".ogg",false);
     dlg("The wheel landed on " + result + ".");
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
 writedata();
+    setupmenu(false);
+    m.add_item("yes", "again");
+    m.add_item("no", "back");
+    m.intro_text = "Would you like to spin the wheel again?";
+    int choice = m.run();
+    if (m.get_item_id(m.get_selected_item()) == "again")
+    {
+        spin_same_wheel(chosen);
+    }
+    else
+    {
+        wheelspin();
+    }
+}
+void spin_from_list(bool mostUsed)
+{
+    array<string>@ keys = wheels.get_keys();
+    if (keys.length() == 0)
+    {
+        alert("Error", "No wheels to spin.");
+        wheelspin();
+    }
+if (mostUsed)
+{
+    keys.sort(compareBySpinCount);
+}
+    else
+    {
+        keys.sort_ascending();
+    }
+    setupmenu(false);
+    for (uint i = 0; i < keys.length(); i++)
+    {
+        string key = keys[i];
+        array<string>@ opts = string_split(string(wheels[key]), ", ");
+        int spins = spinCounts.exists(key) ? int(spinCounts[key]) : 0;
+        m.add_item(key + " (" + opts.length() + " choices. " + spins + " spins)", key);
+    }
+    m.add_item("random", "random");
+    m.add_item("Back", "back");
+    m.intro_text = mostUsed ? "These are your most spun wheels. Choose one to spin:" : "Pick a wheel to spin. You have " + keys.length() + " wheels.";
+    int res = m.run();
+    if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
+    {
+        wheelspin();
+    }
+    string chosen = m.get_item_id(m.get_selected_item());
+    if (chosen == "random")
+    {
+        chosen = keys[random(0, keys.length() - 1)];
+    }
+    spin_selected_wheel(chosen);
+}
+void spin_selected_wheel(string chosen)
+{
+    array<string>@ options = string_split(string(wheels[chosen]), ", ");
+    if (options.length() < 2)
+    {
+        alert("Invalid", "Need at least 2 options to spin.");
+        wheelspin();
+    }
+    int spinTicks = spinBaseTicks + random(0, spinRandomRange);
+    speak("Spinning " + chosen);
+    for (uint i = 0; i < spinTicks; i++)
+    {
+        uint idx = random(0, options.length() - 1);
+        pool.play_stationary("sounds/" + wheeltype + "spin.ogg", false);
+        wait(spinBaseDelay + i * spinGrowth);
+    }
+    string result = trim(options[random(0, options.length() - 1)]);
+    pool.play_stationary("sounds/wheelding" + random(1, 3) + ".ogg", false);
+    dlg("The wheel landed on " + result + ".");
+    spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
+    writedata();
     setupmenu(false);
     m.add_item("yes", "again");
     m.add_item("no", "back");

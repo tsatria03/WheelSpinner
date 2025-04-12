@@ -1,4 +1,5 @@
 new in 1.4
+Added a new sorting option that lets you view wheels by how many times they've been spun. The Spin Wheel menu now includes a submenu where you can choose to view all wheels or only the most used ones.
 Added the ability to track the usage stats of each wheel found in the edit and spin wheel screens. It will now tell you how many times it has spun per wheel.
 Added an option to delete all unlocked wheels found in the edit wheels menu. Locked wheels will not be effected.
 You can now delete all wheels found in the edit wheels menu.

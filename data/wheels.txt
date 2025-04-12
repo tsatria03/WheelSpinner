@@ -1,0 +1,14 @@
+Animals=Dog, Cat, Lion, Tiger, Elephant, Giraffe, Bear, Fox, Owl, Dolphin, Horse, Kangaroo, Zebra, Monkey, Rabbit, Wolf, Koala, Deer, Crocodile, Parrot
+Letters=A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+Vegetables=Carrot, Broccoli, Spinach, Potato, Tomato, Cucumber, Cauliflower, Lettuce, Cabbage, Peas, Corn, Onion, Garlic, Beet, Zucchini, Radish, Asparagus, Pumpkin, GreenBean, Turnip
+Colors=Red, Blue, Orange, Purple, Green, White, Black, Yellow, Pink, Brown, Gray, Cyan, Magenta, Teal, Maroon, Navy, Lime, Olive, Indigo, Gold, Silver, Beige, Peach, Coral, Turquoise
+Numbers=1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+Shapes=Square, Circle, Triangle, Rectangle, Hexagon, Star, Pentagon, Octagon, Oval, Diamond, Trapezoid, Crescent, Heart, Parallelogram, Arrow, Cube, Cone, Sphere, Pyramid, Cylinder
+Drinks=Water, Juice, Soda, Tea, Coffee, Milk, Lemonade, HotChocolate, EnergyDrink, Smoothie, CoconutWater, SparklingWater, Milkshake, RootBeer, OrangeJuice, AppleJuice
+Fruits=Apple, Banana, Orange, Mango, Strawberry, Grape, Watermelon, Pineapple, Kiwi, Blueberry, Peach, Pear, Cherry, Lemon, Lime, Coconut, Plum, Apricot, Pomegranate, Dragonfruit
+Snacks=Chips, Popcorn, Cookies, Pretzels, Nuts, Candy, Crackers, GranolaBar, TrailMix, Doughnut, Jerky, FruitSnacks, Nachos, CheeseSticks, ChocolateBar
+Desserts=Cake, Pie, IceCream, Pudding, Brownie, Cupcake, Cookies, Mousse, Cheesecake, Tart, Custard, Fudge, Macaron, Eclair
+Continents=Africa, Antarctica, Asia, Europe, NorthAmerica, SouthAmerica, Australia
+Days of the Week=Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+Planets=Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto
+Months=January, February, March, April, May, June, July, August, September, October, November, December

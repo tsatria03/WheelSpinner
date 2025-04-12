@@ -12,7 +12,7 @@ int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
-string version="1.2";
+string version="1.3";
 string wheeltype="wheel1";
 dictionary lockedWheels;
 dictionary wheels;
@@ -56,6 +56,142 @@ m.enter_sound = "sounds/menuenter.ogg";
 m.open_sound = "sounds/menuopen.ogg";
 m.wrap_sound = "sounds/menuwrap.ogg";
 }
+void export_wheels()
+{
+    file f;
+    if (!f.open("data/wheels.txt", "wb"))
+    {
+        alert("Error", "Failed to open file for writing.");
+wheelspin();
+    }
+    array<string>@ keys = wheels.get_keys();
+    for (uint i = 0; i < keys.length(); i++)
+    {
+        string name = keys[i];
+        array<string>@ options = string_split(string(wheels[name]), ",", true);
+        for (uint j = 0; j < options.length(); j++)
+        {
+            options[j] = trim(options[j]);
+        }
+        string joined = join(options, ", ");
+        f.write(name + "=" + joined + "\r\n");
+    }
+    f.close();
+    alert("Success", "Wheels exported to data/wheels.txt");
+wheelspin();
+}
+void export_selected_wheels()
+{
+    array<string>@ keys = wheels.get_keys();
+keys.sort_ascending();
+    if (keys.length() == 0)
+    {
+        alert("Error", "No wheels to export.");
+        wheelspin();
+    }
+    form.reset();
+    form.create_window("Export Selected Wheels", false);
+    int wheelList = form.create_list("Select wheels to export:", keys.length(), true);
+    for (uint i = 0; i < keys.length(); i++)
+    {
+        form.add_list_item(wheelList, keys[i], keys[i]);
+    }
+    int exportButton = form.create_button("&Export");
+    int cancelButton = form.create_button("&Cancel");
+    form.focus(wheelList);
+    while (true)
+    {
+        wait(5);
+        form.monitor();
+        if (form.is_pressed(exportButton))
+        {
+            int[]@ checkedIndices = form.get_checked_list_items(wheelList);
+            if (checkedIndices.length() == 0)
+            {
+                alert("Nothing selected", "You must select at least one wheel.");
+wheelspin();
+            }
+            file f;
+            if (!f.open("data/wheels.txt", "wb"))
+            {
+                alert("Error", "Failed to open file for writing.");
+                wheelspin();
+            }
+            for (uint i = 0; i < checkedIndices.length(); i++)
+            {
+                int index = checkedIndices[i];
+                string name = form.get_list_item_id(wheelList, index);
+                array<string>@ options = string_split(string(wheels[name]), ",", true);
+                for (uint j = 0; j < options.length(); j++)
+                {
+                    options[j] = trim(options[j]);
+                }
+                string joined = join(options, ", ");
+                f.write(name + "=" + joined + "\r\n");
+            }
+            f.close();
+            alert("Success", "Selected wheels exported to data/wheels.txt");
+            wheelspin();
+        }
+        if (form.is_pressed(cancelButton) || key_pressed(KEY_ESCAPE))
+        {
+            wheelspin();
+        }
+    }
+}
+void import_wheels()
+{
+    if (!file_exists("data/wheels.txt"))
+    {
+        alert("Error", "No wheels.txt file found.");
+        wheelspin();
+    }
+    file f;
+    if (!f.open("data/wheels.txt", "rb"))
+    {
+        alert("Error", "Failed to open wheels.txt");
+        wheelspin();
+    }
+    string content = f.read();
+    f.close();
+
+    string[] lines = string_split(content, "\r\n", true);
+    int imported = 0;
+    int skipped = 0;
+    for (uint i = 0; i < lines.length(); i++)
+    {
+        if (lines[i] == "") continue;
+        string[] parts = string_split(lines[i], "=", true);
+        if (parts.length() < 2)
+        {
+            alert("Error", "Malformed line " + (i + 1));
+            wheelspin();
+        }
+        string name = trim(parts[0]);
+        string rawOptions = parts[1];
+        array<string>@ options = string_split(rawOptions, ",", true);
+        for (uint j = 0; j < options.length(); j++)
+        {
+            options[j] = trim(options[j]);
+        }
+        string formatted = join(options, ", ");
+        if (!wheels.exists(name))
+        {
+            wheels[name] = formatted;
+            imported++;
+        }
+        else
+        {
+            skipped++;
+        }
+    }
+    writedata();
+    string msg = "Import complete.\n\n";
+    msg += "Wheels imported: " + imported + "\n";
+    msg += ", Duplicates skipped: " + skipped;
+    alert("Success", msg);
+    wheelspin();
+}
 void main()
 {
 show_game_window("WheelSpinner, version "+version);
@@ -78,6 +214,7 @@ form.reset();
 form.create_window("Wheel Spinner", false);
 int add = form.create_button("&Add Wheel");
 int edit = form.create_button("&Edit Wheel");
+int manage = form.create_button("&Manage Wheels");
 int spin = form.create_button("&Spin Wheel");
 int settings = form.create_button("Spin Se&ttings");
 int quit = form.create_button("&Quit");
@@ -97,6 +234,10 @@ add_wheel();
 if (form.is_pressed(edit))
 {
 edit_wheel();
+}
+if (form.is_pressed(manage))
+{
+    manage_wheels();
 }
 if (form.is_pressed(spin))
 {

@@ -43,7 +43,7 @@ void edit_wheel()
     m.add_item(toggleLabel, "togglelockall");
     m.add_item("Back", "Back");
 
-    m.intro_text = "Select a wheel to manage. You have " + keys.length() + " wheels.";
+    m.intro_text = "Select a wheel to edit. You have " + keys.length() + " wheels.";
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
     {
@@ -170,6 +170,51 @@ void edit_wheel()
         wheelspin();
     }
 }
+void manage_wheels()
+{
+    setupmenu(false);
+    m.add_item("Export all wheels to file", "export");
+m.add_item("Export selected wheels to file", "export_selected");
+    m.add_item("Import all wheels from file", "import");
+    m.add_item("Back", "back");
+    m.intro_text = "Wheel Management Menu";
+    int res = m.run();
+    string selected = m.get_item_id(m.get_selected_item());
+    if (selected == "export")
+    {
+        setupmenu(false);
+        m.add_item("yes", "confirm");
+        m.add_item("no", "cancel");
+        m.intro_text = "Are you sure you want to export all wheels to a file?";
+        int confirm = m.run();
+        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        {
+            export_wheels();
+        }
+wheelspin();
+    }
+else if (selected == "export_selected")
+{
+    export_selected_wheels();
+}
+    else if (selected == "import")
+    {
+        setupmenu(false);
+        m.add_item("yes", "confirm");
+        m.add_item("no", "cancel");
+        m.intro_text = "Are you sure you want to import all wheels from a file?";
+        int confirm = m.run();
+        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        {
+            import_wheels();
+        }
+wheelspin();
+    }
+    else
+    {
+        wheelspin();
+    }
+}
 void spin_wheel()
 {
 array<string>@ keys = wheels.get_keys();
@@ -186,6 +231,7 @@ for (uint i = 0; i < keys.length(); i++)
     array<string>@ opts = string_split(string(wheels[key]), ", ");
     m.add_item(key + " (" + opts.length() + " choices)", key);
 }
+m.add_item("random", "random");
 m.add_item("Back", "Back");
 m.intro_text = "Please pick a wheel to spin. You have " + keys.length() + " wheels.";
 int res = m.run();
@@ -194,6 +240,10 @@ if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
 wheelspin();
 }
 string chosen = m.get_item_id(m.get_selected_item());
+if (chosen == "random")
+{
+    chosen = keys[random(0, keys.length() - 1)];
+}
 array<string>@ options = string_split(string(wheels[chosen]), ", ");
 if (options.length() < 2)
 {

@@ -1,3 +1,9 @@
+new in 1.3
+Added an option to export only selected wheels to a file using a multi-selection list in the wheel manager menu.
+Made it so the app checks for duplicate wheels before Proceeding to import them.
+Added confirmation prompts for exporting and importing all existing wheels from a file.
+Added the ability to export and import all existing wheels from a file.
+Added the ability to spin a random wheel from the ones that have been created by you.
 new in 1.2
 Added the ability to choose your own wheel sounds to use for the spinner in the spin settings menu.
 Added confirmation prompts when locking or unlocking individual wheels or all wheels at once.

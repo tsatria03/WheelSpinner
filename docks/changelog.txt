@@ -1,4 +1,5 @@
 new in 1.2
+Added the ability to choose your own wheel sounds to use for the spinner in the spin settings menu.
 Added confirmation prompts when locking or unlocking individual wheels or all wheels at once.
 Made it so wheels found in the edit and spin wheel screens are now sorted in alphabetical order.
 Added the ability to lock or unlock all of your wheels at once from being edited or deleted at the botum of the edit wheels menu.

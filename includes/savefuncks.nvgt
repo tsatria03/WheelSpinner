@@ -58,6 +58,10 @@ if (st.d.exists("spinRandomRange"))
 {
 spinRandomRange = st.read_int("spinRandomRange");
 }
+if (st.d.exists("wheeltype"))
+{
+wheeltype = st.read_string("wheeltype");
+}
 }
 void writepreffs()
 {
@@ -65,5 +69,6 @@ st.add("spinBaseDelay", spinBaseDelay);
 st.add("spinGrowth", spinGrowth);
 st.add("spinBaseTicks", spinBaseTicks);
 st.add("spinRandomRange", spinRandomRange);
+st.add("wheeltype", wheeltype);
 st.save();
 }

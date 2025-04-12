@@ -260,35 +260,61 @@ speak("Spinning " + chosen);
 }
 void spinsettings()
 {
-form.reset();
-form.create_window("Spin Settings", false);
-int baseSlider = form.create_slider("Spin base delay.", spinBaseDelay, 1, 100, 1);
-int growthSlider = form.create_slider("Spin growth factor.", spinGrowth, 1, 100, 1);
-int ticksSlider = form.create_slider("Spin tick count.", spinBaseTicks, 1, 100, 1);
-int rangeSlider = form.create_slider("Spin randomness.", spinRandomRange, 1, 100, 1);
-int apply = form.create_button("&Apply");
-int cancel = form.create_button("&Cancel");
-form.focus(baseSlider);
-while (true) {
-wait(5);
-form.monitor();
-if(key_pressed(KEY_ESCAPE))
-{
-wheelspin();
-}
-if (form.is_pressed(apply))
-{
-spinBaseDelay = form.get_slider(baseSlider);
-spinGrowth = form.get_slider(growthSlider);
-spinBaseTicks = form.get_slider(ticksSlider);
-spinRandomRange = form.get_slider(rangeSlider);
-alert("Updated", "Spin settings updated!");
-writepreffs();
-wheelspin();
-}
-if (form.is_pressed(cancel))
-{
-wheelspin();
-}
-}
+    form.reset();
+    form.create_window("Spin Settings", false);
+    int baseSlider = form.create_slider("Spin base delay.", spinBaseDelay, 1, 100, 1);
+    int growthSlider = form.create_slider("Spin growth factor.", spinGrowth, 1, 100, 1);
+    int ticksSlider = form.create_slider("Spin tick count.", spinBaseTicks, 1, 100, 1);
+    int rangeSlider = form.create_slider("Spin randomness.", spinRandomRange, 1, 100, 1);
+    int wheellist = form.create_list("Wheel sound:", 5);
+    array<string> wheelOptions;
+    for (uint i = 1; i <= 5; i++)
+    {
+        string wheelName = "wheel " + i;
+        string wheelID = "wheel" + i;
+        wheelOptions.insert_last(wheelID);
+        form.add_list_item(wheellist, wheelName, wheelID);
+    }
+    int wheelIndex = 0;
+    for (uint i = 0; i < wheelOptions.length(); i++)
+    {
+        if (wheelOptions[i] == wheeltype)
+        {
+            wheelIndex = i;
+            break;
+        }
+    }
+    form.set_list_position(wheellist, wheelIndex);
+    int apply = form.create_button("&Apply");
+    int cancel = form.create_button("&Cancel");
+    form.focus(baseSlider);
+    while (true)
+    {
+        wait(5);
+        form.monitor();
+        int selectedIndex = form.get_list_position(wheellist);
+        if (selectedIndex != -1 && wheelOptions[selectedIndex] != wheeltype)
+        {
+            wheeltype = wheelOptions[selectedIndex];
+            pool.play_stationary("sounds/" + wheeltype + "spin.ogg", false);
+        }
+        spinBaseDelay = form.get_slider(baseSlider);
+        spinGrowth = form.get_slider(growthSlider);
+        spinBaseTicks = form.get_slider(ticksSlider);
+        spinRandomRange = form.get_slider(rangeSlider);
+        if (key_pressed(KEY_ESCAPE))
+        {
+            wheelspin();
+        }
+        if (form.is_pressed(apply))
+        {
+            alert("Updated", "Spin settings updated!");
+            writepreffs();
+            wheelspin();
+        }
+        if (form.is_pressed(cancel))
+        {
+            wheelspin();
+        }
+    }
 }

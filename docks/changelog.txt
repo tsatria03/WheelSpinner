@@ -1,4 +1,7 @@
 new in 1.4
+Added the ability to track the usage stats of each wheel found in the edit and spin wheel screens. It will now tell you how many times it has spun per wheel.
+Added an option to delete all unlocked wheels found in the edit wheels menu. Locked wheels will not be effected.
+You can now delete all wheels found in the edit wheels menu.
 Added an option to import only selected wheels from a file using a multi-selection list in the wheel manager menu.
 new in 1.3
 Added an option to export only selected wheels to a file using a multi-selection list in the wheel manager menu.

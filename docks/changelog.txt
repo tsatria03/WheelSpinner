@@ -1,3 +1,5 @@
+new in 1.4
+Added an option to import only selected wheels from a file using a multi-selection list in the wheel manager menu.
 new in 1.3
 Added an option to export only selected wheels to a file using a multi-selection list in the wheel manager menu.
 Made it so the app checks for duplicate wheels before Proceeding to import them.

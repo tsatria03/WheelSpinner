@@ -176,6 +176,7 @@ void manage_wheels()
     m.add_item("Export all wheels to file", "export");
 m.add_item("Export selected wheels to file", "export_selected");
     m.add_item("Import all wheels from file", "import");
+m.add_item("Import selected wheels from file", "import_selected");
     m.add_item("Back", "back");
     m.intro_text = "Wheel Management Menu";
     int res = m.run();
@@ -210,6 +211,10 @@ else if (selected == "export_selected")
         }
 wheelspin();
     }
+else if (selected == "import_selected")
+{
+    import_selected_wheels();
+}
     else
     {
         wheelspin();

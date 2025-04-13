@@ -30,12 +30,12 @@ m.reset();
 m.automatic_intro = true;
 m.focus_first_item = false;
 m.wrap = true;
-m.click_sound = "sounds/menuclick.ogg";
-m.close_sound = "sounds/menuclose.ogg";
-m.edge_sound = "sounds/menuedge.ogg";
-m.enter_sound = "sounds/menuenter.ogg";
-m.open_sound = "sounds/menuopen.ogg";
-m.wrap_sound = "sounds/menuwrap.ogg";
+m.click_sound = "menuclick.ogg";
+m.close_sound = "menuclose.ogg";
+m.edge_sound = "menuedge.ogg";
+m.enter_sound = "menuenter.ogg";
+m.open_sound = "menuopen.ogg";
+m.wrap_sound = "menuwrap.ogg";
 }
 void export_wheels()
 {
@@ -80,7 +80,7 @@ void export_selected_wheels()
 {
         form.add_list_item(list, keys[i], keys[i]);
     }
-    int exportBtn = form.create_button("&Export");
+    int exportBtn = form.create_button("&Export",true);
     int cancelBtn = form.create_button("&Cancel");
     form.focus(list);
     while (true)
@@ -243,7 +243,7 @@ else
     int list = form.create_list("Choose wheels to import:", importNames.length(), true);
     for (uint i = 0; i < importNames.length(); i++)
         form.add_list_item(list, importNames[i], importNames[i]);
-    int importBtn = form.create_button("&Import");
+    int importBtn = form.create_button("&Import",true);
     int cancelBtn = form.create_button("&Cancel");
     form.focus(list);
     while (true)

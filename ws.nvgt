@@ -28,6 +28,8 @@ savedata st("data/saves/spinsets.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6a
 virtual_dialogs vd;
 void main()
 {
+set_sound_storage("data/saves/sounds.dat");
+set_sound_decryption_key("BRn2x3BJd3O0KrB7kb2L6cY4qJYEjVt5OhuVzJmmsoj9wampZL3IAx7IdIQBMyqW7ssXZhsXwD2nrQR4qRL8038swNq0Zc2ObN6mNlWrjIGcYLqEh2t0OHeM",true);
 show_game_window("WheelSpinner, version "+version);
 if (app.is_already_running)
 {
@@ -38,7 +40,7 @@ else
 {
 readdata();
 readpreffs();
-pool.play_stationary_extended("sounds/applaunch.ogg", false, 0, 0, -5, random(90, 110), false);
+pool.play_stationary_extended("applaunch.ogg", false, 0, 0, -5, random(90, 110), false);
 wheelspin();
 }
 }

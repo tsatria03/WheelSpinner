@@ -351,11 +351,11 @@ speak("Spinning " + chosen);
     for (uint i = 0; i < spinTicks; i++)
     {
         uint idx = random(0, options.length() - 1);
-        pool.play_stationary("sounds/" + wheeltype + "spin.ogg", false);
+        pool.play_stationary(wheeltype + "spin.ogg", false);
         wait(spinBaseDelay + i * spinGrowth);
     }
     string result = trim(options[random(0, options.length() - 1)]);
-pool.play_stationary("sounds/wheelding"+random(1,3)+".ogg",false);
+pool.play_stationary("wheelding"+random(1,3)+".ogg",false);
     dlg("The wheel landed on " + result + ".");
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
 writedata();
@@ -425,11 +425,11 @@ void spin_selected_wheel(string chosen)
     for (uint i = 0; i < spinTicks; i++)
     {
         uint idx = random(0, options.length() - 1);
-        pool.play_stationary("sounds/" + wheeltype + "spin.ogg", false);
+        pool.play_stationary(wheeltype + "spin.ogg", false);
         wait(spinBaseDelay + i * spinGrowth);
     }
     string result = trim(options[random(0, options.length() - 1)]);
-    pool.play_stationary("sounds/wheelding" + random(1, 3) + ".ogg", false);
+    pool.play_stationary("wheelding" + random(1, 3) + ".ogg", false);
     dlg("The wheel landed on " + result + ".");
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
     writedata();
@@ -485,7 +485,7 @@ void spinsettings()
         if (selectedIndex != -1 && wheelOptions[selectedIndex] != wheeltype)
         {
             wheeltype = wheelOptions[selectedIndex];
-            pool.play_stationary("sounds/" + wheeltype + "spin.ogg", false);
+            pool.play_stationary(wheeltype + "spin.ogg", false);
         }
         spinBaseDelay = form.get_slider(baseSlider);
         spinGrowth = form.get_slider(growthSlider);

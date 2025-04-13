@@ -46,7 +46,7 @@ void export_wheels()
     m.intro_text = "Do you want to replace the existing file, or append to it?";
     int res = m.run();
     string mode = m.get_item_id(m.get_selected_item());
-    if (mode == "cancel") wheelspin();
+    if (res==-1 || mode == "cancel") wheelspin();
     string filepath = "data/exported/wheels.txt";
     dictionary existing;
     if (file_exists(filepath) && mode == "append")
@@ -127,7 +127,7 @@ void export_selected_wheels()
             m.intro_text = "Do you want to replace the existing file, or append to it?";
             int res = m.run();
             string mode = m.get_item_id(m.get_selected_item());
-            if (mode == "cancel") wheelspin();
+            if (res==-1 || mode == "cancel") wheelspin();
             string filepath = "data/exported/wheels.txt";
             dictionary existing;
             if (file_exists(filepath) && mode == "append")

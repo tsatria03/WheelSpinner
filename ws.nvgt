@@ -9,6 +9,7 @@
 #include"includes/savefuncks.nvgt"
 #include"includes/savedata.nvgt"
 #include "includes/virtual_dialogs.nvgt"
+array<string> recentWheels;
 int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;

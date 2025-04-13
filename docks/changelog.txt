@@ -1,3 +1,7 @@
+new in 1.6
+Added a search feature to the spin wheel menu that lets you directly spin a wheel just by typing part of its name. If multiple wheels match the same criteria, a menu will pop up with a list of wheels you can choose from.
+Added a "Most Recently Used Wheels" option to the Spin Wheel menu, allowing quick access to the last 5 wheels you've spun.
+Added the ability to export and import wheel-related settings. You can now save your spin preferences to a file and reload them later or share them with others.
 new in 1.5
 Fixed an issue where wheel lock states and spin counts were not being properly exported or restored. The locked wheels now retain their status when imported. The spin history is also now properly saved and restored on import as well.
 Added the ability to export the locked states and spin counts of all wheels to a file, making it easy to back them up and restore them later through import.

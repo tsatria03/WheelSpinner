@@ -289,7 +289,7 @@ m.add_item("Import selected wheels from file", "import_selected");
         {
             export_wheels();
         }
-wheelspin();
+manage_wheels();
     }
 else if (selected == "export_selected")
 {
@@ -306,7 +306,7 @@ else if (selected == "export_selected")
         {
             import_wheels();
         }
-wheelspin();
+manage_wheels();
     }
 else if (selected == "import_selected")
 {
@@ -317,11 +317,35 @@ else if (selected == "import_selected")
         wheelspin();
     }
 }
+void show_recent_wheels()
+{
+    if (recentWheels.length() == 0)
+{
+        alert("No Recent Wheels", "You haven't spun any wheels yet.");
+        wheelspin();
+    }
+    setupmenu(false);
+    for (uint i = 0; i < recentWheels.length(); i++)
+{
+        string name = recentWheels[i];
+        array<string>@ opts = string_split(string(wheels[name]), ", ");
+        int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+        m.add_item(name + " (" + opts.length() + " choices, " + spins + " spins)", name);
+    }
+    m.add_item("Back", "back");
+    m.intro_text = "Pick a recently used wheel to spin again.";
+    int res = m.run();
+    if (res == -1 || m.get_item_id(m.get_selected_item()) == "back") wheelspin();
+    string chosen = m.get_item_id(m.get_selected_item());
+    spin_selected_wheel(chosen);
+}
 void spin_wheel()
 {
     setupmenu(false);
     m.add_item("All Wheels", "all");
+m.add_item("Most Recent Wheels", "rec");
     m.add_item("Most Spun Wheels", "top");
+    m.add_item("Search for a Wheel", "search");
     m.add_item("Back", "back");
     m.intro_text = "Choose how you'd like to pick a wheel to spin:";
     int res = m.run();
@@ -330,12 +354,65 @@ void spin_wheel()
 {
 wheelspin();
 }
-    else if (pick == "all")
+else if (pick == "rec")
+{
+ show_recent_wheels();
+    }
+else if (pick == "all")
 {
 spin_from_list(false);
 }
-    else if (pick == "top") {
+    else if (pick == "top")
+{
 spin_from_list(true);
+}
+else if (pick == "search")
+{
+    string query = vd.input_box("Search", "Type part of a wheel's name to spin it:");
+    if (query != "")
+    {
+        array<string>@ keys = wheels.get_keys();
+        array<string> matches;
+        for (uint i = 0; i < keys.length(); i++)
+        {
+            if (keys[i].lower().find(query.lower()) >= 0)
+            {
+                matches.insert_last(keys[i]);
+            }
+        }
+        if (matches.length() == 0)
+        {
+            alert("No Match", "No wheels found matching: " + query);
+wheelspin();
+        }
+        else if (matches.length() == 1)
+        {
+            spin_selected_wheel(matches[0]);
+        }
+        else
+        {
+            setupmenu(false);
+            for (uint i = 0; i < matches.length(); i++)
+            {
+                m.add_item(matches[i], matches[i]);
+            }
+            m.add_item("Back", "back");
+            m.intro_text = "Multiple matches found. Pick one to spin:";
+            int res = m.run();
+            if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
+            {
+wheelspin();
+            }
+            else
+            {
+                spin_selected_wheel(m.get_item_id(m.get_selected_item()));
+            }
+        }
+    }
+    else
+    {
+        wheelspin();
+    }
 }
 }
 void spin_same_wheel(string chosen)
@@ -432,6 +509,7 @@ void spin_selected_wheel(string chosen)
     pool.play_stationary("wheelding" + random(1, 3) + ".ogg", false);
     dlg("The wheel landed on " + result + ".");
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
+    update_recent_wheels(chosen);
     writedata();
     setupmenu(false);
     m.add_item("yes", "again");
@@ -474,6 +552,8 @@ void spinsettings()
         }
     }
     form.set_list_position(wheellist, wheelIndex);
+int exportBtn = form.create_button("Export Settings to File");
+int importBtn = form.create_button("Import Settings from File");
     int apply = form.create_button("&Apply");
     int cancel = form.create_button("&Cancel");
     form.focus(baseSlider);
@@ -495,6 +575,46 @@ void spinsettings()
         {
             wheelspin();
         }
+if (form.is_pressed(importBtn))
+{
+    setupmenu(false);
+    m.add_item("yes", "yes");
+    m.add_item("no", "no");
+    m.intro_text = "Are you sure you want to import your current spin settings from a file?";
+    int confirm = m.run();
+    if(confirm==-1)
+    {
+spinsettings();
+}
+    if (m.get_item_id(m.get_selected_item()) == "yes")
+{
+        import_wheel_settings();
+    }
+    if (m.get_item_id(m.get_selected_item()) == "no")
+{
+spinsettings();
+    }
+}
+if (form.is_pressed(exportBtn))
+{
+    setupmenu(false);
+    m.add_item("yes", "yes");
+    m.add_item("no", "no");
+    m.intro_text = "Are you sure you want to export your current spin settings to a file?";
+    int confirm = m.run();
+    if(confirm==-1)
+    {
+spinsettings();
+}
+    if (m.get_item_id(m.get_selected_item()) == "yes")
+{
+        export_wheel_settings();
+    }
+    if (m.get_item_id(m.get_selected_item()) == "no")
+{
+spinsettings();
+    }
+}
         if (form.is_pressed(apply))
         {
             alert("Updated", "Spin settings updated!");

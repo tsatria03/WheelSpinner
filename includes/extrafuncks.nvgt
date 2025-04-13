@@ -287,3 +287,61 @@ if (bufferSpins.exists(name))
     }
 }
 
+void export_wheel_settings()
+{
+    file f;
+    if (!f.open("data/exported/settings.txt", "wb"))
+{
+        alert("Error", "Could not create settings.txt");
+        wheelspin();
+    }
+    f.write("spinBaseDelay=" + spinBaseDelay + "\r\n");
+    f.write("spinGrowth=" + spinGrowth + "\r\n");
+    f.write("spinBaseTicks=" + spinBaseTicks + "\r\n");
+    f.write("spinRandomRange=" + spinRandomRange + "\r\n");
+    f.write("wheeltype=" + wheeltype + "\r\n");
+    f.close();
+    alert("Saved", "Settings exported to data/exported/settings.txt");
+    wheelspin();
+}
+void import_wheel_settings()
+{
+    if (!file_exists("data/exported/settings.txt"))
+{
+        alert("Error", "No settings.txt file found.");
+        wheelspin();
+    }
+    file f;
+    if (!f.open("data/exported/settings.txt", "rb"))
+{
+        alert("Error", "Failed to open settings.txt");
+        wheelspin();
+    }
+    string content = f.read();
+    f.close();
+    string[] lines = string_split(content, "\r\n", true);
+    for (uint i = 0; i < lines.length(); i++)
+{
+        if (lines[i] == "") continue;
+        string[] parts = string_split(lines[i], "=", true);
+        if (parts.length() < 2) continue;
+        string key = trim(parts[0]);
+        string value = trim(parts[1]);
+        if (key == "spinBaseDelay") spinBaseDelay = parse_int(value);
+        else if (key == "spinGrowth") spinGrowth = parse_int(value);
+        else if (key == "spinBaseTicks") spinBaseTicks = parse_int(value);
+        else if (key == "spinRandomRange") spinRandomRange = parse_int(value);
+        else if (key == "wheeltype") wheeltype = value;
+    }
+    writepreffs();
+    alert("Loaded", "Settings imported from settings.txt");
+    wheelspin();
+}
+void update_recent_wheels(const string &in name)
+{
+    int index = recentWheels.find(name);
+    if (index != -1) recentWheels.remove_at(index);
+    recentWheels.insert_at(0, name);
+    if (recentWheels.length() > 5) recentWheels.resize(5);
+}
+

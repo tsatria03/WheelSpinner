@@ -5,6 +5,7 @@ void readdata()
     lockedWheels.clear();
     spinCounts.clear();
     wheelDescriptions.clear();
+recentWheels.resize(0);
     if (sd.d.exists("wheel_count"))
     {
         int count = sd.read_int("wheel_count");
@@ -29,7 +30,17 @@ void readdata()
             }
         }
     }
+    for (uint i = 0; i < 5; i++)
+    {
+        string rk = "wheel_recent_" + i;
+        if (sd.d.exists(rk))
+        {
+            string val = sd.read_string(rk);
+            if (val != "") recentWheels.insert_last(val);
+        }
+    }
 }
+
 void writedata()
 {
     sd.add("wheel_count", wheels.get_keys().length());
@@ -47,6 +58,14 @@ void writedata()
         sd.add(lockKey, lockedWheels.exists(name));
         sd.add(spinKey, spinCounts.exists(name) ? int(spinCounts[name]) : 0);
         sd.add(descKey, wheelDescriptions.exists(name) ? string(wheelDescriptions[name]) : "");
+    }
+    for (uint i = 0; i < 5; i++)
+    {
+        string rk = "wheel_recent_" + i;
+        if (i < recentWheels.length())
+            sd.add(rk, recentWheels[i]);
+        else
+            sd.add(rk, "");
     }
     sd.save();
 }

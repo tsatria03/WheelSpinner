@@ -23,8 +23,8 @@ audio_form form;
 instance app("wspin");
 menu m;
 sound_pool pool;
-savedata sd("data/saves/wheels.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
-savedata st("data/saves/preffs.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
+savedata sd("data/saves/spinner.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
+savedata st("data/saves/spinsets.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
 virtual_dialogs vd;
 void main()
 {
@@ -38,7 +38,7 @@ else
 {
 readdata();
 readpreffs();
-pool.play_stationary_extended("sounds/launch.ogg", false, 0, 0, -5, 100, false);
+pool.play_stationary_extended("sounds/applaunch.ogg", false, 0, 0, -5, random(90, 110), false);
 wheelspin();
 }
 }
@@ -55,11 +55,27 @@ int quit = form.create_button("&Quit");
 while (true) {
 wait(5);
 form.monitor();
-if(key_pressed(KEY_ESCAPE))
+if(key_repeating(KEY_ESCAPE))
 {
-speak("exiting");
-wait(500);
-exit();
+    setupmenu(false);
+    m.add_item("Yes", "yes");
+    m.add_item("No", "no");
+    m.intro_text = "Are you sure you want to exit?";
+    int res = m.run();
+    if(res==-1)
+    {
+wheelspin();
+}
+    if (m.get_item_id(m.get_selected_item()) == "yes")
+    {
+        speak("Exiting");
+        wait(500);
+        exit();
+    }
+    if (m.get_item_id(m.get_selected_item()) == "no")
+    {
+wheelspin();
+    }
 }
 if (form.is_pressed(add))
 {
@@ -71,7 +87,7 @@ edit_wheel();
 }
 if (form.is_pressed(manage))
 {
-    manage_wheels();
+manage_wheels();
 }
 if (form.is_pressed(spin))
 {
@@ -83,9 +99,25 @@ spinsettings();
 }
 if (form.is_pressed(quit))
 {
-speak("exiting");
-wait(500);
-exit();
+    setupmenu(false);
+    m.add_item("Yes", "yes");
+    m.add_item("No", "no");
+    m.intro_text = "Are you sure you want to exit?";
+    int res = m.run();
+    if(res==-1)
+    {
+wheelspin();
+}
+    if (m.get_item_id(m.get_selected_item()) == "yes")
+    {
+        speak("Exiting");
+        wait(500);
+        exit();
+    }
+    if (m.get_item_id(m.get_selected_item()) == "no")
+    {
+wheelspin();
+    }
 }
 }
 }

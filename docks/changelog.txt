@@ -1,4 +1,7 @@
 new in 1.5
+Fixed an issue where wheel lock states and spin counts were not being properly exported or restored. The locked wheels now retain their status when imported. The spin history is also now properly saved and restored on import as well.
+Added the ability to export the locked states and spin counts of all wheels to a file, making it easy to back them up and restore them later through import.
+Added a prompt for exitting the app when pressing the escape key, or pressing the quit button in the main screen.
 Fixed an issue where imported wheel descriptions wouldn't show up after exporting them in the edit wheels menu.
 Added the ability to spesify descriptions to wheels when adding them in the app. They can also be exported along side your wheels as well, and imported strait back in.
 new in 1.4

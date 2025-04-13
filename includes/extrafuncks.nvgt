@@ -37,31 +37,28 @@ m.enter_sound = "sounds/menuenter.ogg";
 m.open_sound = "sounds/menuopen.ogg";
 m.wrap_sound = "sounds/menuwrap.ogg";
 }
-
 void export_wheels()
 {
     file f;
     if (!f.open("data/exported/wheels.txt", "wb"))
-    {
+{
         alert("Error", "Failed to open file for writing.");
         wheelspin();
     }
     array<string>@ keys = wheels.get_keys();
     keys.sort_ascending();
     for (uint i = 0; i < keys.length(); i++)
-    {
+{
         string name = keys[i];
         array<string>@ options = string_split(string(wheels[name]), ",", true);
-        for (uint j = 0; j < options.length(); j++)
-        {
-            options[j] = trim(options[j]);
-        }
-        string joined = join(options, ", ");
-        f.write(name + "=" + joined + "\r\n");
+        for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
+        f.write(name + "=" + join(options, ", ") + "\r\n");
         if (wheelDescriptions.exists(name))
-        {
             f.write(name + "_desc=" + string(wheelDescriptions[name]) + "\r\n");
-        }
+bool isLocked = lockedWheels.exists(name);
+f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
+int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+f.write(name + "_spins=" + ("" + spins) + "\r\n");
     }
     f.close();
     alert("Success", "Wheels exported to data/exported/wheels.txt");
@@ -72,224 +69,221 @@ void export_selected_wheels()
     array<string>@ keys = wheels.get_keys();
     keys.sort_ascending();
     if (keys.length() == 0)
-    {
+{
         alert("Error", "No wheels to export.");
         wheelspin();
     }
     form.reset();
     form.create_window("Export Selected Wheels", false);
-    int wheelList = form.create_list("Select wheels to export:", keys.length(), true);
+    int list = form.create_list("Select wheels to export:", keys.length(), true);
     for (uint i = 0; i < keys.length(); i++)
-    {
-        form.add_list_item(wheelList, keys[i], keys[i]);
+{
+        form.add_list_item(list, keys[i], keys[i]);
     }
-    int exportButton = form.create_button("&Export");
-    int cancelButton = form.create_button("&Cancel");
-    form.focus(wheelList);
+    int exportBtn = form.create_button("&Export");
+    int cancelBtn = form.create_button("&Cancel");
+    form.focus(list);
     while (true)
-    {
+{
         wait(5);
         form.monitor();
-        if (form.is_pressed(exportButton))
-        {
-            int[]@ checkedIndices = form.get_checked_list_items(wheelList);
-            if (checkedIndices.length() == 0)
-            {
+        if (form.is_pressed(exportBtn))
+{
+            int[]@ checked = form.get_checked_list_items(list);
+            if (checked.length() == 0)
+{
                 alert("Nothing selected", "You must select at least one wheel.");
                 wheelspin();
             }
             file f;
             if (!f.open("data/exported/wheels.txt", "wb"))
-            {
+{
                 alert("Error", "Failed to open file for writing.");
                 wheelspin();
             }
-            for (uint i = 0; i < checkedIndices.length(); i++)
-            {
-                int index = checkedIndices[i];
-                string name = form.get_list_item_id(wheelList, index);
+            for (uint i = 0; i < checked.length(); i++)
+{
+                string name = form.get_list_item_id(list, checked[i]);
                 array<string>@ options = string_split(string(wheels[name]), ",", true);
-                for (uint j = 0; j < options.length(); j++)
-                {
-                    options[j] = trim(options[j]);
-                }
-                string joined = join(options, ", ");
-                f.write(name + "=" + joined + "\r\n");
+                for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
+                f.write(name + "=" + join(options, ", ") + "\r\n");
                 if (wheelDescriptions.exists(name))
-                {
                     f.write(name + "_desc=" + string(wheelDescriptions[name]) + "\r\n");
-                }
+bool isLocked = lockedWheels.exists(name);
+f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
+int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+f.write(name + "_spins=" + ("" + spins) + "\r\n");
             }
             f.close();
             alert("Success", "Selected wheels exported to data/exported/wheels.txt");
             wheelspin();
         }
-        if (form.is_pressed(cancelButton) || key_pressed(KEY_ESCAPE))
-        {
+        if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
             wheelspin();
-        }
     }
 }
 void import_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
-    {
+{
         alert("Error", "No wheels.txt file found.");
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
-    {
+{
         alert("Error", "Failed to open wheels.txt");
         wheelspin();
     }
     string content = f.read();
     f.close();
     string[] lines = string_split(content, "\r\n", true);
-    dictionary descBuffer;
+    dictionary bufferDesc, bufferLock, bufferSpins;
     int imported = 0, skipped = 0;
     for (uint i = 0; i < lines.length(); i++)
-    {
+{
         if (lines[i] == "") continue;
         string[] parts = string_split(lines[i], "=", true);
         if (parts.length() < 2) continue;
         string key = trim(parts[0]);
         string value = trim(parts[1]);
         if (string_right(key, 5) == "_desc")
-        {
+{
             string name = key.substr(0, key.length() - 5);
-            descBuffer[name] = value;
+            bufferDesc[name] = value;
         }
-        else
-        {
+else if (string_right(key, 7) == "_locked")
+{
+            string name = key.substr(0, key.length() - 7);
+            bufferLock[name] = value == "true";
+        }
+else if (string_right(key, 6) == "_spins")
+{
+            string name = key.substr(0, key.length() - 6);
+            bufferSpins[name] = value;
+        }
+else {
             string name = key;
-            array<string>@ options = string_split(value, ",", true);
-            for (uint j = 0; j < options.length(); j++)
-            {
-                options[j] = trim(options[j]);
-            }
-            string formatted = join(options, ", ");
-            if (!wheels.exists(name))
-            {
-                wheels[name] = formatted;
-                imported++;
-            }
-            else
-            {
+            if (wheels.exists(name))
+{
                 skipped++;
+                continue;
             }
+            array<string>@ options = string_split(value, ",", true);
+            for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
+            wheels[name] = join(options, ", ");
+            imported++;
         }
     }
-    array<string>@ wheelKeys = wheels.get_keys();
-    for (uint i = 0; i < wheelKeys.length(); i++)
-    {
-        string name = wheelKeys[i];
-        if (descBuffer.exists(name))
-        {
-            wheelDescriptions[name] = string(descBuffer[name]);
-        }
+    array<string>@ keys = wheels.get_keys();
+    for (uint i = 0; i < keys.length(); i++)
+{
+        string name = keys[i];
+        if (bufferDesc.exists(name)) wheelDescriptions[name] = string(bufferDesc[name]);
+if (bufferLock.exists(name) && string(bufferLock[name]) == "true")
+    lockedWheels[name] = true;
+if (bufferSpins.exists(name))
+    spinCounts[name] = int(parse_int(string(bufferSpins[name])));
     }
     writedata();
-    string msg = "Import complete.\n\n";
-    msg += "Wheels imported: " + imported + "\n";
-    msg += ", Duplicates skipped: " + skipped;
+    string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
     alert("Success", msg);
     wheelspin();
 }
 void import_selected_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
-    {
+{
         alert("Error", "No wheels.txt file found.");
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
-    {
+{
         alert("Error", "Failed to open wheels.txt");
         wheelspin();
     }
     string content = f.read();
     f.close();
-    dictionary importData;
-    dictionary descBuffer;
+    dictionary importData, bufferDesc, bufferLock, bufferSpins;
     array<string> importNames;
     string[] lines = string_split(content, "\r\n", true);
     for (uint i = 0; i < lines.length(); i++)
-    {
+{
         if (lines[i] == "") continue;
         string[] parts = string_split(lines[i], "=", true);
         if (parts.length() < 2) continue;
         string key = trim(parts[0]);
         string value = trim(parts[1]);
         if (string_right(key, 5) == "_desc")
-        {
-            string base = key.substr(0, key.length() - 5);
-            descBuffer[base] = value;
+{
+            bufferDesc[key.substr(0, key.length() - 5)] = value;
         }
-        else
-        {
+else if (string_right(key, 7) == "_locked")
+{
+            bufferLock[key.substr(0, key.length() - 7)] = value;
+        }
+else if (string_right(key, 6) == "_spins")
+{
+            bufferSpins[key.substr(0, key.length() - 6)] = value;
+        }
+else
+{
             importNames.insert_last(key);
             importData[key] = value;
         }
     }
     if (importNames.length() == 0)
-    {
+{
         alert("No Wheels Imported", "No wheels found in file.");
         wheelspin();
     }
     form.reset();
     form.create_window("Import Selected Wheels", false);
-    int implist = form.create_list("Choose wheels to import:", importNames.length(), true);
+    int list = form.create_list("Choose wheels to import:", importNames.length(), true);
     for (uint i = 0; i < importNames.length(); i++)
-    {
-        form.add_list_item(implist, importNames[i], importNames[i]);
-    }
+        form.add_list_item(list, importNames[i], importNames[i]);
     int importBtn = form.create_button("&Import");
     int cancelBtn = form.create_button("&Cancel");
-    form.focus(implist);
+    form.focus(list);
     while (true)
-    {
+{
         wait(5);
         form.monitor();
         if (form.is_pressed(importBtn))
-        {
-            int[]@ checked = form.get_checked_list_items(implist);
+{
+            int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
-            {
+{
                 alert("Nothing Selected", "You must select at least one wheel.");
                 wheelspin();
             }
             int imported = 0, skipped = 0;
             for (uint i = 0; i < checked.length(); i++)
-            {
-                string name = form.get_list_item_id(implist, checked[i]);
-                if (!wheels.exists(name))
-                {
-                    array<string>@ options = string_split(string(importData[name]), ",", true);
-                    for (uint j = 0; j < options.length(); j++)
-                        options[j] = trim(options[j]);
-                    string formatted = join(options, ", ");
-                    wheels[name] = formatted;
-                    if (descBuffer.exists(name))
-                        wheelDescriptions[name] = string(descBuffer[name]);
-                    imported++;
-                }
-                else
-                {
+{
+                string name = form.get_list_item_id(list, checked[i]);
+                if (wheels.exists(name))
+{
                     skipped++;
+                    continue;
                 }
+                array<string>@ options = string_split(string(importData[name]), ",", true);
+                for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
+                wheels[name] = join(options, ", ");
+                if (bufferDesc.exists(name)) wheelDescriptions[name] = string(bufferDesc[name]);
+if (bufferLock.exists(name) && string(bufferLock[name]) == "true")
+    lockedWheels[name] = true;
+if (bufferSpins.exists(name))
+    spinCounts[name] = int(parse_int(string(bufferSpins[name])));
+                imported++;
             }
             writedata();
-            string msg = "Import complete.\n\n";
-            msg += "Wheels imported: " + imported + "\n";
-            msg += ", Duplicates skipped: " + skipped;
+            string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
             alert("Success", msg);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
-        {
             wheelspin();
-        }
     }
 }
+

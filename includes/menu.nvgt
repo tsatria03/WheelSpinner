@@ -147,12 +147,13 @@ else if (selected == "deleteunlocked")
     bool isLocked = lockedWheels.exists(selected);
     if (!isLocked)
     {
+m.add_item("Change description", "eddesc");
+m.add_item("Show description", "viewdesc");
         m.add_item("Edit choices", "edit");
-m.add_item("Edit description", "eddesc");
-m.add_item("View description", "viewdesc");
-        m.add_item("Rename wheel", "rename");
         m.add_item("Delete wheel", "delete");
+        m.add_item("Rename wheel", "rename");
     }
+if(isLocked==true) m.add_item("Show description", "viewdesc");
     m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
     m.add_item("Back", "back");
     m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
@@ -177,7 +178,7 @@ m.add_item("View description", "viewdesc");
 else if (action == "eddesc")
 {
     string current = wheelDescriptions.exists(selected) ? string(wheelDescriptions[selected]) : "";
-    string edited = vd.input_box("Edit Description", "Enter a new description for this wheel:", current);
+    string edited = vd.input_box("Change Description", "Enter a new description for this wheel:", current);
     if (edited == "" && current != "")
     {
         alert("Cancelled", "No changes were made.");

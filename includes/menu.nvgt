@@ -1,16 +1,18 @@
 void add_wheel()
 {
-string name = vd.input_box("New Wheel", "Enter a name for your new wheel:");
-if (name == "" || wheels.exists(name))
-{
-alert("Error", "Invalid or duplicate name.");
-wheelspin();
-}
-string options = vd.input_box("Choices", "Separate your choices with commas.");
-wheels[name] = options;
-alert("Saved", "Wheel added!");
-writedata();
-wheelspin();
+    string name = vd.input_box("New Wheel", "Enter a name for your new wheel:");
+    if (name == "" || wheels.exists(name))
+    {
+        alert("Error", "Invalid or duplicate name.");
+        wheelspin();
+    }
+    string desc = vd.input_box("Description", "Enter a description for this wheel.");
+    string options = vd.input_box("Choices", "Separate your choices with commas.");
+    wheels[name] = options;
+    if (desc != "") wheelDescriptions[name] = desc;
+    alert("Saved", "Wheel added!");
+    writedata();
+    wheelspin();
 }
 void edit_wheel()
 {
@@ -146,6 +148,8 @@ else if (selected == "deleteunlocked")
     if (!isLocked)
     {
         m.add_item("Edit choices", "edit");
+m.add_item("Edit description", "eddesc");
+m.add_item("View description", "viewdesc");
         m.add_item("Rename wheel", "rename");
         m.add_item("Delete wheel", "delete");
     }
@@ -170,6 +174,42 @@ else if (selected == "deleteunlocked")
         }
         wheelspin();
     }
+else if (action == "eddesc")
+{
+    string current = wheelDescriptions.exists(selected) ? string(wheelDescriptions[selected]) : "";
+    string edited = vd.input_box("Edit Description", "Enter a new description for this wheel:", current);
+    if (edited == "" && current != "")
+    {
+        alert("Cancelled", "No changes were made.");
+    }
+    else if (edited != current)
+    {
+        if (edited == "")
+        {
+            wheelDescriptions.erase(selected);
+        }
+        else
+        {
+            wheelDescriptions[selected] = edited;
+        }
+        alert("Saved", "Description updated.");
+        writedata();
+    }
+    wheelspin();
+}
+else if (action == "viewdesc")
+{
+    string desc = wheelDescriptions.exists(selected) ? string(wheelDescriptions[selected]) : "";
+    if (desc == "")
+    {
+        alert("No Description", "This wheel doesn't have a description yet.");
+    }
+    else
+    {
+        dlg("Description for '" + selected + "':\n\n" + desc);
+    }
+    wheelspin();
+}
     else if (action == "rename")
     {
         string newName = vd.input_box("Rename", "Enter a new name for this wheel:", selected);

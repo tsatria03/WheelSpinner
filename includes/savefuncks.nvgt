@@ -4,6 +4,7 @@ void readdata()
     wheels.clear();
     lockedWheels.clear();
     spinCounts.clear();
+    wheelDescriptions.clear();
     if (sd.d.exists("wheel_count"))
     {
         int count = sd.read_int("wheel_count");
@@ -13,19 +14,18 @@ void readdata()
             string valueName = "wheel_" + i + "_options";
             string lockKey = "wheel_" + i + "_locked";
             string spinKey = "wheel_" + i + "_spins";
+            string descKey = "wheel_" + i + "_description";
             if (sd.d.exists(keyName) && sd.d.exists(valueName))
             {
                 string name = sd.read_string(keyName);
                 string options = sd.read_string(valueName);
                 wheels[name] = options;
                 if (sd.d.exists(lockKey) && sd.read_bool(lockKey))
-                {
                     lockedWheels[name] = true;
-                }
                 if (sd.d.exists(spinKey))
-                {
                     spinCounts[name] = sd.read_int(spinKey);
-                }
+                if (sd.d.exists(descKey))
+                    wheelDescriptions[name] = sd.read_string(descKey);
             }
         }
     }
@@ -41,10 +41,12 @@ void writedata()
         string value = "wheel_" + i + "_options";
         string lockKey = "wheel_" + i + "_locked";
         string spinKey = "wheel_" + i + "_spins";
+        string descKey = "wheel_" + i + "_description";
         sd.add(key, name);
         sd.add(value, string(wheels[name]));
         sd.add(lockKey, lockedWheels.exists(name));
         sd.add(spinKey, spinCounts.exists(name) ? int(spinCounts[name]) : 0);
+        sd.add(descKey, wheelDescriptions.exists(name) ? string(wheelDescriptions[name]) : "");
     }
     sd.save();
 }

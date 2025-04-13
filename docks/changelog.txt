@@ -1,3 +1,6 @@
+new in 1.5
+Fixed an issue where imported wheel descriptions wouldn't show up after exporting them in the edit wheels menu.
+Added the ability to spesify descriptions to wheels when adding them in the app. They can also be exported along side your wheels as well, and imported strait back in.
 new in 1.4
 Added a new sorting option that lets you view wheels by how many times they've been spun. The Spin Wheel menu now includes a submenu where you can choose to view all wheels or only the most used ones.
 Added the ability to track the usage stats of each wheel found in the edit and spin wheel screens. It will now tell you how many times it has spun per wheel.

@@ -382,7 +382,7 @@ else if (pick == "search")
         }
         if (matches.length() == 0)
         {
-            alert("No Match", "No wheels found matching: " + query);
+            alert("No Match", "No wheels found matching " + query);
 wheelspin();
         }
         else if (matches.length() == 1)
@@ -460,7 +460,7 @@ void spin_from_list(bool mostUsed)
     }
 if (mostUsed)
 {
-    keys.sort(compareBySpinCount);
+    keys.sort(compareSpinCount);
 }
     else
     {

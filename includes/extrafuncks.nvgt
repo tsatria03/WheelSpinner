@@ -1,4 +1,4 @@
-bool compareBySpinCount(const string &in a, const string &in b)
+bool compareSpinCount(const string &in a, const string &in b)
 {
     int countA = spinCounts.exists(a) ? int(spinCounts[a]) : 0;
     int countB = spinCounts.exists(b) ? int(spinCounts[b]) : 0;
@@ -39,29 +39,54 @@ m.wrap_sound = "menuwrap.ogg";
 }
 void export_wheels()
 {
+    setupmenu(false);
+    m.add_item("Replace file", "replace");
+    m.add_item("Append to file", "append");
+    m.add_item("Cancel", "cancel");
+    m.intro_text = "Do you want to replace the existing file, or append to it?";
+    int res = m.run();
+    string mode = m.get_item_id(m.get_selected_item());
+    if (mode == "cancel") wheelspin();
+    string filepath = "data/exported/wheels.txt";
+    dictionary existing;
+    if (file_exists(filepath) && mode == "append")
+    {
+        file fcheck;
+        if (fcheck.open(filepath, "rb"))
+        {
+            string[] lines = string_split(fcheck.read(), "\r\n", true);
+            for (uint i = 0; i < lines.length(); i++)
+            {
+                string[] parts = string_split(lines[i], "=", true);
+                if (parts.length() >= 2)
+                    existing[trim(parts[0])] = true;
+            }
+            fcheck.close();
+        }
+    }
     file f;
-    if (!f.open("data/exported/wheels.txt", "wb"))
-{
+    if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
+    {
         alert("Error", "Failed to open file for writing.");
         wheelspin();
     }
     array<string>@ keys = wheels.get_keys();
     keys.sort_ascending();
     for (uint i = 0; i < keys.length(); i++)
-{
+    {
         string name = keys[i];
+        if (existing.exists(name)) continue;
         array<string>@ options = string_split(string(wheels[name]), ",", true);
         for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
         f.write(name + "=" + join(options, ", ") + "\r\n");
-        if (wheelDescriptions.exists(name))
-            f.write(name + "_desc=" + string(wheelDescriptions[name]) + "\r\n");
-bool isLocked = lockedWheels.exists(name);
-f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
-int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
-f.write(name + "_spins=" + ("" + spins) + "\r\n");
+        f.write(name + "_desc=" + (wheelDescriptions.exists(name) ? string(wheelDescriptions[name]) : "none") + "\r\n");
+        bool isLocked = lockedWheels.exists(name);
+        f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
+        int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+        f.write(name + "_spins=" + ("" + spins) + "\r\n");
     }
     f.close();
-    alert("Success", "Wheels exported to data/exported/wheels.txt");
+    alert("Success", "Wheels exported to " + filepath);
     wheelspin();
 }
 void export_selected_wheels()
@@ -69,7 +94,7 @@ void export_selected_wheels()
     array<string>@ keys = wheels.get_keys();
     keys.sort_ascending();
     if (keys.length() == 0)
-{
+    {
         alert("Error", "No wheels to export.");
         wheelspin();
     }
@@ -77,45 +102,70 @@ void export_selected_wheels()
     form.create_window("Export Selected Wheels", false);
     int list = form.create_list("Select wheels to export:", keys.length(), true);
     for (uint i = 0; i < keys.length(); i++)
-{
+    {
         form.add_list_item(list, keys[i], keys[i]);
     }
-    int exportBtn = form.create_button("&Export",true);
+    int exportBtn = form.create_button("&Export", true);
     int cancelBtn = form.create_button("&Cancel");
     form.focus(list);
     while (true)
-{
+    {
         wait(5);
         form.monitor();
         if (form.is_pressed(exportBtn))
-{
+        {
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
-{
+            {
                 alert("Nothing selected", "You must select at least one wheel.");
                 wheelspin();
             }
+            setupmenu(false);
+            m.add_item("Replace file", "replace");
+            m.add_item("Append to file", "append");
+            m.add_item("Cancel", "cancel");
+            m.intro_text = "Do you want to replace the existing file, or append to it?";
+            int res = m.run();
+            string mode = m.get_item_id(m.get_selected_item());
+            if (mode == "cancel") wheelspin();
+            string filepath = "data/exported/wheels.txt";
+            dictionary existing;
+            if (file_exists(filepath) && mode == "append")
+            {
+                file fcheck;
+                if (fcheck.open(filepath, "rb"))
+                {
+                    string[] lines = string_split(fcheck.read(), "\r\n", true);
+                    for (uint i = 0; i < lines.length(); i++)
+                    {
+                        string[] parts = string_split(lines[i], "=", true);
+                        if (parts.length() >= 2)
+                            existing[trim(parts[0])] = true;
+                    }
+                    fcheck.close();
+                }
+            }
             file f;
-            if (!f.open("data/exported/wheels.txt", "wb"))
-{
+            if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
+            {
                 alert("Error", "Failed to open file for writing.");
                 wheelspin();
             }
             for (uint i = 0; i < checked.length(); i++)
-{
+            {
                 string name = form.get_list_item_id(list, checked[i]);
+                if (existing.exists(name)) continue;
                 array<string>@ options = string_split(string(wheels[name]), ",", true);
                 for (uint j = 0; j < options.length(); j++) options[j] = trim(options[j]);
                 f.write(name + "=" + join(options, ", ") + "\r\n");
-                if (wheelDescriptions.exists(name))
-                    f.write(name + "_desc=" + string(wheelDescriptions[name]) + "\r\n");
-bool isLocked = lockedWheels.exists(name);
-f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
-int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
-f.write(name + "_spins=" + ("" + spins) + "\r\n");
+                f.write(name + "_desc=" + (wheelDescriptions.exists(name) ? string(wheelDescriptions[name]) : "none") + "\r\n");
+                bool isLocked = lockedWheels.exists(name);
+                f.write(name + "_locked=" + (isLocked ? "true" : "false") + "\r\n");
+                int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+                f.write(name + "_spins=" + ("" + spins) + "\r\n");
             }
             f.close();
-            alert("Success", "Selected wheels exported to data/exported/wheels.txt");
+            alert("Success", "Selected wheels exported to " + filepath);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))

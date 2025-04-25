@@ -1,4 +1,5 @@
 new in 1.7
+Fixed an issue where deleted wheels could still appear in the Recently Used menu. The Recently Used menu is now properly cleaned up when wheels are being removed.
 Added the ability to delete selected wheels in the edit wheels menu.
 new in 1.6
 Made it so wheels without a description now export with wheel_desc=none instead of being skipped entirely.

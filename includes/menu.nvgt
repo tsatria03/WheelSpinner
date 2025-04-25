@@ -368,6 +368,14 @@ else if (selected == "import_selected")
 }
 void show_recent_wheels()
 {
+    for (uint i = int(recentWheels.length()) - 1; i >= 0; i--)
+    {
+        if (!wheels.exists(recentWheels[i]))
+        {
+            recentWheels.remove_at(i);
+        }
+    }
+    writedata();
     if (recentWheels.length() == 0)
 {
         alert("No Recent Wheels", "You haven't spun any wheels yet.");

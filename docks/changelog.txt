@@ -1,4 +1,6 @@
 new in 1.7
+Updated the readme file with a new guide on creating your own wheel packs to use in the app.
+Added support for creating your own custom wheel packs. Each pack folder contains its own set of spin and ding sounds, allowing users to fully customize the audio experience for each wheel.
 Fixed an issue where deleted wheels could still appear in the Recently Used menu. The Recently Used menu is now properly cleaned up when wheels are being removed.
 Added the ability to delete selected wheels in the edit wheels menu.
 new in 1.6

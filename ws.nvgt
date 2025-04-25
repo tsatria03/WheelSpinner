@@ -15,7 +15,7 @@ int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
 string version="1.7";
-string wheeltype="wheel5";
+string wheeltype="wheel";
 dictionary spinCounts;
 dictionary lockedWheels;
 dictionary wheels;
@@ -29,7 +29,7 @@ savedata st("data/saves/spinsets.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6a
 virtual_dialogs vd;
 void main()
 {
-set_sound_storage("data/saves/sounds.dat");
+set_sound_storage("data/saves/misc.dat");
 set_sound_decryption_key("BRn2x3BJd3O0KrB7kb2L6cY4qJYEjVt5OhuVzJmmsoj9wampZL3IAx7IdIQBMyqW7ssXZhsXwD2nrQR4qRL8038swNq0Zc2ObN6mNlWrjIGcYLqEh2t0OHeM",true);
 show_game_window("WheelSpinner, version "+version);
 if (app.is_already_running)

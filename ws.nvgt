@@ -14,7 +14,7 @@ int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
-string version="1.6";
+string version="1.7";
 string wheeltype="wheel5";
 dictionary spinCounts;
 dictionary lockedWheels;

@@ -45,6 +45,7 @@ m.add_item(key + " (" + opts.length() + " choices. " + status + ", " + spins + "
 if (!allLocked)
 {
     m.add_item("Delete all wheels", "deleteall");
+m.add_item("Delete selected wheels", "deleteselected");
 }
 bool anyUnlocked = false;
 for (uint i = 0; i < keys.length(); i++)
@@ -84,6 +85,54 @@ if (selected == "deleteall")
         alert("Deleted", "All wheels have been deleted.");
     }
     wheelspin();
+}
+else if (selected == "deleteselected")
+{
+    form.reset();
+    form.create_window("Delete Selected Wheels", false);
+    array<string>@ unlocked = wheels.get_keys();
+    unlocked.sort_ascending();
+    int checklist = form.create_list("Select wheels to delete:", unlocked.length(), true);
+    for (uint i = 0; i < unlocked.length(); i++)
+    {
+        string name = unlocked[i];
+        if (!lockedWheels.exists(name))
+        {
+            form.add_list_item(checklist, name, name);
+        }
+    }
+    int confirm = form.create_button("&Delete");
+    int cancel = form.create_button("&Cancel");
+    form.focus(checklist);
+    while (true)
+    {
+        wait(5);
+        form.monitor();
+        if (form.is_pressed(confirm))
+        {
+            int[]@ checked = form.get_checked_list_items(checklist);
+            if (checked.length() == 0)
+            {
+                alert("None Selected", "You must select at least one wheel.");
+                wheelspin();
+            }
+            for (uint i = 0; i < checked.length(); i++)
+            {
+                string name = form.get_list_item_id(checklist, checked[i]);
+                wheels.erase(name);
+                if (lockedWheels.exists(name)) lockedWheels.erase(name);
+                if (spinCounts.exists(name)) spinCounts.erase(name);
+                if (wheelDescriptions.exists(name)) wheelDescriptions.erase(name);
+            }
+            writedata();
+            alert("Deleted", "Selected wheels have been deleted.");
+            wheelspin();
+        }
+        if (form.is_pressed(cancel) || key_pressed(KEY_ESCAPE))
+        {
+            wheelspin();
+        }
+    }
 }
 else if (selected == "deleteunlocked")
 {

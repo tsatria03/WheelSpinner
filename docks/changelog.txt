@@ -1,3 +1,5 @@
+new in 1.7
+Added the ability to delete selected wheels in the edit wheels menu.
 new in 1.6
 Made it so wheels without a description now export with wheel_desc=none instead of being skipped entirely.
 Fixed an issue where exporting wheels would overwrite the entire wheels.txt file, causing existing wheels to be lost in the process. From now on, You are prompted to either replace or append to the file when exporting any wheel that is selected.

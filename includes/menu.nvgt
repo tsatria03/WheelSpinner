@@ -368,7 +368,7 @@ else if (selected == "import_selected")
 }
 void show_recent_wheels()
 {
-    for (uint i = int(recentWheels.length()) - 1; i >= 0; i--)
+    for (int i = int(recentWheels.length()) - 1; i >= 0; i--)
     {
         if (!wheels.exists(recentWheels[i]))
         {
@@ -611,7 +611,7 @@ void spinsettings()
     form.set_list_position(wheellist, wheelIndex);
 int exportBtn = form.create_button("Export Settings to File");
 int importBtn = form.create_button("Import Settings from File");
-    int apply = form.create_button("&Apply");
+    int apply = form.create_button("&Save Settings");
     int cancel = form.create_button("&Cancel");
     form.focus(baseSlider);
     while (true)

@@ -1,4 +1,5 @@
 new in 1.7
+Added the ability to track your most recent wheel spins using the new spin results history panel. Your last 100 spin results are now saved between sessions automatically. You can view your entire spin history from the main section of the app, and clear it at any time if you wish to do so.
 Updated the readme file with a new guide on creating your own wheel packs to use in the app.
 Added support for creating your own custom wheel packs. Each pack folder contains its own set of spin and ding sounds, allowing users to fully customize the audio experience for each wheel.
 Fixed an issue where deleted wheels could still appear in the Recently Used menu. The Recently Used menu is now properly cleaned up when wheels are being removed.

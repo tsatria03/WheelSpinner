@@ -491,6 +491,11 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
     dlg("The wheel landed on " + result + ".");
+resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
+if (resultsHistory.length() > 100)
+{
+    resultsHistory.remove_at(0);
+}
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
 writedata();
     setupmenu(false);
@@ -565,6 +570,11 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
     dlg("The wheel landed on " + result + ".");
+resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
+if (resultsHistory.length() > 100)
+{
+    resultsHistory.remove_at(0);
+}
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
     update_recent_wheels(chosen);
     writedata();

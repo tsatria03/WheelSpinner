@@ -1,4 +1,4 @@
-Welcome to my simple to use wheel spinner!
+Welcome to my simple wheel spinner!
 This is a lightweight decision-making app designed for fun, randomness, or quick choices. Whether you're deciding what game to play, who goes first, or what to eat, this app spins a virtual wheel and gives you a randomized result using real-time spinning logic.
 
 App Features
@@ -13,10 +13,10 @@ If you’d like to tweak how the wheel behaves, head into “Spin Settings” to
 Creating Your Own Wheel Packs
 A Wheel Pack is simply a folder that contains custom spin and ding sounds used during wheel spins. It allows you to fully customize how the wheel sounds when spinning and landing, giving each wheel a unique audio experience.
 To create a new wheel pack, navigate to the sounds/wheels directory. Inside this folder, create a new folder for your pack.
-For example, you might create a folder called sounds/wheels/my_epic_pack/. Inside your new folder, add sound files for both spinning and dinging.
+For example, you might create a folder called sounds/wheels/party_wheel. Inside your new folder, add sound files for both spinning and dingging.
 You can add as many spin and ding sounds as you want, and the app will randomly select from them during use. The app looks for sounds based on their filename.
 Any file that contains "spin" in its name will be used during spinning. Any file that contains "ding" in its name will be used when the wheel lands.
-All common audio formats are supported, including .ogg, .wav, .mp3, and others. The folder name you create will appear as the pack name inside the Spin Settings menu.
+All common audio formats are supported, including ogg, wav, mp3, and others. The folder name you create will appear as the pack name inside the Spin Settings menu.
 You can create as many wheel packs as you want. If a pack is missing spin or ding sounds, the app will simply stay silent for that part without giving an error.
 
 Enjoy, and happy spinning!

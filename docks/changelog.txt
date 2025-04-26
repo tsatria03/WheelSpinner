@@ -1,46 +1,41 @@
-new in 1.7
+new in 1.2
 Added the ability to track your most recent wheel spins using the new spin results history panel. Your last 100 spin results are now saved between sessions automatically. You can view your entire spin history from the main section of the app, and clear it at any time if you wish to do so.
 Updated the readme file with a new guide on creating your own wheel packs to use in the app.
 Added support for creating your own custom wheel packs. Each pack folder contains its own set of spin and ding sounds, allowing users to fully customize the sound for each wheel.
 Fixed an issue where deleted wheels could still appear in the Recently Used menu. The Recently Used menu is now properly cleaned up when wheels are being removed.
 Added the ability to delete selected wheels in the edit wheels menu.
-new in 1.6
 Made it so wheels without a description now export with wheel_desc=none instead of being skipped entirely.
 Fixed an issue where exporting wheels would overwrite the entire wheels.txt file, causing existing wheels to be lost in the process. From now on, You are prompted to either replace or append to the file when exporting any wheel that is selected.
 Added a search feature to the spin wheel menu that lets you directly spin a wheel just by typing part of its name. If multiple wheels match the same criteria, a menu will pop up with a list of wheels you can choose from.
 Added a "Most Recently Used Wheels" option to the Spin Wheel menu, allowing quick access to the last 5 wheels you've spun.
 Added the ability to export and import wheel-related settings. You can now save your spin preferences to a file and reload them later or share them with others.
-new in 1.5
+new in 1.1
 Fixed an issue where wheel lock states and spin counts were not being properly exported or restored. The locked wheels now retain their status when imported. The spin history is also now properly saved and restored on import as well.
 Added the ability to export the locked states and spin counts of all wheels to a file, making it easy to back them up and restore them later through import.
 Added a prompt for exitting the app when pressing the escape key, or pressing the quit button in the main screen.
 Fixed an issue where imported wheel descriptions wouldn't show up after exporting them in the edit wheels menu.
 Added the ability to spesify descriptions to wheels when adding them in the app. They can also be exported along side your wheels as well, and imported strait back in.
-new in 1.4
 Added a new sorting option that lets you view wheels by how many times they've been spun. The Spin Wheel menu now includes a submenu where you can choose to view all wheels or only the most used ones.
 Added the ability to track the usage stats of each wheel found in the edit and spin wheel screens. It will now tell you how many times it has spun per wheel.
 Added an option to delete all unlocked wheels found in the edit wheels menu. Locked wheels will not be effected.
 You can now delete all wheels found in the edit wheels menu.
 Added an option to import only selected wheels from a file using a multi-selection list in the wheel manager menu.
-new in 1.3
+new in 1.0
 Added an option to export only selected wheels to a file using a multi-selection list in the wheel manager menu.
 Made it so the app checks for duplicate wheels before Proceeding to import them.
 Added confirmation prompts for exporting and importing all existing wheels from a file.
 Added the ability to export and import all existing wheels from a file.
 Added the ability to spin a random wheel from the ones that have been created by you.
-new in 1.2
 Added the ability to choose your own wheel sounds to use for the spinner in the spin settings menu.
 Added confirmation prompts when locking or unlocking individual wheels or all wheels at once.
 Made it so wheels found in the edit and spin wheel screens are now sorted in alphabetical order.
 Added the ability to lock or unlock all of your wheels at once from being edited or deleted at the botum of the edit wheels menu.
 Added the ability to lock and unlock individual wheels to prevent accidental edits or deletion. The Locked status is now shown in the edit wheel menu as "Locked" or "Unlocked" next to the choice count.
-new in 1.1
 Fixed an issue where pressing Escape in the Edit Choices input box would overwrite and erase existing entries. Existing choices are now preserved unless explicitly changed.
 You can now type spaces after commas when adding choices for wheels.
 Added the ability to respin a wheel. After a wheel has spun, a menu prompt will pop up asking the user if they would like to spin it again.
 You can now see how many choices per wheel you have in the edit and spin wheel screens.
 You can now see how many wheels you have in the edit and spin wheel screens.
-new in 1.0
 Improved the spin base delay and spin growth calculation methods.
 Added a dedicated Spin Settings screen with sliders for adjusting Spin base delay, Spin growth, Spin tick count, and Spin randomness. All of these values can be saved and loaded across sessions.
 Added the ability to save all wheels to a file. This also includes wheel related settings as well.

@@ -5,17 +5,4 @@ menuedge.ogg
 menuenter.ogg
 menuopen.ogg
 menuwrap.ogg
-wheel10spin.ogg
-wheel1spin.ogg
-wheel2spin.ogg
-wheel3spin.ogg
-wheel4spin.ogg
-wheel5spin.ogg
-wheel6spin.ogg
-wheel7spin.ogg
-wheel8spin.ogg
-wheel9spin.ogg
-wheelding1.ogg
-wheelding2.ogg
-wheelding3.ogg
-total files: 20
+total files: 7

@@ -69,6 +69,18 @@ failed_open_settings_message=Failed to open settings.txt
 settings_import_success_title=Loaded
 settings_import_success_message=Settings imported from settings.txt
 
+[SpinWheel]
+invalid_spin_title=Invalid
+invalid_spin_message=Need at least 2 options to spin.
+spinning=Spinning
+wheel_landed=The wheel landed on %result%.
+spin_again_question=Would you like to spin the wheel again?
+
+[ShowRecentWheels]
+no_recent_wheels_title=No Recent Wheels
+no_recent_wheels_message=You haven't spun any wheels yet.
+pick_recent_wheel=Pick a recently spun wheel:
+
 [AddWheel]
 new_wheel_window_title=New Wheel
 enter_wheel_name=Enter a name for your new wheel:
@@ -79,6 +91,15 @@ wheel_choices=Choices
 enter_wheel_choices=Separate your choices with commas.
 wheel_saved_title=Saved
 wheel_saved_message=Wheel added!
+
+[ManageWheels]
+export_all=Export all wheels to file
+export_selected=Export selected wheels to file
+import_all=Import all wheels from file
+import_selected=Import selected wheels from file
+wheel_management_menu=Wheel Management Menu
+confirm_export_all=Are you sure you want to export all wheels to a file?
+confirm_import_all=Are you sure you want to import all wheels from a file?
 
 [EditWheel]
 no_wheels_message=No wheels available to edit.
@@ -132,20 +153,6 @@ unlock_success_message=Wheel '%wheel%' has been unlocked. It can now be edited o
 lock_success_title=Locked
 lock_success_message=Wheel '%wheel%' has been locked. It can no longer be edited or deleted.
 
-[ManageWheels]
-export_all=Export all wheels to file
-export_selected=Export selected wheels to file
-import_all=Import all wheels from file
-import_selected=Import selected wheels from file
-wheel_management_menu=Wheel Management Menu
-confirm_export_all=Are you sure you want to export all wheels to a file?
-confirm_import_all=Are you sure you want to import all wheels from a file?
-
-[ShowRecentWheels]
-no_recent_wheels_title=No Recent Wheels
-no_recent_wheels_message=You haven't spun any wheels yet.
-pick_recent_wheel=Pick a recently spun wheel:
-
 [SpinWheelOptions]
 all_wheels=All Wheels
 most_recent=Most Recent Wheels
@@ -158,13 +165,6 @@ no_match_title=No Match
 no_match_message=No wheels found matching %query%.
 multiple_matches_title=Multiple Matches Found
 multiple_matches_message=Pick one to spin:
-
-[SpinWheel]
-invalid_spin_title=Invalid
-invalid_spin_message=Need at least 2 options to spin.
-spinning=Spinning
-wheel_landed=The wheel landed on %result%.
-spin_again_question=Would you like to spin the wheel again?
 
 [SpinSettings]
 spin_settings_title=Spin Settings

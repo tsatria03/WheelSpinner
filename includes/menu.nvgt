@@ -378,7 +378,7 @@ void show_recent_wheels()
     writedata();
     if (recentWheels.length() == 0)
 {
-        alert("No Recent Wheels", "You haven't spun any wheels yet.");
+alert(translate_text("showrecentwheels.no_recent_wheels_title", "No Recent Wheels"), translate_text("showrecentwheels.no_recent_wheels_message", "You haven't spun any wheels yet."));
         wheelspin();
     }
     setupmenu(false);
@@ -390,7 +390,7 @@ void show_recent_wheels()
         m.add_item(name + " (" + opts.length() + " choices, " + spins + " spins)", name);
     }
 m.add_item(translate_text("general.back", "Back"), "back");
-    m.intro_text = "Pick a recently used wheel to spin again.";
+m.intro_text = translate_text("showrecentwheels.pick_recent_wheel", "Pick a recently spun wheel:");
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "back") wheelspin();
     string chosen = m.get_item_id(m.get_selected_item());
@@ -477,11 +477,11 @@ void spin_same_wheel(string chosen)
     array<string>@ options = string_split(string(wheels[chosen]), ", ");
     if (options.length() < 2)
     {
-        alert("Invalid", "Need at least 2 options to spin.");
+alert(translate_text("spinwheel.invalid_spin_title", "Invalid"), translate_text("spinwheel.invalid_spin_message", "Need at least 2 options to spin."));
         wheelspin();
     }
     int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-speak("Spinning " + chosen);
+speak(translate_text("spinwheel.spinning", "Spinning") + " " + chosen);
     for (uint i = 0; i < spinTicks; i++)
     {
         uint idx = random(0, options.length() - 1);
@@ -490,7 +490,7 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     }
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
-    dlg("The wheel landed on " + result + ".");
+dlg(string_replace(translate_text("spinwheel.wheel_landed", "The wheel landed on %result%."), "%result%", result, true));
 resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
 if (resultsHistory.length() > 100)
 {
@@ -501,7 +501,7 @@ writedata();
     setupmenu(false);
 m.add_item(translate_text("general.yes", "Yes"), "yes");
 m.add_item(translate_text("general.no", "No"), "no");
-    m.intro_text = "Would you like to spin the wheel again?";
+m.intro_text = translate_text("spinwheel.spin_again_question", "Would you like to spin the wheel again?");
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {
@@ -556,7 +556,7 @@ void spin_selected_wheel(string chosen)
     array<string>@ options = string_split(string(wheels[chosen]), ", ");
     if (options.length() < 2)
     {
-        alert("Invalid", "Need at least 2 options to spin.");
+alert(translate_text("spinwheel.invalid_spin_title", "Invalid"), translate_text("spinwheel.invalid_spin_message", "Need at least 2 options to spin."));
         wheelspin();
     }
     int spinTicks = spinBaseTicks + random(0, spinRandomRange);
@@ -569,7 +569,7 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     }
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
-    dlg("The wheel landed on " + result + ".");
+dlg(string_replace(translate_text("spinwheel.wheel_landed", "The wheel landed on %result%."), "%result%", result, true));
 resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
 if (resultsHistory.length() > 100)
 {
@@ -581,7 +581,7 @@ if (resultsHistory.length() > 100)
     setupmenu(false);
 m.add_item(translate_text("general.yes", "Yes"), "yes");
 m.add_item(translate_text("general.no", "No"), "no");
-    m.intro_text = "Would you like to spin the wheel again?";
+m.intro_text = translate_text("spinwheel.spin_again_question", "Would you like to spin the wheel again?");
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {

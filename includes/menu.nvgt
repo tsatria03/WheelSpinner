@@ -62,7 +62,7 @@ if (anyUnlocked)
 }
     string toggleLabel = allLocked ? "Unlock all wheels" : "Lock all wheels";
     m.add_item(toggleLabel, "togglelockall");
-    m.add_item("Back", "Back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = "Select a wheel to edit. You have " + keys.length() + " wheels.";
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
@@ -73,11 +73,11 @@ if (anyUnlocked)
 if (selected == "deleteall")
 {
     setupmenu(false);
-    m.add_item("yes", "confirm");
-    m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to delete all wheels? This cannot be undone.";
     int confirm = m.run();
-    if (m.get_item_id(m.get_selected_item()) == "confirm")
+    if (m.get_item_id(m.get_selected_item()) == "yes")
     {
         wheels.clear();
         lockedWheels.clear();
@@ -137,11 +137,11 @@ else if (selected == "deleteselected")
 else if (selected == "deleteunlocked")
 {
     setupmenu(false);
-    m.add_item("yes", "confirm");
-    m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.";
     int confirm = m.run();
-    if (m.get_item_id(m.get_selected_item()) == "confirm")
+    if (m.get_item_id(m.get_selected_item()) == "yes")
     {
         array<string>@ toDelete = wheels.get_keys();
         for (uint i = 0; i < toDelete.length(); i++)
@@ -162,18 +162,18 @@ else if (selected == "deleteunlocked")
         setupmenu(false);
         if (allLocked)
         {
-            m.add_item("yes", "confirm");
-            m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
             m.intro_text = "Are you sure you want to unlock all wheels?";
         }
         else
         {
-            m.add_item("yes", "confirm");
-            m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
             m.intro_text = "Are you sure you want to lock all wheels?";
         }
         int confirm = m.run();
-        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        if (m.get_item_id(m.get_selected_item()) == "yes")
         {
             if (allLocked)
             {
@@ -204,7 +204,7 @@ m.add_item("Show description", "viewdesc");
     }
 if(isLocked==true) m.add_item("Show description", "viewdesc");
     m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
-    m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
     int actionRes = m.run();
     string action = m.get_item_id(m.get_selected_item());
@@ -279,11 +279,11 @@ else if (action == "viewdesc")
     else if (action == "delete")
     {
         setupmenu(false);
-        m.add_item("yes", "delete");
-        m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
         m.intro_text = "Are you sure you want to delete the wheel '" + selected + "'?";
         int confirm = m.run();
-        if (m.get_item_id(m.get_selected_item()) == "delete")
+        if (m.get_item_id(m.get_selected_item()) == "yes")
         {
             wheels.erase(selected);
             alert("Deleted", "Wheel has been deleted.");
@@ -295,11 +295,11 @@ else if (action == "viewdesc")
     {
         string promptText = isLocked ? "Are you sure you want to unlock the wheel '" + selected + "'?" : "Are you sure you want to lock the wheel '" + selected + "'?";
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
         m.intro_text = promptText;
         int confirm = m.run();
-        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        if (m.get_item_id(m.get_selected_item()) == "yes")
         {
             if (isLocked)
             {
@@ -323,18 +323,18 @@ void manage_wheels()
 m.add_item("Export selected wheels to file", "export_selected");
     m.add_item("Import all wheels from file", "import");
 m.add_item("Import selected wheels from file", "import_selected");
-    m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = "Wheel Management Menu";
     int res = m.run();
     string selected = m.get_item_id(m.get_selected_item());
     if (selected == "export")
     {
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
         m.intro_text = "Are you sure you want to export all wheels to a file?";
         int confirm = m.run();
-        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        if (m.get_item_id(m.get_selected_item()) == "yes")
         {
             export_wheels();
         }
@@ -347,11 +347,11 @@ else if (selected == "export_selected")
     else if (selected == "import")
     {
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
         m.intro_text = "Are you sure you want to import all wheels from a file?";
         int confirm = m.run();
-        if (m.get_item_id(m.get_selected_item()) == "confirm")
+        if (m.get_item_id(m.get_selected_item()) == "yes")
         {
             import_wheels();
         }
@@ -389,7 +389,7 @@ void show_recent_wheels()
         int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
         m.add_item(name + " (" + opts.length() + " choices, " + spins + " spins)", name);
     }
-    m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = "Pick a recently used wheel to spin again.";
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "back") wheelspin();
@@ -403,7 +403,7 @@ void spin_wheel()
 m.add_item("Most Recent Wheels", "rec");
     m.add_item("Most Spun Wheels", "top");
     m.add_item("Search for a Wheel", "search");
-    m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = "Choose how you'd like to pick a wheel to spin:";
     int res = m.run();
     string pick = m.get_item_id(m.get_selected_item());
@@ -453,7 +453,7 @@ wheelspin();
             {
                 m.add_item(matches[i], matches[i]);
             }
-            m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
             m.intro_text = "Multiple matches found. Pick one to spin:";
             int res = m.run();
             if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
@@ -499,11 +499,11 @@ if (resultsHistory.length() > 100)
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
 writedata();
     setupmenu(false);
-    m.add_item("yes", "again");
-    m.add_item("no", "back");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Would you like to spin the wheel again?";
     int choice = m.run();
-    if (m.get_item_id(m.get_selected_item()) == "again")
+    if (m.get_item_id(m.get_selected_item()) == "yes")
     {
         spin_same_wheel(chosen);
     }
@@ -537,7 +537,7 @@ if (mostUsed)
         m.add_item(key + " (" + opts.length() + " choices. " + spins + " spins)", key);
     }
     m.add_item("random", "random");
-    m.add_item("Back", "back");
+m.add_item(translate_text("general.back", "Back"), "back");
     m.intro_text = mostUsed ? "These are your most spun wheels. Choose one to spin:" : "Pick a wheel to spin. You have " + keys.length() + " wheels.";
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
@@ -579,11 +579,11 @@ if (resultsHistory.length() > 100)
     update_recent_wheels(chosen);
     writedata();
     setupmenu(false);
-    m.add_item("yes", "again");
-    m.add_item("no", "back");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Would you like to spin the wheel again?";
     int choice = m.run();
-    if (m.get_item_id(m.get_selected_item()) == "again")
+    if (m.get_item_id(m.get_selected_item()) == "yes")
     {
         spin_same_wheel(chosen);
     }
@@ -646,8 +646,8 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
 if (form.is_pressed(importBtn))
 {
     setupmenu(false);
-    m.add_item("yes", "yes");
-    m.add_item("no", "no");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to import your current spin settings from a file?";
     int confirm = m.run();
     if(confirm==-1)
@@ -666,8 +666,8 @@ spinsettings();
 if (form.is_pressed(exportBtn))
 {
     setupmenu(false);
-    m.add_item("yes", "yes");
-    m.add_item("no", "no");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to export your current spin settings to a file?";
     int confirm = m.run();
     if(confirm==-1)

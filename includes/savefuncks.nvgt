@@ -1,3 +1,40 @@
+void load_language(string file)
+{
+    file f;
+    if (!f.open(file, "rb"))
+    {
+        alert("Missing Language File", "Couldn't load " + file + ". Defaulting to English.");
+        if (file != "languages/english.lng")
+        {
+            f.open("languages/english.lng", "rb");
+            if (!f.open(file, "rb"))
+            {
+                alert("Critical Error", "Default English language file is also missing. Exiting app.");
+                exit();
+            }
+        }
+        else
+        {
+            alert("Critical Error", "Default English language file is missing. Exiting app.");
+            exit();
+        }
+    }
+    lang.d.clear();
+    array<string> lines = string_split(f.read(), "\n");
+    for (uint i = 0; i < lines.length(); i++)
+    {
+        string line = trim(lines[i]);
+        if (line == "" || line[0] == ';' || line[0] == '#') continue;
+        int eq = line.find("=");
+        if (eq > 0)
+        {
+            string key = trim(line.substr(0, eq));
+            string value = trim(line.substr(eq + 1));
+            lang.add(key, value);
+        }
+    }
+    f.close();
+}
 void readdata()
 {
     sd.load();

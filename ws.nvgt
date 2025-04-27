@@ -15,6 +15,7 @@ int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
+string languageFile = "languages/english.lng";
 string version="1.2";
 string wheeltype="wheel";
 dictionary spinCounts;
@@ -25,6 +26,7 @@ audio_form form;
 instance app("wspin");
 menu m;
 sound_pool pool;
+savedata lang(languageFile);
 savedata sd("data/saves/spinner.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
 savedata st("data/saves/spinsets.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
 virtual_dialogs vd;
@@ -32,14 +34,15 @@ void main()
 {
 set_sound_storage("data/saves/misc.dat");
 set_sound_decryption_key("BRn2x3BJd3O0KrB7kb2L6cY4qJYEjVt5OhuVzJmmsoj9wampZL3IAx7IdIQBMyqW7ssXZhsXwD2nrQR4qRL8038swNq0Zc2ObN6mNlWrjIGcYLqEh2t0OHeM",true);
-show_game_window("WheelSpinner, version "+version);
+show_game_window(translate_text("general.app_title", "WheelSpinner, version") + " " + version);
 if (app.is_already_running)
 {
-alert("Error", "Only one instance of this app can run at a time.");
+alert(translate_text("general.single_instance_error_title", "Error"), translate_text("general.single_instance_error_message", "Only one instance of this app can run at a time."));
 exit();
 }
 else
 {
+load_language(languageFile);
 readdata();
 readpreffs();
 pool.play_stationary_extended("applaunch.ogg", false, 0, 0, -5, random(90, 110), false);
@@ -65,8 +68,8 @@ form.monitor();
 if(alt_is_down() and key_pressed(KEY_F4) or key_repeating(KEY_ESCAPE))
 {
     setupmenu(false);
-    m.add_item("Yes", "yes");
-    m.add_item("No", "no");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to exit?";
     int res = m.run();
     if(res==-1)
@@ -107,8 +110,8 @@ spinsettings();
         if (form.is_pressed(clearHistory))
 {
             setupmenu(false);
-            m.add_item("Yes", "yes");
-            m.add_item("No", "no");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
             m.intro_text = "Are you sure you want to clear the spin results history?";
             int res = m.run();
             if (res == -1) wheelspin();
@@ -127,8 +130,8 @@ writedata();
 if (form.is_pressed(quit))
 {
     setupmenu(false);
-    m.add_item("Yes", "yes");
-    m.add_item("No", "no");
+m.add_item(translate_text("general.yes", "Yes"), "yes");
+m.add_item(translate_text("general.no", "No"), "no");
     m.intro_text = "Are you sure you want to exit?";
     int res = m.run();
     if(res==-1)

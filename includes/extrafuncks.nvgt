@@ -40,6 +40,10 @@ return path+snd[random(0,snd.length()-1)];
 else
 return "";
 }
+string translate_text(string key, string fallback)
+{
+    return lang.d.exists(key) ? string(lang.d[key]) : fallback;
+}
 string trim(const string&in str)
 {
 string result = str;
@@ -78,7 +82,7 @@ void export_wheels()
     setupmenu(false);
     m.add_item("Replace file", "replace");
     m.add_item("Append to file", "append");
-    m.add_item("Cancel", "cancel");
+m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
     m.intro_text = "Do you want to replace the existing file, or append to it?";
     int res = m.run();
     string mode = m.get_item_id(m.get_selected_item());
@@ -159,7 +163,7 @@ void export_selected_wheels()
             setupmenu(false);
             m.add_item("Replace file", "replace");
             m.add_item("Append to file", "append");
-            m.add_item("Cancel", "cancel");
+m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
             m.intro_text = "Do you want to replace the existing file, or append to it?";
             int res = m.run();
             string mode = m.get_item_id(m.get_selected_item());

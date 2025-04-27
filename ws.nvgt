@@ -15,8 +15,8 @@ int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
-string currentLanguage="english";
-string languageFile = "languages/english.lng";
+string currentlangfile = "english";
+string lngdata;
 string version="1.3";
 string wheeltype="wheel";
 dictionary spinCounts;
@@ -27,7 +27,6 @@ audio_form form;
 instance app("wspin");
 menu m;
 sound_pool pool;
-savedata lang(languageFile);
 savedata sd("data/saves/spinner.dat", "rQP8u9I5iWYwcmwPkJ5EzU3ri4r6IQFP77dvgYedgyGQPxzHEi1eKGdBEENLRbYEWBr3hAmmQLgyevhYJJ7Q3sUQt5n6BKjzYVZMWQb2LyYx");
 savedata st("data/saves/spinsets.dat", "fCZxssmzxaef1nwF3CklVrGJEx96KXTVO3Nl0Y6aOWaGJDCJAFYy7oQmuxbscvh68TCMruG51OUzkJqlj1ks3uIRHHiCL8ySi21R2");
 virtual_dialogs vd;
@@ -35,17 +34,17 @@ void main()
 {
 set_sound_storage("data/saves/misc.dat");
 set_sound_decryption_key("BRn2x3BJd3O0KrB7kb2L6cY4qJYEjVt5OhuVzJmmsoj9wampZL3IAx7IdIQBMyqW7ssXZhsXwD2nrQR4qRL8038swNq0Zc2ObN6mNlWrjIGcYLqEh2t0OHeM",true);
-show_game_window(translate_text("general.app_title", "WheelSpinner, version") + " " + version);
+show_game_window("WheelSpinner, version "+version);
 if (app.is_already_running)
 {
-alert(translate_text("general.single_instance_error_title", "Error"), translate_text("general.single_instance_error_message", "Only one instance of this app can run at a time."));
+alert("Error", "Only one instance of this app can run at a time.");
 exit();
 }
 else
 {
-load_language(languageFile);
 readdata();
 readpreffs();
+lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
 pool.play_stationary_extended("applaunch.ogg", false, 0, 0, -5, random(90, 110), false);
 wheelspin();
 }
@@ -53,15 +52,15 @@ wheelspin();
 void wheelspin()
 {
 form.reset();
-form.create_window(translate_text("general.app_title", "WheelSpinner, version ") + version, false);
-int add = form.create_button(translate_text("mainmenu.add_wheel", "&Add Wheel"));
-int edit = form.create_button(translate_text("mainmenu.edit_wheel", "&Edit Wheel"));
-int manage = form.create_button(translate_text("mainmenu.manage_wheels", "&Manage Wheels"));
-int clearHistory = form.create_button(translate_text("mainmenu.clear_spin_history", "&Clear Spin History"));
-int resultsBox = form.create_input_box(translate_text("mainmenu.spin_history", "Spin &History"), join(resultsHistory, "\n"), "", 0, true, true, true);
-int spin = form.create_button(translate_text("mainmenu.spin_wheel", "&Spin Wheel"));
-int settings = form.create_button(translate_text("mainmenu.spin_settings", "Spin Se&ttings"));
-int quit = form.create_button(translate_text("mainmenu.quit_app", "&Quit"));
+form.create_window("Wheel Spinner", false);
+int add = form.create_button("&Add Wheel");
+int edit = form.create_button("&Edit Wheel");
+int manage = form.create_button("&Manage Wheels");
+    int clearHistory = form.create_button("&Clear Spin History");
+    int resultsBox = form.create_input_box("Spin &History", join(resultsHistory, "\n"), "", 0, true, true, true);
+int spin = form.create_button("&Spin Wheel");
+int settings = form.create_button("Spin Se&ttings");
+int quit = form.create_button("&Quit");
 while (true)
 {
 wait(5);
@@ -69,9 +68,9 @@ form.monitor();
 if(alt_is_down() and key_pressed(KEY_F4) or key_repeating(KEY_ESCAPE))
 {
     setupmenu(false);
-m.add_item(translate_text("general.yes", "Yes"), "yes");
-m.add_item(translate_text("general.no", "No"), "no");
-m.intro_text = translate_text("mainmenu.confirm_exit", "Are you sure you want to exit?");
+    m.add_item("Yes", "yes");
+    m.add_item("No", "no");
+    m.intro_text = "Are you sure you want to exit?";
     int res = m.run();
     if(res==-1)
     {
@@ -79,7 +78,7 @@ wheelspin();
 }
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {
-        speak(translate_text("general.exiting", "Exiting"));
+        speak("Exiting");
         wait(500);
         exit();
     }
@@ -111,15 +110,15 @@ spinsettings();
         if (form.is_pressed(clearHistory))
 {
             setupmenu(false);
-m.add_item(translate_text("general.yes", "Yes"), "yes");
-m.add_item(translate_text("general.no", "No"), "no");
-m.intro_text = translate_text("mainmenu.confirm_clear_history", "Are you sure you want to clear the spin results history?");
+            m.add_item("Yes", "yes");
+            m.add_item("No", "no");
+            m.intro_text = "Are you sure you want to clear the spin results history?";
             int res = m.run();
             if (res == -1) wheelspin();
             if (m.get_item_id(m.get_selected_item()) == "yes")
 {
                 resultsHistory.resize(0);
-alert(translate_text("mainmenu.history_cleared_title", "Cleared"), translate_text("mainmenu.history_cleared_message", "Spin history cleared."));
+                alert("Cleared", "Spin history cleared.");
 writedata();
                 wheelspin();
             }
@@ -131,9 +130,9 @@ writedata();
 if (form.is_pressed(quit))
 {
     setupmenu(false);
-m.add_item(translate_text("general.yes", "Yes"), "yes");
-m.add_item(translate_text("general.no", "No"), "no");
-m.intro_text = translate_text("mainmenu.confirm_exit", "Are you sure you want to exit?");
+    m.add_item("Yes", "yes");
+    m.add_item("No", "no");
+    m.intro_text = "Are you sure you want to exit?";
     int res = m.run();
     if(res==-1)
     {
@@ -141,7 +140,7 @@ wheelspin();
 }
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {
-        speak(translate_text("general.exiting", "Exiting"));
+        speak("Exiting");
         wait(500);
         exit();
     }

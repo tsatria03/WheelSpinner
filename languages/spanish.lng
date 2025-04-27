@@ -1,186 +1,137 @@
-[General]
-app_title=WheelSpinner, versión
-single_instance_error_title=Error
-single_instance_error_message=Solo una instancia de esta aplicación puede ejecutarse al mismo tiempo.
-yes=Sí
-no=No
-cancel=Cancelar
-back=Atrás
-error=Error
-saved=Guardado
-loaded=Cargado
-success=Éxito
-updated=Actualizado
-exiting=Saliendo
-
-[MainMenu]
-add_wheel=&Agregar rueda
-edit_wheel=&Editar rueda
-manage_wheels=&Administrar ruedas
-clear_spin_history=&Borrar historial de giros
-spin_wheel=&Girar rueda
-spin_settings=Configurar &giros
-quit_app=&Salir
-confirm_exit=¿Seguro que quieres salir?
-confirm_clear_history=¿Seguro que quieres borrar el historial de giros?
-history_cleared_title=Borrado
-history_cleared_message=El historial de giros ha sido borrado.
-
-[ExportWheels]
-replace_file=Reemplazar archivo
-append_file=Añadir al archivo
-replace_or_append=¿Deseas reemplazar el archivo existente o añadir al final?
-export_failed_title=Error
-export_failed_message=Error al abrir el archivo para escribir.
-export_success_title=Éxito
-export_success_message=Ruedas exportadas a
-
-[ExportSelectedWheels]
-no_wheels_to_export_title=Error
-no_wheels_to_export_message=No hay ruedas para exportar.
-export_selected_window_title=Exportar ruedas seleccionadas
-select_wheels_to_export=Selecciona las ruedas a exportar:
-nothing_selected_title=Ninguna seleccionada
-must_select_at_least_one_message=Debes seleccionar al menos una rueda.
-export_selected_success_title=Éxito
-export_selected_success_message=Ruedas seleccionadas exportadas a
-
-[ImportWheels]
-wheels_txt_missing_title=Error
-wheels_txt_missing_message=No se encontró el archivo wheels.txt.
-failed_open_wheels_txt_message=Error al abrir wheels.txt
-import_success_title=Éxito
-import_success_message=Importación completa.\n\nRuedas importadas: %imported%\nDuplicados omitidos: %skipped%
-
-[ImportSelectedWheels]
-no_wheels_in_file_title=No se importaron ruedas
-no_wheels_found_message=No se encontraron ruedas en el archivo.
-import_selected_window_title=Importar ruedas seleccionadas
-choose_wheels_to_import=Elige las ruedas para importar:
-
-[WheelSettings]
-could_not_create_settings_title=Error
-could_not_create_settings_message=No se pudo crear settings.txt
-settings_export_success_title=Guardado
-settings_export_success_message=Ajustes exportados a data/exported/settings.txt
-settings_file_missing_title=Error
-settings_file_missing_message=No se encontró settings.txt
-failed_open_settings_message=Error al abrir settings.txt
-settings_import_success_title=Cargado
-settings_import_success_message=Ajustes importados desde settings.txt
-
-[SpinWheel]
-invalid_spin_title=Inválido
-invalid_spin_message=Se necesitan al menos 2 opciones para girar.
-spinning=Girando
-wheel_landed=La rueda cayó en %result%.
-spin_again_question=¿Quieres girar la rueda de nuevo?
-
-[ShowRecentWheels]
-no_recent_wheels_title=Sin ruedas recientes
-no_recent_wheels_message=Aún no has girado ninguna rueda.
-pick_recent_wheel=Elige una rueda girada recientemente:
-
-# Nota: Las siguientes secciones aún no están totalmente traducidas.
-# Modificar estos textos no tendrá efecto en la aplicación por ahora.
-
-[AddWheel]
-new_wheel_window_title=Nueva rueda
-enter_wheel_name=Introduce un nombre para tu nueva rueda:
-invalid_or_duplicate_message=Nombre inválido o duplicado.
-wheel_description=Descripción
-enter_wheel_description=Introduce una descripción para esta rueda.
-wheel_choices=Opciones
-enter_wheel_choices=Separa tus opciones con comas.
-wheel_saved_title=Guardado
-wheel_saved_message=¡Rueda añadida!
-
-[ManageWheels]
-export_all=Exportar todas las ruedas a un archivo
-export_selected=Exportar ruedas seleccionadas a un archivo
-import_all=Importar todas las ruedas desde un archivo
-import_selected=Importar ruedas seleccionadas desde un archivo
-wheel_management_menu=Menú de administración de ruedas
-confirm_export_all=¿Seguro que quieres exportar todas las ruedas a un archivo?
-confirm_import_all=¿Seguro que quieres importar todas las ruedas desde un archivo?
-
-[EditWheel]
-no_wheels_message=No hay ruedas disponibles para editar.
-delete_all_confirm=¿Seguro que quieres borrar todas las ruedas? Esta acción no se puede deshacer.
-all_wheels_deleted_title=Borrado
-all_wheels_deleted_message=Todas las ruedas han sido borradas.
-delete_selected_confirm=Selecciona las ruedas para borrar:
-none_selected_message=Debes seleccionar al menos una rueda.
-selected_wheels_deleted_title=Borrado
-selected_wheels_deleted_message=Las ruedas seleccionadas han sido borradas.
-delete_unlocked_confirm=¿Seguro que quieres borrar todas las ruedas desbloqueadas? Las bloqueadas no se verán afectadas.
-unlocked_wheels_deleted_title=Borrado
-unlocked_wheels_deleted_message=Todas las ruedas desbloqueadas han sido borradas.
-unlock_all_confirm=¿Seguro que quieres desbloquear todas las ruedas?
-lock_all_confirm=¿Seguro que quieres bloquear todas las ruedas?
-all_unlocked_title=Todas las ruedas desbloqueadas
-all_unlocked_message=Todas las ruedas ahora pueden editarse o borrarse.
-all_locked_title=Todas las ruedas bloqueadas
-all_locked_message=Todas las ruedas han sido bloqueadas. No se pueden editar ni borrar.
-change_description=Cambiar descripción
-show_description=Mostrar descripción
-edit_choices=Editar opciones
-delete_wheel=Borrar rueda
-rename_wheel=Renombrar rueda
-lock_wheel=Bloquear rueda
-unlock_wheel=Desbloquear rueda
-what_to_do_with=¿Qué quieres hacer con la rueda '%wheel%'?
-edit_choices_window_title=Editar
-edit_choices_prompt=Edita tus opciones:
-edit_choices_cancelled_title=Cancelado
-edit_choices_cancelled_message=No se hicieron cambios.
-edit_choices_saved_title=Guardado
-edit_choices_saved_message=Cambios guardados.
-change_description_window_title=Cambiar descripción
-change_description_prompt=Introduce una nueva descripción para esta rueda:
-no_description_title=Sin descripción
-no_description_message=Esta rueda aún no tiene descripción.
-description_window_title=Descripción de '%wheel%'
-rename_window_title=Renombrar
-rename_prompt=Introduce un nuevo nombre para esta rueda:
-rename_saved_title=Renombrado
-rename_saved_message=La rueda ha sido renombrada.
-rename_error_title=Error
-rename_error_message=Nombre inválido o duplicado.
-delete_wheel_confirm=¿Seguro que quieres borrar la rueda '%wheel%'?
-wheel_deleted_title=Borrado
-wheel_deleted_message=La rueda ha sido borrada.
-toggle_lock_prompt=¿Seguro que quieres bloquear o desbloquear la rueda '%wheel%'?
-unlock_success_title=Desbloqueada
-unlock_success_message=La rueda '%wheel%' ahora puede ser editada o borrada.
-lock_success_title=Bloqueada
-lock_success_message=La rueda '%wheel%' ha sido bloqueada. No se puede editar ni borrar.
-
-[SpinWheelOptions]
-all_wheels=Todas las ruedas
-most_recent=Ruedas más recientes
-most_spun=Ruedas más giradas
-search_wheel=Buscar rueda
-how_to_pick=Elige cómo quieres seleccionar una rueda:
-search_window_title=Buscar
-search_prompt=Escribe parte del nombre de una rueda para buscarla:
-no_match_title=Sin coincidencias
-no_match_message=No se encontraron ruedas que coincidan con %query%.
-multiple_matches_title=Se encontraron múltiples coincidencias
-multiple_matches_message=Elige una para girar:
-
-[SpinSettings]
-spin_settings_title=Ajustes de giro
-base_delay_slider=Retraso base de giro.
-growth_factor_slider=Factor de crecimiento de giro.
-tick_count_slider=Cantidad de ticks de giro.
-randomness_slider=Aleatoriedad de giro.
-wheel_pack_label=Paquete de ruedas:
-export_settings_button=Exportar ajustes a archivo
-import_settings_button=Importar ajustes desde archivo
-save_settings_button=&Guardar ajustes
-confirm_import_settings=¿Seguro que quieres importar tus ajustes actuales desde un archivo?
-confirm_export_settings=¿Seguro que quieres exportar tus ajustes actuales a un archivo?
-settings_updated_title=Actualizado
-settings_updated_message=¡Ajustes de giro actualizados!
-
+WheelSpinner, version=WheelSpinner, versión
+Error=Error
+Only one instance of this app can run at a time.=Solo una instancia de esta aplicación puede ejecutarse al mismo tiempo.
+Yes=Sí
+No=No
+Cancel=Cancelar
+Back=Atrás
+Saved=Guardado
+Loaded=Cargado
+Success=Éxito
+Updated=Actualizado
+Exiting=Saliendo
+&Add Wheel=&Agregar rueda
+&Edit Wheel=&Editar rueda
+&Manage Wheels=&Administrar ruedas
+&Clear Spin History=&Borrar historial de giros
+&Spin Wheel=&Girar rueda
+Spin Se&ttings=Configuración de &giros
+&Quit=&Salir
+Are you sure you want to exit?=¿Seguro que quieres salir?
+Are you sure you want to clear the spin results history?=¿Seguro que quieres borrar el historial de giros?
+Cleared=Borrado
+Spin history cleared.=El historial de giros ha sido borrado.
+Replace file=Reemplazar archivo
+Append to file=Añadir al archivo
+Do you want to replace the existing file, or append to it?=¿Deseas reemplazar el archivo existente o añadir al final?
+Failed to open file for writing.=Error al abrir el archivo para escribir.
+Wheels exported to=Ruedas exportadas a
+No wheels to export.=No hay ruedas para exportar.
+Export Selected Wheels=Exportar ruedas seleccionadas
+Select wheels to export:=Selecciona ruedas para exportar:
+Nothing Selected=Ninguna seleccionada
+You must select at least one wheel.=Debes seleccionar al menos una rueda.
+Selected wheels exported to=Ruedas seleccionadas exportadas a
+No wheels.txt file found.=No se encontró wheels.txt
+Failed to open wheels.txt=Error al abrir wheels.txt
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Importación completa.\n\nRuedas importadas: %imported%\nDuplicados omitidos: %skipped%
+No Wheels Imported=No se importaron ruedas
+No wheels found in file.=No se encontraron ruedas en el archivo.
+Import Selected Wheels=Importar ruedas seleccionadas
+Choose wheels to import:=Elige ruedas para importar:
+Could not create settings.txt=No se pudo crear settings.txt
+Settings exported to data/exported/settings.txt=Ajustes exportados a data/exported/settings.txt
+No settings.txt file found.=No se encontró settings.txt
+Failed to open settings.txt=Error al abrir settings.txt
+Settings imported from settings.txt=Ajustes importados desde settings.txt
+Invalid=Inválido
+Need at least 2 options to spin.=Se necesitan al menos 2 opciones para girar.
+Spinning=Girando
+The wheel landed on %result%.=La rueda cayó en %result%.
+Would you like to spin the wheel again?=¿Quieres girar la rueda otra vez?
+No Recent Wheels=No hay ruedas recientes
+You haven't spun any wheels yet.=Todavía no has girado ninguna rueda.
+Pick a recently spun wheel:=Elige una rueda girada recientemente:
+New Wheel=Nueva rueda
+Enter a name for your new wheel:=Introduce un nombre para tu nueva rueda:
+Invalid or duplicate name.=Nombre inválido o duplicado.
+Description=Descripción
+Enter a description for this wheel.=Introduce una descripción para esta rueda.
+Choices=Opciones
+Separate your choices with commas.=Separa tus opciones con comas.
+Wheel added!=¡Rueda añadida!
+Export all wheels to file=Exportar todas las ruedas a un archivo
+Export selected wheels to file=Exportar ruedas seleccionadas a un archivo
+Import all wheels from file=Importar todas las ruedas desde un archivo
+Import selected wheels from file=Importar ruedas seleccionadas desde un archivo
+Wheel Management Menu=Menú de administración de ruedas
+Are you sure you want to export all wheels to a file?=¿Seguro que quieres exportar todas las ruedas a un archivo?
+Are you sure you want to import all wheels from a file?=¿Seguro que quieres importar todas las ruedas desde un archivo?
+No wheels available to edit.=No hay ruedas disponibles para editar.
+Are you sure you want to delete all wheels? This cannot be undone.=¿Seguro que quieres borrar todas las ruedas? Esta acción no se puede deshacer.
+All wheels have been deleted.=Todas las ruedas han sido borradas.
+Select wheels to delete:=Selecciona ruedas para borrar:
+You must select at least one wheel.=Debes seleccionar al menos una rueda.
+Selected wheels have been deleted.=Las ruedas seleccionadas han sido borradas.
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=¿Seguro que quieres borrar todas las ruedas desbloqueadas? Las bloqueadas no se verán afectadas.
+All unlocked wheels have been deleted.=Todas las ruedas desbloqueadas han sido borradas.
+Are you sure you want to unlock all wheels?=¿Seguro que quieres desbloquear todas las ruedas?
+Are you sure you want to lock all wheels?=¿Seguro que quieres bloquear todas las ruedas?
+All wheels unlocked=Todas las ruedas desbloqueadas
+All wheels have been unlocked. They can now be edited or deleted.=Todas las ruedas ahora pueden editarse o borrarse.
+All wheels locked=Todas las ruedas bloqueadas
+All wheels have been locked. They can no longer be edited or deleted.=Todas las ruedas han sido bloqueadas. No se pueden editar ni borrar.
+Change description=Cambiar descripción
+Show description=Mostrar descripción
+Edit choices=Editar opciones
+Delete wheel=Borrar rueda
+Rename wheel=Renombrar rueda
+Lock wheel=Bloquear rueda
+Unlock wheel=Desbloquear rueda
+What would you like to do with the wheel '%wheel%'?=¿Qué quieres hacer con la rueda '%wheel%'?
+Edit=Editar
+Edit your choices:=Edita tus opciones:
+Cancelled=Cancelado
+No changes were made.=No se hicieron cambios.
+Changes saved.=Cambios guardados.
+Change Description=Cambiar descripción
+Enter a new description for this wheel:=Introduce una nueva descripción para esta rueda:
+No Description=Sin descripción
+This wheel doesn't have a description yet.=Esta rueda aún no tiene descripción.
+Description for '%wheel%'=Descripción de '%wheel%'
+Rename=Renombrar
+Enter a new name for this wheel:=Introduce un nuevo nombre para esta rueda:
+Renamed=Renombrado
+Wheel has been renamed.=La rueda ha sido renombrada.
+Invalid or duplicate name.=Nombre inválido o duplicado.
+Are you sure you want to delete the wheel '%wheel%'?=¿Seguro que quieres borrar la rueda '%wheel%'?
+Deleted=Borrado
+Wheel has been deleted.=La rueda ha sido borrada.
+Are you sure you want to unlock/lock the wheel '%wheel%'?=¿Seguro que quieres bloquear o desbloquear la rueda '%wheel%'?
+Unlocked=Desbloqueada
+Wheel '%wheel%' has been unlocked. It can now be edited or deleted.=La rueda '%wheel%' ahora puede editarse o borrarse.
+Locked=Bloqueada
+Wheel '%wheel%' has been locked. It can no longer be edited or deleted.=La rueda '%wheel%' ha sido bloqueada. No se puede editar ni borrar.
+All Wheels=Todas las ruedas
+Most Recent Wheels=Ruedas más recientes
+Most Spun Wheels=Ruedas más giradas
+Search for a Wheel=Buscar rueda
+Choose how you'd like to pick a wheel:=Elige cómo quieres seleccionar una rueda:
+Search=Buscar
+Type part of a wheel's name to spin it:=Escribe parte del nombre de la rueda para buscarla:
+No Match=Sin coincidencias
+No wheels found matching %query%.=No se encontraron ruedas que coincidan con %query%.
+Multiple Matches Found=Múltiples coincidencias encontradas
+Pick one to spin:=Elige una para girar:
+Spin Settings=Ajustes de giro
+Spin base delay.=Retraso base de giro.
+Spin growth factor.=Factor de crecimiento de giro.
+Spin tick count.=Número de ticks de giro.
+Spin randomness.=Aleatoriedad de giro.
+Wheel Pack:=Paquete de ruedas:
+Export Settings to File=Exportar ajustes a archivo
+Import Settings from File=Importar ajustes desde archivo
+&Save Settings=&Guardar ajustes
+Are you sure you want to import your current spin settings from a file?=¿Seguro que quieres importar tus ajustes actuales desde un archivo?
+Are you sure you want to export your current spin settings to a file?=¿Seguro que quieres exportar tus ajustes actuales a un archivo?
+Spin settings updated!=¡Ajustes de giro actualizados!

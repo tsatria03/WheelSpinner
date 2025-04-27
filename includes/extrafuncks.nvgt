@@ -28,6 +28,19 @@ bool compareSpinCount(const string &in a, const string &in b)
     int countB = spinCounts.exists(b) ? int(spinCounts[b]) : 0;
     return countA > countB;
 }
+bool put_file_contents(const string& in filename, const string& in content, bool a = false) {
+	bool s;
+	file f;
+	if (!a)
+		s = f.open(filename, "wb");
+	else
+		s = f.open(filename, "ab");
+	if (!s)
+		return false;
+	if (content != "") s = f.write(content) == content.length();
+	f.close();
+	return s;
+}
 string find_sound(string soundname)
 {
 string[] snd=find_files(soundname);
@@ -40,22 +53,15 @@ return path+snd[random(0,snd.length()-1)];
 else
 return "";
 }
-string translate_text(string key, string fallback)
-{
-    return lang.d.exists(key) ? string(lang.d[key]) : fallback;
-}
-string trim(const string&in str)
-{
-string result = str;
-while (result.length() > 0 && (string_left(result, 1) == " " || string_left(result, 1) == "\n" || string_left(result, 1) == "\r"))
-{
-result = string_trim_left(result, 1);
-}
-while (result.length() > 0 && (string_right(result, 1) == " " || string_right(result, 1) == "\n" || string_right(result, 1) == "\r"))
-{
-result = string_trim_right(result, 1);
-}
-return result;
+string get_file_contents(const string& in filename) {
+	if (!file_exists(filename)) return "";
+	file f;
+	f.open(filename, "rb");
+	string text = "";
+	if (f.size > 0)
+		text = f.read();
+	f.close();
+	return text;
 }
 string strip_extension(string filename)
 {
@@ -74,6 +80,35 @@ string strip_directory(string path)
     if (lastSlash != -1)
         return path.substr(lastSlash + 1);
     return path;
+}
+string translate_text(string text)
+{
+if(currentlangfile=="english")
+return text;
+string[] parts=string_split(lngdata,"\r\n",true);
+for(uint i=0;i<parts.length();i++)
+{
+string[] q=string_split(parts[i],"=",true);
+if(q.length()<2) continue;
+if(string_contains(text,q[0],1)>-1)
+{
+text=string_replace(text,q[0],q[1],false);
+}
+}
+return text;
+}
+string trim(const string&in str)
+{
+string result = str;
+while (result.length() > 0 && (string_left(result, 1) == " " || string_left(result, 1) == "\n" || string_left(result, 1) == "\r"))
+{
+result = string_trim_left(result, 1);
+}
+while (result.length() > 0 && (string_right(result, 1) == " " || string_right(result, 1) == "\n" || string_right(result, 1) == "\r"))
+{
+result = string_trim_right(result, 1);
+}
+return result;
 }
 void setupmenu(bool music_added = true)
 {
@@ -98,10 +133,10 @@ m.wrap_sound = "menuwrap.ogg";
 void export_wheels()
 {
     setupmenu(false);
-m.add_item(translate_text("exportwheels.replace_file", "Replace file"), "replace");
-m.add_item(translate_text("exportwheels.append_file", "Append to file"), "append");
-m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
-m.intro_text = translate_text("exportwheels.replace_or_append", "Do you want to replace the existing file, or append to it?");
+    m.add_item("Replace file", "replace");
+    m.add_item("Append to file", "append");
+    m.add_item("Cancel", "cancel");
+    m.intro_text = "Do you want to replace the existing file, or append to it?";
     int res = m.run();
     string mode = m.get_item_id(m.get_selected_item());
     if (res==-1 || mode == "cancel") wheelspin();
@@ -125,7 +160,7 @@ m.intro_text = translate_text("exportwheels.replace_or_append", "Do you want to 
     file f;
     if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
     {
-    alert(translate_text("general.error", "Error"), translate_text("exportwheels.export_failed_message", "Failed to open file for writing."));
+        alert("Error", "Failed to open file for writing.");
         wheelspin();
     }
     array<string>@ keys = wheels.get_keys();
@@ -144,7 +179,7 @@ m.intro_text = translate_text("exportwheels.replace_or_append", "Do you want to 
         f.write(name + "_spins=" + ("" + spins) + "\r\n");
     }
     f.close();
-alert(translate_text("general.success", "Success"), translate_text("exportwheels.export_success_message", "Wheels exported to") + " " + filepath);
+    alert("Success", "Wheels exported to " + filepath);
     wheelspin();
 }
 void export_selected_wheels()
@@ -153,18 +188,18 @@ void export_selected_wheels()
     keys.sort_ascending();
     if (keys.length() == 0)
     {
-alert(translate_text("exportselectedwheels.no_wheels_to_export_title", "Error"), translate_text("exportselectedwheels.no_wheels_to_export_message", "No wheels to export."));
+        alert("Error", "No wheels to export.");
         wheelspin();
     }
     form.reset();
-form.create_window(translate_text("exportselectedwheels.export_selected_window_title", "Export Selected Wheels"), false);
-int list = form.create_list(translate_text("exportselectedwheels.select_wheels_to_export", "Select wheels to export:"), keys.length(), true);
+    form.create_window("Export Selected Wheels", false);
+    int list = form.create_list("Select wheels to export:", keys.length(), true);
     for (uint i = 0; i < keys.length(); i++)
     {
         form.add_list_item(list, keys[i], keys[i]);
     }
-int exportBtn = form.create_button(translate_text("exportselectedwheels.export_button", "&Export"), true);
-int cancelBtn = form.create_button(translate_text("general.cancel", "&Cancel"));
+    int exportBtn = form.create_button("&Export", true);
+    int cancelBtn = form.create_button("&Cancel");
     form.focus(list);
     while (true)
     {
@@ -175,14 +210,14 @@ int cancelBtn = form.create_button(translate_text("general.cancel", "&Cancel"));
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
             {
-alert(translate_text("exportselectedwheels.nothing_selected_title", "Nothing Selected"), translate_text("exportselectedwheels.must_select_at_least_one_message", "You must select at least one wheel."));
+                alert("Nothing selected", "You must select at least one wheel.");
                 wheelspin();
             }
             setupmenu(false);
-m.add_item(translate_text("exportselectedwheels.replace_file", "Replace file"), "replace");
-m.add_item(translate_text("exportselectedwheels.append_file", "Append to file"), "append");
-m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
-m.intro_text = translate_text("exportselectedwheels.replace_or_append", "Do you want to replace the existing file, or append to it?");
+            m.add_item("Replace file", "replace");
+            m.add_item("Append to file", "append");
+            m.add_item("Cancel", "cancel");
+            m.intro_text = "Do you want to replace the existing file, or append to it?";
             int res = m.run();
             string mode = m.get_item_id(m.get_selected_item());
             if (res==-1 || mode == "cancel") wheelspin();
@@ -206,7 +241,7 @@ m.intro_text = translate_text("exportselectedwheels.replace_or_append", "Do you 
             file f;
             if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
             {
-    alert(translate_text("general.error", "Error"), translate_text("exportselectedwheels.export_failed", "Failed to open file for writing."));
+                alert("Error", "Failed to open file for writing.");
                 wheelspin();
             }
             for (uint i = 0; i < checked.length(); i++)
@@ -223,7 +258,7 @@ m.intro_text = translate_text("exportselectedwheels.replace_or_append", "Do you 
                 f.write(name + "_spins=" + ("" + spins) + "\r\n");
             }
             f.close();
-alert(translate_text("general.success", "Success"), translate_text("exportselectedwheels.export_selected_success_message", "Selected wheels exported to") + " " + filepath);
+            alert("Success", "Selected wheels exported to " + filepath);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
@@ -234,13 +269,13 @@ void import_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.wheels_txt_missing_message", "No wheels.txt file found."));
+        alert("Error", "No wheels.txt file found.");
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.failed_open_wheels_txt_message", "Failed to open wheels.txt"));
+        alert("Error", "Failed to open wheels.txt");
         wheelspin();
     }
     string content = f.read();
@@ -294,23 +329,21 @@ if (bufferSpins.exists(name))
     spinCounts[name] = int(parse_int(string(bufferSpins[name])));
     }
     writedata();
-    string msg = translate_text("importwheels.import_success_message", "Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
-msg = string_replace(msg, "%imported%", format_int(imported), true);
-msg = string_replace(msg, "%skipped%", format_int(skipped), true);
-    alert(translate_text("importwheels.import_success_title", "Success"), msg);
+    string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
+    alert("Success", msg);
     wheelspin();
 }
 void import_selected_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.wheels_txt_missing_message", "No wheels.txt file found."));
+        alert("Error", "No wheels.txt file found.");
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.failed_open_wheels_txt_message", "Failed to open wheels.txt"));
+        alert("Error", "Failed to open wheels.txt");
         wheelspin();
     }
     string content = f.read();
@@ -345,16 +378,16 @@ else
     }
     if (importNames.length() == 0)
 {
-        alert(translate_text("importselectedwheels.no_wheels_in_file_title", "No Wheels Imported"), translate_text("importselectedwheels.no_wheels_found_message", "No wheels found in file."));
+        alert("No Wheels Imported", "No wheels found in file.");
         wheelspin();
     }
     form.reset();
-    form.create_window(translate_text("importselectedwheels.import_selected_window_title", "Import Selected Wheels"), false);
-    int list = form.create_list(translate_text("importselectedwheels.choose_wheels_to_import", "Choose wheels to import:"), importNames.length(), true);
+    form.create_window("Import Selected Wheels", false);
+    int list = form.create_list("Choose wheels to import:", importNames.length(), true);
     for (uint i = 0; i < importNames.length(); i++)
         form.add_list_item(list, importNames[i], importNames[i]);
-    int importBtn = form.create_button("&Import", true);
-    int cancelBtn = form.create_button(translate_text("general.cancel", "&Cancel"));
+    int importBtn = form.create_button("&Import",true);
+    int cancelBtn = form.create_button("&Cancel");
     form.focus(list);
     while (true)
 {
@@ -365,7 +398,7 @@ else
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
 {
-                alert(translate_text("exportselectedwheels.nothing_selected_title", "Nothing Selected"), translate_text("exportselectedwheels.must_select_at_least_one_message", "You must select at least one wheel."));
+                alert("Nothing Selected", "You must select at least one wheel.");
                 wheelspin();
             }
             int imported = 0, skipped = 0;
@@ -388,10 +421,8 @@ if (bufferSpins.exists(name))
                 imported++;
             }
             writedata();
-            string msg = translate_text("importwheels.import_success_message", "Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
-msg = string_replace(msg, "%imported%", format_int(imported), true);
-msg = string_replace(msg, "%skipped%", format_int(skipped), true);
-            alert(translate_text("importwheels.import_success_title", "Success"), msg);
+            string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
+            alert("Success", msg);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
@@ -404,30 +435,30 @@ void export_wheel_settings()
     file f;
     if (!f.open("data/exported/settings.txt", "wb"))
 {
-alert(translate_text("wheelsettings.could_not_create_settings_title", "Error"), translate_text("wheelsettings.could_not_create_settings_message", "Could not create settings.txt"));
+        alert("Error", "Could not create settings.txt");
         wheelspin();
     }
     f.write("spinBaseDelay=" + spinBaseDelay + "\r\n");
     f.write("spinGrowth=" + spinGrowth + "\r\n");
     f.write("spinBaseTicks=" + spinBaseTicks + "\r\n");
     f.write("spinRandomRange=" + spinRandomRange + "\r\n");
-f.write("language=" + currentLanguage + "\r\n");
+    f.write("language=" + currentlangfile + "\n");
     f.write("wheeltype=" + wheeltype + "\r\n");
     f.close();
-alert(translate_text("wheelsettings.settings_export_success_title", "Saved"), translate_text("wheelsettings.settings_export_success_message", "Settings exported to data/exported/settings.txt"));
+    alert("Saved", "Settings exported to data/exported/settings.txt");
     wheelspin();
 }
 void import_wheel_settings()
 {
     if (!file_exists("data/exported/settings.txt"))
 {
-alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), translate_text("wheelsettings.settings_file_missing_message", "No settings.txt file found."));
+        alert("Error", "No settings.txt file found.");
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/settings.txt", "rb"))
 {
-alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), translate_text("wheelsettings.failed_open_settings_message", "Failed to open settings.txt"));
+        alert("Error", "Failed to open settings.txt");
         wheelspin();
     }
     string content = f.read();
@@ -444,12 +475,15 @@ alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), tran
         else if (key == "spinGrowth") spinGrowth = parse_int(value);
         else if (key == "spinBaseTicks") spinBaseTicks = parse_int(value);
         else if (key == "spinRandomRange") spinRandomRange = parse_int(value);
-else if (key == "language") currentLanguage = value;
         else if (key == "wheeltype") wheeltype = value;
+            else if (key == "language")
+            {
+                currentlangfile = value;
+lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+            }
     }
     writepreffs();
-load_language("languages/" + currentLanguage + ".lng");
-alert(translate_text("wheelsettings.settings_import_success_title", "Loaded"), translate_text("wheelsettings.settings_import_success_message", "Settings imported from settings.txt"));
+    alert("Loaded", "Settings imported from settings.txt");
     wheelspin();
 }
 void update_recent_wheels(const string &in name)

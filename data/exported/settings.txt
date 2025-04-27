@@ -2,5 +2,5 @@ spinBaseDelay=20
 spinGrowth=2
 spinBaseTicks=50
 spinRandomRange=50
-language=spanish
+language=english
 wheeltype=wheel

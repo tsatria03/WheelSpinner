@@ -1,43 +1,3 @@
-void load_language(string file)
-{
-    languageFile = file;
-    file f;
-    if (!f.open(file, "rb"))
-    {
-        alert("Missing Language File", "Couldn't load " + file + ". Defaulting to English.");
-        if (file != "languages/english.lng")
-        {
-            f.open("languages/english.lng", "rb");
-            if (!f.open(file, "rb"))
-            {
-                alert("Critical Error", "Default English language file is also missing. Exiting app.");
-                exit();
-            }
-        }
-        else
-        {
-            alert("Critical Error", "Default English language file is missing. Exiting app.");
-            exit();
-        }
-    }    
-    lang.d.clear();
-    array<string> lines = string_split(f.read(), "\r\n");
-    for (uint i = 0; i < lines.length(); i++)
-    {
-        string line = trim(lines[i]);
-        if (line == "" || line[0] == ';' || line[0] == '#') continue;
-        int eq = line.find("=");
-        if (eq > 0)
-        {
-            string key = trim(line.substr(0, eq));
-            string value = trim(line.substr(eq + 1));
-            lang.add(key, value);
-        }
-    }
-    f.close();    
-    string filename = strip_directory(file);
-    currentLanguage = strip_extension(filename);
-}
 void readdata()
 {
     sd.load();
@@ -145,11 +105,15 @@ if (st.d.exists("spinRandomRange"))
 {
 spinRandomRange = st.read_int("spinRandomRange");
 }
-    if (st.d.exists("currentLanguage"))
+    if (st.d.exists("currentlangfile"))
     {
-        currentLanguage = st.read_string("currentLanguage");
-        languageFile = "languages/" + currentLanguage + ".lng";
-        load_language(languageFile);
+        currentlangfile = st.read_string("currentlangfile");
+lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+    }
+    else
+    {
+        currentlangfile = "english";
+lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
     }
 if (st.d.exists("wheeltype"))
 {
@@ -162,7 +126,7 @@ st.add("spinBaseDelay", spinBaseDelay);
 st.add("spinGrowth", spinGrowth);
 st.add("spinBaseTicks", spinBaseTicks);
 st.add("spinRandomRange", spinRandomRange);
-    st.add("currentLanguage", currentLanguage);
+st.add("currentlangfile", currentlangfile);
 st.add("wheeltype", wheeltype);
 st.save();
 }

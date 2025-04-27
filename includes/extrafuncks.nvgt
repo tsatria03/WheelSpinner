@@ -386,7 +386,7 @@ void export_wheel_settings()
     file f;
     if (!f.open("data/exported/settings.txt", "wb"))
 {
-        alert(translate_text("general.error", "Error"), "Could not create settings.txt");
+alert(translate_text("wheelsettings.could_not_create_settings_title", "Error"), translate_text("wheelsettings.could_not_create_settings_message", "Could not create settings.txt"));
         wheelspin();
     }
     f.write("spinBaseDelay=" + spinBaseDelay + "\r\n");
@@ -395,20 +395,20 @@ void export_wheel_settings()
     f.write("spinRandomRange=" + spinRandomRange + "\r\n");
     f.write("wheeltype=" + wheeltype + "\r\n");
     f.close();
-    alert(translate_text("general.saved", "Saved"), "Settings exported to data/exported/settings.txt");
+alert(translate_text("wheelsettings.settings_export_success_title", "Saved"), translate_text("wheelsettings.settings_export_success_message", "Settings exported to data/exported/settings.txt"));
     wheelspin();
 }
 void import_wheel_settings()
 {
     if (!file_exists("data/exported/settings.txt"))
 {
-        alert(translate_text("general.error", "Error"), "No settings.txt file found.");
+alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), translate_text("wheelsettings.settings_file_missing_message", "No settings.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/settings.txt", "rb"))
 {
-        alert(translate_text("general.error", "Error"), "Failed to open settings.txt");
+alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), translate_text("wheelsettings.failed_open_settings_message", "Failed to open settings.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -428,7 +428,7 @@ void import_wheel_settings()
         else if (key == "wheeltype") wheeltype = value;
     }
     writepreffs();
-    alert(translate_text("general.loaded", "Loaded"), "Settings imported from settings.txt");
+alert(translate_text("wheelsettings.settings_import_success_title", "Loaded"), translate_text("wheelsettings.settings_import_success_message", "Settings imported from settings.txt"));
     wheelspin();
 }
 void update_recent_wheels(const string &in name)

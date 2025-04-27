@@ -1,4 +1,5 @@
 new in 1.3
+The wheel settings section of the app is now translatable.
 The import selected wheels section of the app is now translatable.
 The import wheels section of the app is now translatable.
 The export selected wheels section of the app is now translatable.

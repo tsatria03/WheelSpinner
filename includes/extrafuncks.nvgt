@@ -80,10 +80,10 @@ m.wrap_sound = "menuwrap.ogg";
 void export_wheels()
 {
     setupmenu(false);
-    m.add_item("Replace file", "replace");
-    m.add_item("Append to file", "append");
+m.add_item(translate_text("exportwheels.replace_file", "Replace file"), "replace");
+m.add_item(translate_text("exportwheels.append_file", "Append to file"), "append");
 m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
-    m.intro_text = "Do you want to replace the existing file, or append to it?";
+m.intro_text = translate_text("exportwheels.replace_or_append", "Do you want to replace the existing file, or append to it?");
     int res = m.run();
     string mode = m.get_item_id(m.get_selected_item());
     if (res==-1 || mode == "cancel") wheelspin();
@@ -107,7 +107,7 @@ m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
     file f;
     if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
     {
-        alert(translate_text("general.error", "Error"), "Failed to open file for writing.");
+    alert(translate_text("general.error", "Error"), translate_text("exportwheels.export_failed_message", "Failed to open file for writing."));
         wheelspin();
     }
     array<string>@ keys = wheels.get_keys();
@@ -126,7 +126,7 @@ m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
         f.write(name + "_spins=" + ("" + spins) + "\r\n");
     }
     f.close();
-    alert(translate_text("general.success", "Success"), "Wheels exported to " + filepath);
+alert(translate_text("general.success", "Success"), translate_text("exportwheels.export_success_message", "Wheels exported to") + " " + filepath);
     wheelspin();
 }
 void export_selected_wheels()

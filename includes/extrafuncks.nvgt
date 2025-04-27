@@ -135,18 +135,18 @@ void export_selected_wheels()
     keys.sort_ascending();
     if (keys.length() == 0)
     {
-        alert(translate_text("general.error", "Error"), "No wheels to export.");
+alert(translate_text("exportselectedwheels.no_wheels_to_export_title", "Error"), translate_text("exportselectedwheels.no_wheels_to_export_message", "No wheels to export."));
         wheelspin();
     }
     form.reset();
-    form.create_window("Export Selected Wheels", false);
-    int list = form.create_list("Select wheels to export:", keys.length(), true);
+form.create_window(translate_text("exportselectedwheels.export_selected_window_title", "Export Selected Wheels"), false);
+int list = form.create_list(translate_text("exportselectedwheels.select_wheels_to_export", "Select wheels to export:"), keys.length(), true);
     for (uint i = 0; i < keys.length(); i++)
     {
         form.add_list_item(list, keys[i], keys[i]);
     }
-    int exportBtn = form.create_button("&Export", true);
-    int cancelBtn = form.create_button("&Cancel");
+int exportBtn = form.create_button(translate_text("exportselectedwheels.export_button", "&Export"), true);
+int cancelBtn = form.create_button(translate_text("general.cancel", "&Cancel"));
     form.focus(list);
     while (true)
     {
@@ -157,14 +157,14 @@ void export_selected_wheels()
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
             {
-                alert("Nothing selected", "You must select at least one wheel.");
+alert(translate_text("exportselectedwheels.nothing_selected_title", "Nothing Selected"), translate_text("exportselectedwheels.must_select_at_least_one_message", "You must select at least one wheel."));
                 wheelspin();
             }
             setupmenu(false);
-            m.add_item("Replace file", "replace");
-            m.add_item("Append to file", "append");
+m.add_item(translate_text("exportselectedwheels.replace_file", "Replace file"), "replace");
+m.add_item(translate_text("exportselectedwheels.append_file", "Append to file"), "append");
 m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
-            m.intro_text = "Do you want to replace the existing file, or append to it?";
+m.intro_text = translate_text("exportselectedwheels.replace_or_append", "Do you want to replace the existing file, or append to it?");
             int res = m.run();
             string mode = m.get_item_id(m.get_selected_item());
             if (res==-1 || mode == "cancel") wheelspin();
@@ -188,7 +188,7 @@ m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
             file f;
             if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
             {
-                alert(translate_text("general.error", "Error"), "Failed to open file for writing.");
+    alert(translate_text("general.error", "Error"), translate_text("exportselectedwheels.export_failed", "Failed to open file for writing."));
                 wheelspin();
             }
             for (uint i = 0; i < checked.length(); i++)
@@ -205,7 +205,7 @@ m.add_item(translate_text("general.cancel", "Cancel"), "cancel");
                 f.write(name + "_spins=" + ("" + spins) + "\r\n");
             }
             f.close();
-            alert(translate_text("general.success", "Success"), "Selected wheels exported to " + filepath);
+alert(translate_text("general.success", "Success"), translate_text("exportselectedwheels.export_selected_success_message", "Selected wheels exported to") + " " + filepath);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))

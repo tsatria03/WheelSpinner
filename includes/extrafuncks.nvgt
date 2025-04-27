@@ -216,13 +216,13 @@ void import_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert(translate_text("general.error", "Error"), "No wheels.txt file found.");
+        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.wheels_txt_missing_message", "No wheels.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert(translate_text("general.error", "Error"), "Failed to open wheels.txt");
+        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.failed_open_wheels_txt_message", "Failed to open wheels.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -276,21 +276,23 @@ if (bufferSpins.exists(name))
     spinCounts[name] = int(parse_int(string(bufferSpins[name])));
     }
     writedata();
-    string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
-    alert(translate_text("general.success", "Success"), msg);
+    string msg = translate_text("importwheels.import_success_message", "Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
+msg = string_replace(msg, "%imported%", format_int(imported), true);
+msg = string_replace(msg, "%skipped%", format_int(skipped), true);
+    alert(translate_text("importwheels.import_success_title", "Success"), msg);
     wheelspin();
 }
 void import_selected_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert(translate_text("general.error", "Error"), "No wheels.txt file found.");
+        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.wheels_txt_missing_message", "No wheels.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert(translate_text("general.error", "Error"), "Failed to open wheels.txt");
+        alert(translate_text("importwheels.wheels_txt_missing_title", "Error"), translate_text("importwheels.failed_open_wheels_txt_message", "Failed to open wheels.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -325,16 +327,16 @@ else
     }
     if (importNames.length() == 0)
 {
-        alert("No Wheels Imported", "No wheels found in file.");
+        alert(translate_text("importselectedwheels.no_wheels_in_file_title", "No Wheels Imported"), translate_text("importselectedwheels.no_wheels_found_message", "No wheels found in file."));
         wheelspin();
     }
     form.reset();
-    form.create_window("Import Selected Wheels", false);
-    int list = form.create_list("Choose wheels to import:", importNames.length(), true);
+    form.create_window(translate_text("importselectedwheels.import_selected_window_title", "Import Selected Wheels"), false);
+    int list = form.create_list(translate_text("importselectedwheels.choose_wheels_to_import", "Choose wheels to import:"), importNames.length(), true);
     for (uint i = 0; i < importNames.length(); i++)
         form.add_list_item(list, importNames[i], importNames[i]);
-    int importBtn = form.create_button("&Import",true);
-    int cancelBtn = form.create_button("&Cancel");
+    int importBtn = form.create_button("&Import", true);
+    int cancelBtn = form.create_button(translate_text("general.cancel", "&Cancel"));
     form.focus(list);
     while (true)
 {
@@ -345,7 +347,7 @@ else
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
 {
-                alert("Nothing Selected", "You must select at least one wheel.");
+                alert(translate_text("exportselectedwheels.nothing_selected_title", "Nothing Selected"), translate_text("exportselectedwheels.must_select_at_least_one_message", "You must select at least one wheel."));
                 wheelspin();
             }
             int imported = 0, skipped = 0;
@@ -368,8 +370,10 @@ if (bufferSpins.exists(name))
                 imported++;
             }
             writedata();
-            string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
-            alert(translate_text("general.success", "Success"), msg);
+            string msg = translate_text("importwheels.import_success_message", "Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
+msg = string_replace(msg, "%imported%", format_int(imported), true);
+msg = string_replace(msg, "%skipped%", format_int(skipped), true);
+            alert(translate_text("importwheels.import_success_title", "Success"), msg);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))

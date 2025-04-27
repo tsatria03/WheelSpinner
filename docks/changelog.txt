@@ -1,5 +1,6 @@
 new in 1.3
-Started the process of making this app translatable to other languages
+The general section of the app is now translatable.
+Started the process of making this app translatable to other languages.
 new in 1.2
 Added the ability to track your most recent wheel spins using the new spin results history panel. Your last 100 spin results are now saved between sessions automatically. You can view your entire spin history from the main section of the app, and clear it at any time if you wish to do so.
 Updated the readme file with a new guide on creating your own wheel packs to use in the app.

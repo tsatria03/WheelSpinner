@@ -3,14 +3,14 @@ void add_wheel()
     string name = vd.input_box("New Wheel", "Enter a name for your new wheel:");
     if (name == "" || wheels.exists(name))
     {
-        alert("Error", "Invalid or duplicate name.");
+        alert(translate_text("general.error", "Error"), "Invalid or duplicate name.");
         wheelspin();
     }
     string desc = vd.input_box("Description", "Enter a description for this wheel.");
     string options = vd.input_box("Choices", "Separate your choices with commas.");
     wheels[name] = options;
     if (desc != "") wheelDescriptions[name] = desc;
-    alert("Saved", "Wheel added!");
+    alert(translate_text("general.saved", "Saved"), "Wheel added!");
     writedata();
     wheelspin();
 }
@@ -20,7 +20,7 @@ void edit_wheel()
     keys.sort_ascending();
     if (keys.length() == 0)
     {
-        alert("Error", "No wheels available to edit.");
+        alert(translate_text("general.error", "Error"), "No wheels available to edit.");
         wheelspin();
     }
     setupmenu(false);
@@ -219,7 +219,7 @@ m.add_item(translate_text("general.back", "Back"), "back");
         else
         {
             wheels[selected] = edited;
-            alert("Saved", "Changes saved.");
+            alert(translate_text("general.saved", "Saved"), "Changes saved.");
             writedata();
         }
         wheelspin();
@@ -242,7 +242,7 @@ else if (action == "eddesc")
         {
             wheelDescriptions[selected] = edited;
         }
-        alert("Saved", "Description updated.");
+        alert(translate_text("general.saved", "Saved"), "Description updated.");
         writedata();
     }
     wheelspin();
@@ -272,7 +272,7 @@ else if (action == "viewdesc")
         }
         else
         {
-            alert("Error", "Invalid or duplicate name.");
+            alert(translate_text("general.error", "Error"), "Invalid or duplicate name.");
         }
         wheelspin();
     }
@@ -517,7 +517,7 @@ void spin_from_list(bool mostUsed)
     array<string>@ keys = wheels.get_keys();
     if (keys.length() == 0)
     {
-        alert("Error", "No wheels to spin.");
+        alert(translate_text("general.error", "Error"), "No wheels to spin.");
         wheelspin();
     }
 if (mostUsed)
@@ -685,7 +685,7 @@ spinsettings();
 }
         if (form.is_pressed(apply))
         {
-            alert("Updated", "Spin settings updated!");
+            alert(translate_text("general.updated", "Updated"), "Spin settings updated!");
             writepreffs();
             wheelspin();
         }

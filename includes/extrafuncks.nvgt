@@ -57,6 +57,24 @@ result = string_trim_right(result, 1);
 }
 return result;
 }
+string strip_extension(string filename)
+{
+    int dotIndex = filename.rfind(".");
+    if (dotIndex != -1)
+    {
+        return filename.substr(0, dotIndex);
+    }
+    return filename;
+}
+string strip_directory(string path)
+{
+    int lastSlash = path.rfind("/");
+    if (lastSlash == -1)
+        lastSlash = path.rfind("\\");
+    if (lastSlash != -1)
+        return path.substr(lastSlash + 1);
+    return path;
+}
 void setupmenu(bool music_added = true)
 {
 if (music_added)
@@ -393,6 +411,7 @@ alert(translate_text("wheelsettings.could_not_create_settings_title", "Error"), 
     f.write("spinGrowth=" + spinGrowth + "\r\n");
     f.write("spinBaseTicks=" + spinBaseTicks + "\r\n");
     f.write("spinRandomRange=" + spinRandomRange + "\r\n");
+f.write("language=" + currentLanguage + "\r\n");
     f.write("wheeltype=" + wheeltype + "\r\n");
     f.close();
 alert(translate_text("wheelsettings.settings_export_success_title", "Saved"), translate_text("wheelsettings.settings_export_success_message", "Settings exported to data/exported/settings.txt"));
@@ -425,9 +444,11 @@ alert(translate_text("wheelsettings.settings_file_missing_title", "Error"), tran
         else if (key == "spinGrowth") spinGrowth = parse_int(value);
         else if (key == "spinBaseTicks") spinBaseTicks = parse_int(value);
         else if (key == "spinRandomRange") spinRandomRange = parse_int(value);
+else if (key == "language") currentLanguage = value;
         else if (key == "wheeltype") wheeltype = value;
     }
     writepreffs();
+load_language("languages/" + currentLanguage + ".lng");
 alert(translate_text("wheelsettings.settings_import_success_title", "Loaded"), translate_text("wheelsettings.settings_import_success_message", "Settings imported from settings.txt"));
     wheelspin();
 }

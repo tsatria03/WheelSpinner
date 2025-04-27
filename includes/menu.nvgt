@@ -600,6 +600,27 @@ void spinsettings()
     int growthSlider = form.create_slider("Spin growth factor.", spinGrowth, 1, 100, 1);
     int ticksSlider = form.create_slider("Spin tick count.", spinBaseTicks, 1, 100, 1);
     int rangeSlider = form.create_slider("Spin randomness.", spinRandomRange, 1, 100, 1);
+string[] languageFiles = find_files("languages/*.lng");
+for (uint i = 0; i < languageFiles.length(); i++)
+{
+    languageFiles[i] = strip_extension(languageFiles[i]);
+}
+languageFiles.sort_ascending();
+int langlist = form.create_list("Wheel Language:", languageFiles.length());
+for (uint i = 0; i < languageFiles.length(); i++)
+{
+    form.add_list_item(langlist, languageFiles[i], languageFiles[i]);
+}
+int currentLangIndex = 0;
+for (uint i = 0; i < languageFiles.length(); i++)
+{
+    if (languageFiles[i] == currentLanguage)
+    {
+        currentLangIndex = i;
+        break;
+    }
+}
+form.set_list_position(langlist, currentLangIndex);
 string[] wheelFolders = find_directories("sounds/wheels/*");
 wheelFolders.sort(natural_number_sort);
     int wheellist = form.create_list("Wheel Pack:", wheelFolders.length());
@@ -685,8 +706,15 @@ spinsettings();
 }
         if (form.is_pressed(apply))
         {
-            alert(translate_text("general.updated", "Updated"), "Spin settings updated!");
+int selectedLangIndex = form.get_list_position(langlist);
+if (selectedLangIndex >= 0 && selectedLangIndex < languageFiles.length())
+{
+    currentLanguage = languageFiles[selectedLangIndex];
+    languageFile = "languages/" + currentLanguage + ".lng";
+}
             writepreffs();
+    load_language(languageFile);
+            alert(translate_text("general.updated", "Updated"), "Spin settings updated!");
             wheelspin();
         }
         if (form.is_pressed(cancel))

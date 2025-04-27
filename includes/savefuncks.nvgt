@@ -1,5 +1,6 @@
 void load_language(string file)
 {
+    languageFile = file;
     file f;
     if (!f.open(file, "rb"))
     {
@@ -18,9 +19,9 @@ void load_language(string file)
             alert("Critical Error", "Default English language file is missing. Exiting app.");
             exit();
         }
-    }
+    }    
     lang.d.clear();
-    array<string> lines = string_split(f.read(), "\n");
+    array<string> lines = string_split(f.read(), "\r\n");
     for (uint i = 0; i < lines.length(); i++)
     {
         string line = trim(lines[i]);
@@ -33,7 +34,9 @@ void load_language(string file)
             lang.add(key, value);
         }
     }
-    f.close();
+    f.close();    
+    string filename = strip_directory(file);
+    currentLanguage = strip_extension(filename);
 }
 void readdata()
 {
@@ -142,6 +145,12 @@ if (st.d.exists("spinRandomRange"))
 {
 spinRandomRange = st.read_int("spinRandomRange");
 }
+    if (st.d.exists("currentLanguage"))
+    {
+        currentLanguage = st.read_string("currentLanguage");
+        languageFile = "languages/" + currentLanguage + ".lng";
+        load_language(languageFile);
+    }
 if (st.d.exists("wheeltype"))
 {
 wheeltype = st.read_string("wheeltype");
@@ -153,6 +162,7 @@ st.add("spinBaseDelay", spinBaseDelay);
 st.add("spinGrowth", spinGrowth);
 st.add("spinBaseTicks", spinBaseTicks);
 st.add("spinRandomRange", spinRandomRange);
+    st.add("currentLanguage", currentLanguage);
 st.add("wheeltype", wheeltype);
 st.save();
 }

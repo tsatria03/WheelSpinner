@@ -81,6 +81,9 @@ no_recent_wheels_title=No Recent Wheels
 no_recent_wheels_message=You haven't spun any wheels yet.
 pick_recent_wheel=Pick a recently spun wheel:
 
+# Note: The following sections below are not yet fully translated.
+# Modifying the text in these sections will currently have no effect inside the app.
+
 [AddWheel]
 new_wheel_window_title=New Wheel
 enter_wheel_name=Enter a name for your new wheel:

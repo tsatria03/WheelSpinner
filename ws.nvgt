@@ -52,15 +52,15 @@ wheelspin();
 void wheelspin()
 {
 form.reset();
-form.create_window("Wheel Spinner", false);
-int add = form.create_button("&Add Wheel");
-int edit = form.create_button("&Edit Wheel");
-int manage = form.create_button("&Manage Wheels");
-    int clearHistory = form.create_button("&Clear Spin History");
-    int resultsBox = form.create_input_box("Spin &History", join(resultsHistory, "\n"), "", 0, true, true, true);
-int spin = form.create_button("&Spin Wheel");
-int settings = form.create_button("Spin Se&ttings");
-int quit = form.create_button("&Quit");
+form.create_window(translate_text("general.app_title", "WheelSpinner, version ") + version, false);
+int add = form.create_button(translate_text("mainmenu.add_wheel", "&Add Wheel"));
+int edit = form.create_button(translate_text("mainmenu.edit_wheel", "&Edit Wheel"));
+int manage = form.create_button(translate_text("mainmenu.manage_wheels", "&Manage Wheels"));
+int clearHistory = form.create_button(translate_text("mainmenu.clear_spin_history", "&Clear Spin History"));
+int resultsBox = form.create_input_box(translate_text("mainmenu.spin_history", "Spin &History"), join(resultsHistory, "\n"), "", 0, true, true, true);
+int spin = form.create_button(translate_text("mainmenu.spin_wheel", "&Spin Wheel"));
+int settings = form.create_button(translate_text("mainmenu.spin_settings", "Spin Se&ttings"));
+int quit = form.create_button(translate_text("mainmenu.quit_app", "&Quit"));
 while (true)
 {
 wait(5);
@@ -70,7 +70,7 @@ if(alt_is_down() and key_pressed(KEY_F4) or key_repeating(KEY_ESCAPE))
     setupmenu(false);
 m.add_item(translate_text("general.yes", "Yes"), "yes");
 m.add_item(translate_text("general.no", "No"), "no");
-    m.intro_text = "Are you sure you want to exit?";
+m.intro_text = translate_text("mainmenu.confirm_exit", "Are you sure you want to exit?");
     int res = m.run();
     if(res==-1)
     {
@@ -112,13 +112,13 @@ spinsettings();
             setupmenu(false);
 m.add_item(translate_text("general.yes", "Yes"), "yes");
 m.add_item(translate_text("general.no", "No"), "no");
-            m.intro_text = "Are you sure you want to clear the spin results history?";
+m.intro_text = translate_text("mainmenu.confirm_clear_history", "Are you sure you want to clear the spin results history?");
             int res = m.run();
             if (res == -1) wheelspin();
             if (m.get_item_id(m.get_selected_item()) == "yes")
 {
                 resultsHistory.resize(0);
-                alert("Cleared", "Spin history cleared.");
+alert(translate_text("mainmenu.history_cleared_title", "Cleared"), translate_text("mainmenu.history_cleared_message", "Spin history cleared."));
 writedata();
                 wheelspin();
             }
@@ -132,7 +132,7 @@ if (form.is_pressed(quit))
     setupmenu(false);
 m.add_item(translate_text("general.yes", "Yes"), "yes");
 m.add_item(translate_text("general.no", "No"), "no");
-    m.intro_text = "Are you sure you want to exit?";
+m.intro_text = translate_text("mainmenu.confirm_exit", "Are you sure you want to exit?");
     int res = m.run();
     if(res==-1)
     {

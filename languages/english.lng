@@ -1,3 +1,4 @@
+#General
 WheelSpinner, version=WheelSpinner, version
 Error=Error
 Only one instance of this app can run at a time.=Only one instance of this app can run at a time.
@@ -10,6 +11,8 @@ Loaded=Loaded
 Success=Success
 Updated=Updated
 Exiting=Exiting
+
+#Main interface
 &Add Wheel=&Add Wheel
 &Edit Wheel=&Edit Wheel
 &Manage Wheels=&Manage Wheels
@@ -21,37 +24,53 @@ Are you sure you want to exit?=Are you sure you want to exit?
 Are you sure you want to clear the spin results history?=Are you sure you want to clear the spin results history?
 Cleared=Cleared
 Spin history cleared.=Spin history cleared.
+
+#ExportWheels
 Replace file=Replace file
 Append to file=Append to file
 Do you want to replace the existing file, or append to it?=Do you want to replace the existing file, or append to it?
 Failed to open file for writing.=Failed to open file for writing.
 Wheels exported to=Wheels exported to
 No wheels to export.=No wheels to export.
+
+#ExportSelectedWheels
 Export Selected Wheels=Export Selected Wheels
 Select wheels to export:=Select wheels to export:
 Nothing Selected=Nothing Selected
 You must select at least one wheel.=You must select at least one wheel.
 Selected wheels exported to=Selected wheels exported to
+
+#ImportWheels
 No wheels.txt file found.=No wheels.txt file found.
 Failed to open wheels.txt=Failed to open wheels.txt
 Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%
 No Wheels Imported=No Wheels Imported
 No wheels found in file.=No wheels found in file.
+
+#ImportSelectedWheels
 Import Selected Wheels=Import Selected Wheels
 Choose wheels to import:=Choose wheels to import:
+
+#WheelSettings
 Could not create settings.txt=Could not create settings.txt
 Settings exported to data/exported/settings.txt=Settings exported to data/exported/settings.txt
 No settings.txt file found.=No settings.txt file found.
 Failed to open settings.txt=Failed to open settings.txt
 Settings imported from settings.txt=Settings imported from settings.txt
+
+#SpinWheelOptions
 Invalid=Invalid
 Need at least 2 options to spin.=Need at least 2 options to spin.
 Spinning=Spinning
 The wheel landed on %result%.=The wheel landed on %result%.
 Would you like to spin the wheel again?=Would you like to spin the wheel again?
+
+#ShowRecentWheels
 No Recent Wheels=No Recent Wheels
 You haven't spun any wheels yet.=You haven't spun any wheels yet.
 Pick a recently spun wheel:=Pick a recently spun wheel:
+
+#AddWheel
 New Wheel=New Wheel
 Enter a name for your new wheel:=Enter a name for your new wheel:
 Invalid or duplicate name.=Invalid or duplicate name.
@@ -60,6 +79,8 @@ Enter a description for this wheel.=Enter a description for this wheel.
 Choices=Choices
 Separate your choices with commas.=Separate your choices with commas.
 Wheel added!=Wheel added!
+
+#ManageWheels
 Export all wheels to file=Export all wheels to file
 Export selected wheels to file=Export selected wheels to file
 Import all wheels from file=Import all wheels from file
@@ -67,6 +88,8 @@ Import selected wheels from file=Import selected wheels from file
 Wheel Management Menu=Wheel Management Menu
 Are you sure you want to export all wheels to a file?=Are you sure you want to export all wheels to a file?
 Are you sure you want to import all wheels from a file?=Are you sure you want to import all wheels from a file?
+
+#EditWheel
 No wheels available to edit.=No wheels available to edit.
 Are you sure you want to delete all wheels? This cannot be undone.=Are you sure you want to delete all wheels? This cannot be undone.
 All wheels have been deleted.=All wheels have been deleted.
@@ -113,6 +136,8 @@ Unlocked=Unlocked
 Wheel '%wheel%' has been unlocked. It can now be edited or deleted.=Wheel '%wheel%' has been unlocked. It can now be edited or deleted.
 Locked=Locked
 Wheel '%wheel%' has been locked. It can no longer be edited or deleted.=Wheel '%wheel%' has been locked. It can no longer be edited or deleted.
+
+#SpinWheelOptions
 All Wheels=All Wheels
 Most Recent Wheels=Most Recent Wheels
 Most Spun Wheels=Most Spun Wheels
@@ -124,16 +149,18 @@ No Match=No Match
 No wheels found matching %query%.=No wheels found matching %query%.
 Multiple Matches Found=Multiple Matches Found
 Pick one to spin:=Pick one to spin:
+
+#SpinSettings
 Spin Settings=Spin Settings
 Spin base delay.=Spin base delay.
 Spin growth factor.=Spin growth factor.
 Spin tick count.=Spin tick count.
 Spin randomness.=Spin randomness.
+Wheel Language:=Wheel Language:
 Wheel Pack:=Wheel Pack:
 Export Settings to File=Export Settings to File
 Import Settings from File=Import Settings from File
 &Save Settings=&Save Settings
 Are you sure you want to import your current spin settings from a file?=Are you sure you want to import your current spin settings from a file?
 Are you sure you want to export your current spin settings to a file?=Are you sure you want to export your current spin settings to a file?
-Updated=Updated
 Spin settings updated!=Spin settings updated!

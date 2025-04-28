@@ -81,21 +81,10 @@ string strip_directory(string path)
         return path.substr(lastSlash + 1);
     return path;
 }
-string translate_text(string text)
+string translate_text(string key)
 {
-if(currentlangfile=="english")
-return text;
-string[] parts=string_split(lngdata,"\r\n",true);
-for(uint i=0;i<parts.length();i++)
-{
-string[] q=string_split(parts[i],"=",true);
-if(q.length()<2) continue;
-if(string_contains(text,q[0],1)>-1)
-{
-text=string_replace(text,q[0],q[1],false);
-}
-}
-return text;
+    if (!g_lang.exists(key)) return key;
+    return string(g_lang[key]);
 }
 string trim(const string&in str)
 {
@@ -109,6 +98,23 @@ while (result.length() > 0 && (string_right(result, 1) == " " || string_right(re
 result = string_trim_right(result, 1);
 }
 return result;
+}
+void load_language(string langfile)
+{
+    g_lang.clear();
+    string[] lines = string_split(get_file_contents("languages/" + langfile + ".lng"), "\r\n");
+    for (uint i = 0; i < lines.length(); i++)
+    {
+        string line = trim(lines[i]);
+        if (line == "" || line[0] == ';' || line[0] == '#') continue;
+        int eq = line.find("=");
+        if (eq > 0)
+        {
+            string key = trim(line.substr(0, eq));
+            string value = trim(line.substr(eq + 1));
+            g_lang.set(key, value);
+        }
+    }
 }
 void setupmenu(bool music_added = true)
 {
@@ -479,7 +485,7 @@ void import_wheel_settings()
             else if (key == "language")
             {
                 currentlangfile = value;
-lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+load_language(currentlangfile);
             }
     }
     writepreffs();

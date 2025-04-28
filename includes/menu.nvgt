@@ -710,7 +710,8 @@ spinsettings();
             if (selectedLangIndex >= 0 && selectedLangIndex < languageFiles.length())
             {
                 currentlangfile = languageFiles[selectedLangIndex];
-lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+load_language(currentlangfile);
+show_game_window(translate_text("WheelSpinner, version") + " " + version);
             }
             writepreffs();
             alert("Updated", "Spin settings updated!");

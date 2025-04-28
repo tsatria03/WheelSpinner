@@ -108,12 +108,12 @@ spinRandomRange = st.read_int("spinRandomRange");
     if (st.d.exists("currentlangfile"))
     {
         currentlangfile = st.read_string("currentlangfile");
-lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+load_language(currentlangfile);
     }
     else
     {
         currentlangfile = "english";
-lngdata=get_file_contents("languages\\"+currentlangfile+".lng");
+load_language(currentlangfile);
     }
 if (st.d.exists("wheeltype"))
 {

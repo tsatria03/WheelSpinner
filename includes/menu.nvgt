@@ -1,16 +1,16 @@
 void add_wheel()
 {
-    string name = vd.input_box("New Wheel", "Enter a name for your new wheel:");
+    string name = vd.input_box(trl("New Wheel"), trl("Enter a name for your new wheel"));
     if (name == "" || wheels.exists(name))
     {
-        alert("Error", "Invalid or duplicate name.");
+        alert(trl("Error"), trl("Invalid or duplicate name."));
         wheelspin();
     }
-    string desc = vd.input_box("Description", "Enter a description for this wheel.");
-    string options = vd.input_box("Choices", "Separate your choices with commas.");
+    string desc = vd.input_box(trl("Description"), trl("Enter a description for this wheel."));
+    string options = vd.input_box(trl("Choices"), trl("Separate your choices with commas."));
     wheels[name] = options;
     if (desc != "") wheelDescriptions[name] = desc;
-    alert("Saved", "Wheel added!");
+    alert(trl("Saved"), trl("Wheel added!"));
     writedata();
     wheelspin();
 }
@@ -20,7 +20,7 @@ void edit_wheel()
     keys.sort_ascending();
     if (keys.length() == 0)
     {
-        alert("Error", "No wheels available to edit.");
+        alert(trl("Error"), trl("No wheels available to edit."));
         wheelspin();
     }
     setupmenu(false);
@@ -30,8 +30,8 @@ void edit_wheel()
         array<string>@ opts = string_split(string(wheels[key]), ", ");
         bool locked = lockedWheels.exists(key);
 int spins = spinCounts.exists(key) ? int(spinCounts[key]) : 0;
-        string status = locked ? "Locked" : "Unlocked";
-m.add_item(key + " (" + opts.length() + " choices. " + status + ", " + spins + " spins)", key);
+        string status = locked ? trl("Locked") : trl("Unlocked");
+        m.add_item(key + " (" + opts.length() + " " + trl("choices.") + " " + status + ", " + spins + " " + trl("spins") + ")", key);
     }
     bool allLocked = true;
     for (uint i = 0; i < keys.length(); i++)
@@ -44,8 +44,8 @@ m.add_item(key + " (" + opts.length() + " choices. " + status + ", " + spins + "
     }
 if (!allLocked)
 {
-    m.add_item("Delete all wheels", "deleteall");
-m.add_item("Delete selected wheels", "deleteselected");
+        m.add_item(trl("Delete all wheels"), "deleteall");
+        m.add_item(trl("Delete selected wheels"), "deleteselected");
 }
 bool anyUnlocked = false;
 for (uint i = 0; i < keys.length(); i++)
@@ -58,12 +58,12 @@ for (uint i = 0; i < keys.length(); i++)
 }
 if (anyUnlocked)
 {
-    m.add_item("Delete all unlocked wheels", "deleteunlocked");
+        m.add_item(trl("Delete all unlocked wheels"), "deleteunlocked");
 }
-    string toggleLabel = allLocked ? "Unlock all wheels" : "Lock all wheels";
+    string toggleLabel = allLocked ? trl("Unlock all wheels") : trl("Lock all wheels");
     m.add_item(toggleLabel, "togglelockall");
-    m.add_item("Back", "Back");
-    m.intro_text = "Select a wheel to edit. You have " + keys.length() + " wheels.";
+    m.add_item(trl("Back"), "Back");
+    m.intro_text=trl("Select a wheel to edit. You have ") + keys.length() + trl(" wheels.");
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "Back")
     {
@@ -73,26 +73,26 @@ if (anyUnlocked)
 if (selected == "deleteall")
 {
     setupmenu(false);
-    m.add_item("yes", "confirm");
-    m.add_item("no", "cancel");
-    m.intro_text = "Are you sure you want to delete all wheels? This cannot be undone.";
+        m.add_item(trl("yes"), "confirm");
+        m.add_item(trl("no"), "cancel");
+        m.intro_text = trl("Are you sure you want to delete all wheels? This cannot be undone.");
     int confirm = m.run();
     if (m.get_item_id(m.get_selected_item()) == "confirm")
     {
         wheels.clear();
         lockedWheels.clear();
         writedata();
-        alert("Deleted", "All wheels have been deleted.");
+            alert(trl("Deleted"), trl("All wheels have been deleted."));
     }
     wheelspin();
 }
 else if (selected == "deleteselected")
 {
     form.reset();
-    form.create_window("Delete Selected Wheels", false);
+        form.create_window(trl("Delete Selected Wheels"), false);
     array<string>@ unlocked = wheels.get_keys();
     unlocked.sort_ascending();
-    int checklist = form.create_list("Select wheels to delete:", unlocked.length(), true);
+        int checklist = form.create_list(trl("Select wheels to delete:"), unlocked.length(), true);
     for (uint i = 0; i < unlocked.length(); i++)
     {
         string name = unlocked[i];
@@ -101,8 +101,8 @@ else if (selected == "deleteselected")
             form.add_list_item(checklist, name, name);
         }
     }
-    int confirm = form.create_button("&Delete");
-    int cancel = form.create_button("&Cancel");
+        int confirm = form.create_button(trl("&Delete"));
+        int cancel = form.create_button(trl("&Cancel"));
     form.focus(checklist);
     while (true)
     {
@@ -113,7 +113,7 @@ else if (selected == "deleteselected")
             int[]@ checked = form.get_checked_list_items(checklist);
             if (checked.length() == 0)
             {
-                alert("None Selected", "You must select at least one wheel.");
+                    alert(trl("None Selected"), trl("You must select at least one wheel."));
                 wheelspin();
             }
             for (uint i = 0; i < checked.length(); i++)
@@ -125,7 +125,7 @@ else if (selected == "deleteselected")
                 if (wheelDescriptions.exists(name)) wheelDescriptions.erase(name);
             }
             writedata();
-            alert("Deleted", "Selected wheels have been deleted.");
+                alert(trl("Deleted"), trl("Selected wheels have been deleted."));
             wheelspin();
         }
         if (form.is_pressed(cancel) || key_pressed(KEY_ESCAPE))
@@ -137,9 +137,9 @@ else if (selected == "deleteselected")
 else if (selected == "deleteunlocked")
 {
     setupmenu(false);
-    m.add_item("yes", "confirm");
-    m.add_item("no", "cancel");
-    m.intro_text = "Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.";
+        m.add_item(trl("yes"), "confirm");
+        m.add_item(trl("no"), "cancel");
+        m.intro_text=trl("Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.");
     int confirm = m.run();
     if (m.get_item_id(m.get_selected_item()) == "confirm")
     {
@@ -153,7 +153,7 @@ else if (selected == "deleteunlocked")
             }
         }
         writedata();
-        alert("Deleted", "All unlocked wheels have been deleted.");
+            alert(trl("Deleted"), trl("All unlocked wheels have been deleted."));
     }
     wheelspin();
 }
@@ -162,15 +162,15 @@ else if (selected == "deleteunlocked")
         setupmenu(false);
         if (allLocked)
         {
-            m.add_item("yes", "confirm");
-            m.add_item("no", "cancel");
-            m.intro_text = "Are you sure you want to unlock all wheels?";
+            m.add_item(trl("yes"), "confirm");
+            m.add_item(trl("no"), "cancel");
+            m.intro_text=trl("Are you sure you want to unlock all wheels?");
         }
         else
         {
-            m.add_item("yes", "confirm");
-            m.add_item("no", "cancel");
-            m.intro_text = "Are you sure you want to lock all wheels?";
+            m.add_item(trl("yes"), "confirm");
+            m.add_item(trl("no"), "cancel");
+            m.intro_text=trl("Are you sure you want to lock all wheels?");
         }
         int confirm = m.run();
         if (m.get_item_id(m.get_selected_item()) == "confirm")
@@ -178,7 +178,7 @@ else if (selected == "deleteunlocked")
             if (allLocked)
             {
                 lockedWheels.clear();
-                alert("All wheels unlocked", "All wheels have been unlocked. They can now be edited or deleted.");
+                alert(trl("All wheels unlocked"), trl("All wheels have been unlocked. They can now be edited or deleted."));
             }
             else
             {
@@ -186,7 +186,7 @@ else if (selected == "deleteunlocked")
                 {
                     lockedWheels[keys[i]] = true;
                 }
-                alert("All wheels locked", "All wheels have been locked. They can no longer be edited or deleted.");
+                alert(trl("All wheels locked"), trl("All wheels have been locked. They can no longer be edited or deleted."));
             }
             writedata();
         }
@@ -196,30 +196,30 @@ else if (selected == "deleteunlocked")
     bool isLocked = lockedWheels.exists(selected);
     if (!isLocked)
     {
-m.add_item("Change description", "eddesc");
-m.add_item("Show description", "viewdesc");
-        m.add_item("Edit choices", "edit");
-        m.add_item("Delete wheel", "delete");
-        m.add_item("Rename wheel", "rename");
+        m.add_item(trl("Change description"), "eddesc");
+        m.add_item(trl("Show description"), "viewdesc");
+        m.add_item(trl("Edit choices"), "edit");
+        m.add_item(trl("Delete wheel"), "delete");
+        m.add_item(trl("Rename wheel"), "rename");
     }
-if(isLocked==true) m.add_item("Show description", "viewdesc");
-    m.add_item(isLocked ? "Unlock wheel" : "Lock wheel", "togglelock");
-    m.add_item("Back", "back");
-    m.intro_text = "What would you like to do with the wheel '" + selected + "'?";
+    if (isLocked) m.add_item(trl("Show description"), "viewdesc");
+    m.add_item(isLocked ? trl("Unlock wheel") : trl("Lock wheel"), "togglelock");
+    m.add_item(trl("Back"), "back");
+    m.intro_text=trl("What would you like to do with the wheel '") + selected + "'?";
     int actionRes = m.run();
     string action = m.get_item_id(m.get_selected_item());
     if (action == "edit")
     {
         string current = string(wheels[selected]);
-        string edited = vd.input_box("Edit", "Edit your choices:", current);
+        string edited = vd.input_box(trl("Edit"), trl("Edit your choices:"), current);
         if (edited == "" && current != "")
         {
-            alert("Cancelled", "No changes were made.");
+            alert(trl("Cancelled"), trl("No changes were made."));
         }
         else
         {
             wheels[selected] = edited;
-            alert("Saved", "Changes saved.");
+            alert(trl("Saved"), trl("Changes saved."));
             writedata();
         }
         wheelspin();
@@ -227,10 +227,10 @@ if(isLocked==true) m.add_item("Show description", "viewdesc");
 else if (action == "eddesc")
 {
     string current = wheelDescriptions.exists(selected) ? string(wheelDescriptions[selected]) : "";
-    string edited = vd.input_box("Change Description", "Enter a new description for this wheel:", current);
+        string edited = vd.input_box(trl("Change Description"), trl("Enter a new description for this wheel:"), current);
     if (edited == "" && current != "")
     {
-        alert("Cancelled", "No changes were made.");
+            alert(trl("Cancelled"), trl("No changes were made."));
     }
     else if (edited != current)
     {
@@ -242,7 +242,7 @@ else if (action == "eddesc")
         {
             wheelDescriptions[selected] = edited;
         }
-        alert("Saved", "Description updated.");
+            alert(trl("Saved"), trl("Description updated."));
         writedata();
     }
     wheelspin();
@@ -252,51 +252,51 @@ else if (action == "viewdesc")
     string desc = wheelDescriptions.exists(selected) ? string(wheelDescriptions[selected]) : "";
     if (desc == "")
     {
-        alert("No Description", "This wheel doesn't have a description yet.");
+            alert(trl("No Description"), trl("This wheel doesn't have a description yet."));
     }
     else
     {
-        dlg("Description for '" + selected + "':\n\n" + desc);
+            dlg(trl("Description for '") + selected + "':\n\n" + desc);
     }
     wheelspin();
 }
     else if (action == "rename")
     {
-        string newName = vd.input_box("Rename", "Enter a new name for this wheel:", selected);
+        string newName = vd.input_box(trl("Rename"), trl("Enter a new name for this wheel:"), selected);
         if (newName != "" && !wheels.exists(newName))
         {
             wheels[newName] = wheels[selected];
             wheels.erase(selected);
-            alert("Renamed", "Wheel has been renamed.");
+            alert(trl("Renamed"), trl("Wheel has been renamed."));
             writedata();
         }
         else
         {
-            alert("Error", "Invalid or duplicate name.");
+            alert(trl("Error"), trl("Invalid or duplicate name."));
         }
         wheelspin();
     }
     else if (action == "delete")
     {
         setupmenu(false);
-        m.add_item("yes", "delete");
-        m.add_item("no", "cancel");
-        m.intro_text = "Are you sure you want to delete the wheel '" + selected + "'?";
+        m.add_item(trl("yes"), "delete");
+        m.add_item(trl("no"), "cancel");
+        m.intro_text=trl("Are you sure you want to delete the wheel '") + selected + "'?";
         int confirm = m.run();
         if (m.get_item_id(m.get_selected_item()) == "delete")
         {
             wheels.erase(selected);
-            alert("Deleted", "Wheel has been deleted.");
+            alert(trl("Deleted"), trl("Wheel has been deleted."));
             writedata();
         }
         wheelspin();
     }
     else if (action == "togglelock")
     {
-        string promptText = isLocked ? "Are you sure you want to unlock the wheel '" + selected + "'?" : "Are you sure you want to lock the wheel '" + selected + "'?";
+        string promptText = isLocked ? trl("Are you sure you want to unlock the wheel '") + selected + "'?" : trl("Are you sure you want to lock the wheel '") + selected + "'?";
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
+        m.add_item(trl("yes"), "confirm");
+        m.add_item(trl("no"), "cancel");
         m.intro_text = promptText;
         int confirm = m.run();
         if (m.get_item_id(m.get_selected_item()) == "confirm")
@@ -304,12 +304,12 @@ else if (action == "viewdesc")
             if (isLocked)
             {
                 lockedWheels.erase(selected);
-                alert("Unlocked", "Wheel '" + selected + "' has been unlocked. It can now be edited or deleted.");
+                alert(trl("Unlocked"), trl("Wheel '") + selected + trl("' has been unlocked. It can now be edited or deleted."));
             }
             else
             {
                 lockedWheels[selected] = true;
-                alert("Locked", "Wheel '" + selected + "' has been locked. It can no longer be edited or deleted.");
+                alert(trl("Locked"), trl("Wheel '") + selected + trl("' has been locked. It can no longer be edited or deleted."));
             }
             writedata();
         }
@@ -319,20 +319,20 @@ else if (action == "viewdesc")
 void manage_wheels()
 {
     setupmenu(false);
-    m.add_item("Export all wheels to file", "export");
-m.add_item("Export selected wheels to file", "export_selected");
-    m.add_item("Import all wheels from file", "import");
-m.add_item("Import selected wheels from file", "import_selected");
-    m.add_item("Back", "back");
-    m.intro_text = "Wheel Management Menu";
+    m.add_item(trl("Export all wheels to file"), "export");
+m.add_item(trl("Export selected wheels to file"), "export_selected");
+    m.add_item(trl("Import all wheels from file"), "import");
+m.add_item(trl("Import selected wheels from file"), "import_selected");
+    m.add_item(trl("Back"), "back");
+    m.intro_text=trl("Wheel Management Menu");
     int res = m.run();
     string selected = m.get_item_id(m.get_selected_item());
     if (selected == "export")
     {
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
-        m.intro_text = "Are you sure you want to export all wheels to a file?";
+        m.add_item(trl("yes"), "confirm");
+        m.add_item(trl("no"), "cancel");
+        m.intro_text=trl("Are you sure you want to export all wheels to a file?");
         int confirm = m.run();
         if (m.get_item_id(m.get_selected_item()) == "confirm")
         {
@@ -347,9 +347,9 @@ else if (selected == "export_selected")
     else if (selected == "import")
     {
         setupmenu(false);
-        m.add_item("yes", "confirm");
-        m.add_item("no", "cancel");
-        m.intro_text = "Are you sure you want to import all wheels from a file?";
+        m.add_item(trl("yes"), "confirm");
+        m.add_item(trl("no"), "cancel");
+        m.intro_text=trl("Are you sure you want to import all wheels from a file?");
         int confirm = m.run();
         if (m.get_item_id(m.get_selected_item()) == "confirm")
         {
@@ -378,7 +378,7 @@ void show_recent_wheels()
     writedata();
     if (recentWheels.length() == 0)
 {
-        alert("No Recent Wheels", "You haven't spun any wheels yet.");
+        alert(trl("No Recent Wheels"), trl("You haven't spun any wheels yet."));
         wheelspin();
     }
     setupmenu(false);
@@ -389,8 +389,8 @@ void show_recent_wheels()
         int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
         m.add_item(name + " (" + opts.length() + " choices, " + spins + " spins)", name);
     }
-    m.add_item("Back", "back");
-    m.intro_text = "Pick a recently used wheel to spin again.";
+    m.add_item(trl("Back"), "back");
+    m.intro_text=trl("Pick a recently used wheel to spin again.");
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "back") wheelspin();
     string chosen = m.get_item_id(m.get_selected_item());
@@ -399,12 +399,12 @@ void show_recent_wheels()
 void spin_wheel()
 {
     setupmenu(false);
-    m.add_item("All Wheels", "all");
-m.add_item("Most Recent Wheels", "rec");
-    m.add_item("Most Spun Wheels", "top");
-    m.add_item("Search for a Wheel", "search");
-    m.add_item("Back", "back");
-    m.intro_text = "Choose how you'd like to pick a wheel to spin:";
+    m.add_item(trl("All Wheels"), "all");
+m.add_item(trl("Most Recent Wheels"), "rec");
+    m.add_item(trl("Most Spun Wheels"), "top");
+    m.add_item(trl("Search for a Wheel"), "search");
+    m.add_item(trl("Back"), "back");
+    m.intro_text=trl("Choose how you'd like to pick a wheel to spin");
     int res = m.run();
     string pick = m.get_item_id(m.get_selected_item());
     if (pick == "back")
@@ -425,7 +425,7 @@ spin_from_list(true);
 }
 else if (pick == "search")
 {
-    string query = vd.input_box("Search", "Type part of a wheel's name to spin it:");
+    string query = vd.input_box(trl("Search"), trl("Type part of a wheel's name to spin it"));
     if (query != "")
     {
         array<string>@ keys = wheels.get_keys();
@@ -439,7 +439,7 @@ else if (pick == "search")
         }
         if (matches.length() == 0)
         {
-            alert("No Match", "No wheels found matching " + query);
+            alert(trl("No Match"), trl("No wheels found matching ") + query);
 wheelspin();
         }
         else if (matches.length() == 1)
@@ -453,8 +453,8 @@ wheelspin();
             {
                 m.add_item(matches[i], matches[i]);
             }
-            m.add_item("Back", "back");
-            m.intro_text = "Multiple matches found. Pick one to spin:";
+            m.add_item(trl("Back"), "back");
+            m.intro_text=trl("Multiple matches found. Pick one to spin.");
             int res = m.run();
             if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
             {
@@ -477,11 +477,11 @@ void spin_same_wheel(string chosen)
     array<string>@ options = string_split(string(wheels[chosen]), ", ");
     if (options.length() < 2)
     {
-        alert("Invalid", "Need at least 2 options to spin.");
+        alert(trl("Invalid"), trl("You need at least 2 options to spin."));
         wheelspin();
     }
     int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-speak("Spinning " + chosen);
+speak(trl("Spinning ") + chosen);
     for (uint i = 0; i < spinTicks; i++)
     {
         uint idx = random(0, options.length() - 1);
@@ -490,8 +490,11 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     }
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
-    dlg("The wheel landed on " + result + ".");
-resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
+    dlg(trl("The wheel landed on ") + result + ".");
+string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
+msg = string_replace(msg, "%wheel%", chosen, true);
+msg = string_replace(msg, "%result%", result, true);
+resultsHistory.insert_last(msg);
 if (resultsHistory.length() > 100)
 {
     resultsHistory.remove_at(0);
@@ -499,9 +502,9 @@ if (resultsHistory.length() > 100)
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
 writedata();
     setupmenu(false);
-    m.add_item("yes", "again");
-    m.add_item("no", "back");
-    m.intro_text = "Would you like to spin the wheel again?";
+    m.add_item(trl("yes"), "again");
+    m.add_item(trl("no"), "back");
+    m.intro_text=trl("Would you like to spin the wheel again?");
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "again")
     {
@@ -517,7 +520,7 @@ void spin_from_list(bool mostUsed)
     array<string>@ keys = wheels.get_keys();
     if (keys.length() == 0)
     {
-        alert("Error", "No wheels to spin.");
+        alert(trl("Error"), trl("No wheels to spin."));
         wheelspin();
     }
 if (mostUsed)
@@ -534,11 +537,20 @@ if (mostUsed)
         string key = keys[i];
         array<string>@ opts = string_split(string(wheels[key]), ", ");
         int spins = spinCounts.exists(key) ? int(spinCounts[key]) : 0;
-        m.add_item(key + " (" + opts.length() + " choices. " + spins + " spins)", key);
+        m.add_item(key + " (" + opts.length() + trl(" choices. ") + spins + trl(" spins)"), key);
     }
-    m.add_item("random", "random");
-    m.add_item("Back", "back");
-    m.intro_text = mostUsed ? "These are your most spun wheels. Choose one to spin:" : "Pick a wheel to spin. You have " + keys.length() + " wheels.";
+    m.add_item(trl("random"), "random");
+    m.add_item(trl("Back"), "back");
+   if (mostUsed)
+    {
+        m.intro_text = trl("These are your most spun wheels. Choose one to spin:");
+    }
+    else
+    {
+        string msg = trl("Pick a wheel to spin. You have %count% wheels.");
+        msg = string_replace(msg, "%count%", format_int(keys.length()), true);
+        m.intro_text = msg;
+    }
     int res = m.run();
     if (res == -1 || m.get_item_id(m.get_selected_item()) == "back")
     {
@@ -556,11 +568,11 @@ void spin_selected_wheel(string chosen)
     array<string>@ options = string_split(string(wheels[chosen]), ", ");
     if (options.length() < 2)
     {
-        alert("Invalid", "Need at least 2 options to spin.");
+        alert(trl("Invalid"), trl("You need at least 2 options to spin."));
         wheelspin();
     }
     int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-    speak("Spinning " + chosen);
+    speak(trl("Spinning ") + chosen);
     for (uint i = 0; i < spinTicks; i++)
     {
         uint idx = random(0, options.length() - 1);
@@ -569,8 +581,11 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
     }
     string result = trim(options[random(0, options.length() - 1)]);
 pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*ding*"), false);
-    dlg("The wheel landed on " + result + ".");
-resultsHistory.insert_last("You spun the \"" + chosen + "\" wheel." + "\nThe wheel landed on " + result + ".");
+    dlg(trl("The wheel landed on ") + result + ".");
+string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
+msg = string_replace(msg, "%wheel%", chosen, true);
+msg = string_replace(msg, "%result%", result, true);
+resultsHistory.insert_last(msg);
 if (resultsHistory.length() > 100)
 {
     resultsHistory.remove_at(0);
@@ -579,9 +594,9 @@ if (resultsHistory.length() > 100)
     update_recent_wheels(chosen);
     writedata();
     setupmenu(false);
-    m.add_item("yes", "again");
-    m.add_item("no", "back");
-    m.intro_text = "Would you like to spin the wheel again?";
+    m.add_item(trl("yes"), "again");
+    m.add_item(trl("no"), "back");
+    m.intro_text=trl("Would you like to spin the wheel again?");
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "again")
     {
@@ -595,18 +610,18 @@ if (resultsHistory.length() > 100)
 void spinsettings()
 {
     form.reset();
-    form.create_window("Spin Settings", false);
-    int baseSlider = form.create_slider("Spin base delay.", spinBaseDelay, 1, 100, 1);
-    int growthSlider = form.create_slider("Spin growth factor.", spinGrowth, 1, 100, 1);
-    int ticksSlider = form.create_slider("Spin tick count.", spinBaseTicks, 1, 100, 1);
-    int rangeSlider = form.create_slider("Spin randomness.", spinRandomRange, 1, 100, 1);
+    form.create_window(trl("Spin Settings"), false);
+    int baseSlider = form.create_slider(trl("Spin base delay."), spinBaseDelay, 1, 100, 1);
+    int growthSlider = form.create_slider(trl("Spin growth factor."), spinGrowth, 1, 100, 1);
+    int ticksSlider = form.create_slider(trl("Spin tick count."), spinBaseTicks, 1, 100, 1);
+    int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
     string[] languageFiles = find_files("languages\\*.lng");
     for (uint i = 0; i < languageFiles.length(); i++)
     {
         languageFiles[i] = strip_extension(strip_directory(languageFiles[i]));
     }
     languageFiles.sort_ascending();
-    int langList = form.create_list("Wheel Language:", languageFiles.length());
+    int langList = form.create_list(trl("Wheel Language: "), languageFiles.length());
     for (uint i = 0; i < languageFiles.length(); i++)
     {
         form.add_list_item(langList, languageFiles[i], languageFiles[i]);
@@ -623,7 +638,7 @@ void spinsettings()
     form.set_list_position(langList, currentLangIndex);
 string[] wheelFolders = find_directories("sounds/wheels/*");
 wheelFolders.sort(natural_number_sort);
-    int wheellist = form.create_list("Wheel Pack:", wheelFolders.length());
+    int wheellist = form.create_list(trl("Wheel Pack: "), wheelFolders.length());
     array<string> wheelOptions;
     for (uint i = 0; i < wheelFolders.length(); i++)
     {
@@ -641,10 +656,10 @@ wheelFolders.sort(natural_number_sort);
         }
     }
     form.set_list_position(wheellist, wheelIndex);
-int exportBtn = form.create_button("Export Settings to File");
-int importBtn = form.create_button("Import Settings from File");
-    int apply = form.create_button("&Save Settings");
-    int cancel = form.create_button("&Cancel");
+int exportBtn = form.create_button(trl("Export Settings to File"));
+int importBtn = form.create_button(trl("Import Settings from File"));
+    int apply = form.create_button(trl("&Save Settings"));
+    int cancel = form.create_button(trl("&Cancel"));
     form.focus(baseSlider);
     while (true)
     {
@@ -667,9 +682,9 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
 if (form.is_pressed(importBtn))
 {
     setupmenu(false);
-    m.add_item("yes", "yes");
-    m.add_item("no", "no");
-    m.intro_text = "Are you sure you want to import your current spin settings from a file?";
+    m.add_item(trl("yes"), "yes");
+    m.add_item(trl("no"), "no");
+    m.intro_text=trl("Are you sure you want to import your current spin settings from a file?");
     int confirm = m.run();
     if(confirm==-1)
     {
@@ -687,9 +702,9 @@ spinsettings();
 if (form.is_pressed(exportBtn))
 {
     setupmenu(false);
-    m.add_item("yes", "yes");
-    m.add_item("no", "no");
-    m.intro_text = "Are you sure you want to export your current spin settings to a file?";
+    m.add_item(trl("yes"), "yes");
+    m.add_item(trl("no"), "no");
+    m.intro_text=trl("Are you sure you want to export your current spin settings to a file?");
     int confirm = m.run();
     if(confirm==-1)
     {
@@ -711,10 +726,10 @@ spinsettings();
             {
                 currentlangfile = languageFiles[selectedLangIndex];
 load_language(currentlangfile);
-show_game_window(translate_text("WheelSpinner, version") + " " + version);
+show_game_window(trl("WheelSpinner, version") + " " + version);
             }
             writepreffs();
-            alert("Updated", "Spin settings updated!");
+            alert(trl("Updated"), trl("Spin settings updated!"));
             wheelspin();
         }
         if (form.is_pressed(cancel))

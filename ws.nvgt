@@ -37,10 +37,10 @@ set_sound_decryption_key("BRn2x3BJd3O0KrB7kb2L6cY4qJYEjVt5OhuVzJmmsoj9wampZL3IAx
 readdata();
 readpreffs();
 load_language(currentlangfile);
-show_game_window(translate_text("WheelSpinner, version") + " " + version);
+show_game_window(trl("WheelSpinner, version") + " " + version);
 if (app.is_already_running)
 {
-alert(translate_text("Error"), translate_text("Only one instance of this app can run at a time."));
+alert(trl("Error"), trl("Only one instance of this app can run at a time."));
 exit();
 }
 else
@@ -52,15 +52,15 @@ wheelspin();
 void wheelspin()
 {
 form.reset();
-form.create_window("Wheel Spinner", false);
-int add = form.create_button("&Add Wheel");
-int edit = form.create_button("&Edit Wheel");
-int manage = form.create_button("&Manage Wheels");
-    int clearHistory = form.create_button("&Clear Spin History");
-    int resultsBox = form.create_input_box("Spin &History", join(resultsHistory, "\n"), "", 0, true, true, true);
-int spin = form.create_button("&Spin Wheel");
-int settings = form.create_button("Spin Se&ttings");
-int quit = form.create_button("&Quit");
+form.create_window(trl("Wheel Spinner"), false);
+int add = form.create_button(trl("&Add Wheel"));
+int edit = form.create_button(trl("&Edit Wheel"));
+int manage = form.create_button(trl("&Manage Wheels"));
+    int clearHistory = form.create_button(trl("&Clear Spin History"));
+    int resultsBox = form.create_input_box(trl("Spin &History"), join(resultsHistory, "\n"), "", 0, true, true, true);
+int spin = form.create_button(trl("&Spin Wheel"));
+int settings = form.create_button(trl("Spin Se&ttings"));
+int quit = form.create_button(trl("&Quit"));
 while (true)
 {
 wait(5);
@@ -68,9 +68,9 @@ form.monitor();
 if(alt_is_down() and key_pressed(KEY_F4) or key_repeating(KEY_ESCAPE))
 {
     setupmenu(false);
-    m.add_item("Yes", "yes");
-    m.add_item("No", "no");
-    m.intro_text = "Are you sure you want to exit?";
+    m.add_item(trl("Yes"), "yes");
+    m.add_item(trl("No"), "no");
+    m.intro_text =trl("Are you sure you want to exit?");
     int res = m.run();
     if(res==-1)
     {
@@ -78,7 +78,7 @@ wheelspin();
 }
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {
-        speak("Exiting");
+        speak(trl("Exiting"));
         wait(500);
         exit();
     }
@@ -110,15 +110,15 @@ spinsettings();
         if (form.is_pressed(clearHistory))
 {
             setupmenu(false);
-            m.add_item("Yes", "yes");
-            m.add_item("No", "no");
-            m.intro_text = "Are you sure you want to clear the spin results history?";
+            m.add_item(trl("Yes"), "yes");
+            m.add_item(trl("No"), "no");
+            m.intro_text=trl("Are you sure you want to clear the spin results history?");
             int res = m.run();
             if (res == -1) wheelspin();
             if (m.get_item_id(m.get_selected_item()) == "yes")
 {
                 resultsHistory.resize(0);
-                alert("Cleared", "Spin history cleared.");
+                alert(trl("Cleared"), trl("Spin history cleared."));
 writedata();
                 wheelspin();
             }
@@ -130,9 +130,9 @@ writedata();
 if (form.is_pressed(quit))
 {
     setupmenu(false);
-    m.add_item("Yes", "yes");
-    m.add_item("No", "no");
-    m.intro_text = "Are you sure you want to exit?";
+    m.add_item(trl("Yes"), "yes");
+    m.add_item(trl("No"), "no");
+    m.intro_text=trl("Are you sure you want to exit?");
     int res = m.run();
     if(res==-1)
     {
@@ -140,7 +140,7 @@ wheelspin();
 }
     if (m.get_item_id(m.get_selected_item()) == "yes")
     {
-        speak("Exiting");
+        speak(trl("Exiting"));
         wait(500);
         exit();
     }

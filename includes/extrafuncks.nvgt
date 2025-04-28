@@ -81,7 +81,7 @@ string strip_directory(string path)
         return path.substr(lastSlash + 1);
     return path;
 }
-string translate_text(string key)
+string trl(string key)
 {
     if (!g_lang.exists(key)) return key;
     return string(g_lang[key]);
@@ -139,10 +139,10 @@ m.wrap_sound = "menuwrap.ogg";
 void export_wheels()
 {
     setupmenu(false);
-    m.add_item("Replace file", "replace");
-    m.add_item("Append to file", "append");
-    m.add_item("Cancel", "cancel");
-    m.intro_text = "Do you want to replace the existing file, or append to it?";
+    m.add_item(trl("Replace file"), "replace");
+    m.add_item(trl("Append to file"), "append");
+    m.add_item(trl("Cancel"), "cancel");
+    m.intro_text=trl("Do you want to replace the existing file, or append to it?");
     int res = m.run();
     string mode = m.get_item_id(m.get_selected_item());
     if (res==-1 || mode == "cancel") wheelspin();
@@ -166,7 +166,7 @@ void export_wheels()
     file f;
     if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
     {
-        alert("Error", "Failed to open file for writing.");
+        alert(trl("Error"), trl("Failed to open file for writing."));
         wheelspin();
     }
     array<string>@ keys = wheels.get_keys();
@@ -185,7 +185,7 @@ void export_wheels()
         f.write(name + "_spins=" + ("" + spins) + "\r\n");
     }
     f.close();
-    alert("Success", "Wheels exported to " + filepath);
+    alert(trl("Success"), trl("Wheels exported to ") + filepath);
     wheelspin();
 }
 void export_selected_wheels()
@@ -194,18 +194,18 @@ void export_selected_wheels()
     keys.sort_ascending();
     if (keys.length() == 0)
     {
-        alert("Error", "No wheels to export.");
+        alert(trl("Error"), trl("No wheels to export."));
         wheelspin();
     }
     form.reset();
-    form.create_window("Export Selected Wheels", false);
-    int list = form.create_list("Select wheels to export:", keys.length(), true);
+    form.create_window(trl("Export Selected Wheels"), false);
+    int list = form.create_list(trl("Select wheels to export"), keys.length(), true);
     for (uint i = 0; i < keys.length(); i++)
     {
         form.add_list_item(list, keys[i], keys[i]);
     }
-    int exportBtn = form.create_button("&Export", true);
-    int cancelBtn = form.create_button("&Cancel");
+    int exportBtn = form.create_button(trl("&Export"), true);
+    int cancelBtn = form.create_button(trl("&Cancel"));
     form.focus(list);
     while (true)
     {
@@ -216,14 +216,14 @@ void export_selected_wheels()
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
             {
-                alert("Nothing selected", "You must select at least one wheel.");
+                alert(trl("Nothing selected"), trl("You must select at least one wheel."));
                 wheelspin();
             }
             setupmenu(false);
-            m.add_item("Replace file", "replace");
-            m.add_item("Append to file", "append");
-            m.add_item("Cancel", "cancel");
-            m.intro_text = "Do you want to replace the existing file, or append to it?";
+            m.add_item(trl("Replace file"), "replace");
+            m.add_item(trl("Append to file"), "append");
+            m.add_item(trl("Cancel"), "cancel");
+            m.intro_text=trl("Do you want to replace the existing file, or append to it?");
             int res = m.run();
             string mode = m.get_item_id(m.get_selected_item());
             if (res==-1 || mode == "cancel") wheelspin();
@@ -247,7 +247,7 @@ void export_selected_wheels()
             file f;
             if (!f.open(filepath, mode == "append" ? "ab" : "wb"))
             {
-                alert("Error", "Failed to open file for writing.");
+                alert(trl("Error"), trl("Failed to open file for writing."));
                 wheelspin();
             }
             for (uint i = 0; i < checked.length(); i++)
@@ -264,7 +264,7 @@ void export_selected_wheels()
                 f.write(name + "_spins=" + ("" + spins) + "\r\n");
             }
             f.close();
-            alert("Success", "Selected wheels exported to " + filepath);
+            alert(trl("Success"), trl("Selected wheels exported to ") + filepath);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
@@ -275,13 +275,13 @@ void import_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert("Error", "No wheels.txt file found.");
+        alert(trl("Error"), trl("No wheels.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert("Error", "Failed to open wheels.txt");
+        alert(trl("Error"), trl("Failed to open wheels.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -335,21 +335,23 @@ if (bufferSpins.exists(name))
     spinCounts[name] = int(parse_int(string(bufferSpins[name])));
     }
     writedata();
-    string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
-    alert("Success", msg);
+string msg = trl("Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
+msg = string_replace(msg, "%imported%", format_int(imported), true);
+msg = string_replace(msg, "%skipped%", format_int(skipped), true);
+alert(trl("Success"), msg);
     wheelspin();
 }
 void import_selected_wheels()
 {
     if (!file_exists("data/exported/wheels.txt"))
 {
-        alert("Error", "No wheels.txt file found.");
+        alert(trl("Error"), trl("No wheels.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/wheels.txt", "rb"))
 {
-        alert("Error", "Failed to open wheels.txt");
+        alert(trl("Error"), trl("Failed to open wheels.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -384,16 +386,16 @@ else
     }
     if (importNames.length() == 0)
 {
-        alert("No Wheels Imported", "No wheels found in file.");
+        alert(trl("No Wheels Imported"), trl("No wheels found in file."));
         wheelspin();
     }
     form.reset();
-    form.create_window("Import Selected Wheels", false);
-    int list = form.create_list("Choose wheels to import:", importNames.length(), true);
+    form.create_window(trl("Import Selected Wheels"), false);
+    int list = form.create_list(trl("Choose wheels to import"), importNames.length(), true);
     for (uint i = 0; i < importNames.length(); i++)
         form.add_list_item(list, importNames[i], importNames[i]);
-    int importBtn = form.create_button("&Import",true);
-    int cancelBtn = form.create_button("&Cancel");
+    int importBtn = form.create_button(trl("&Import"),true);
+    int cancelBtn = form.create_button(trl("&Cancel"));
     form.focus(list);
     while (true)
 {
@@ -404,7 +406,7 @@ else
             int[]@ checked = form.get_checked_list_items(list);
             if (checked.length() == 0)
 {
-                alert("Nothing Selected", "You must select at least one wheel.");
+                alert(trl("Nothing Selected"), trl("You must select at least one wheel."));
                 wheelspin();
             }
             int imported = 0, skipped = 0;
@@ -427,8 +429,10 @@ if (bufferSpins.exists(name))
                 imported++;
             }
             writedata();
-            string msg = "Import complete.\n\nWheels imported: " + imported + "\n, Duplicates skipped: " + skipped;
-            alert("Success", msg);
+string msg = trl("Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%");
+msg = string_replace(msg, "%imported%", format_int(imported), true);
+msg = string_replace(msg, "%skipped%", format_int(skipped), true);
+alert(trl("Success"), msg);
             wheelspin();
         }
         if (form.is_pressed(cancelBtn) || key_pressed(KEY_ESCAPE))
@@ -441,7 +445,7 @@ void export_wheel_settings()
     file f;
     if (!f.open("data/exported/settings.txt", "wb"))
 {
-        alert("Error", "Could not create settings.txt");
+        alert(trl("Error"), trl("Could not create settings.txt"));
         wheelspin();
     }
     f.write("spinBaseDelay=" + spinBaseDelay + "\r\n");
@@ -451,20 +455,20 @@ void export_wheel_settings()
     f.write("currentlangfile=" + currentlangfile + "\n");
     f.write("wheeltype=" + wheeltype + "\r\n");
     f.close();
-    alert("Saved", "Settings exported to data/exported/settings.txt");
+    alert(trl("Saved"), trl("Settings exported to data/exported/settings.txt"));
     wheelspin();
 }
 void import_wheel_settings()
 {
     if (!file_exists("data/exported/settings.txt"))
 {
-        alert("Error", "No settings.txt file found.");
+        alert(trl("Error"), trl("No settings.txt file found."));
         wheelspin();
     }
     file f;
     if (!f.open("data/exported/settings.txt", "rb"))
 {
-        alert("Error", "Failed to open settings.txt");
+        alert(trl("Error"), trl("Failed to open settings.txt"));
         wheelspin();
     }
     string content = f.read();
@@ -489,7 +493,7 @@ load_language(currentlangfile);
             }
     }
     writepreffs();
-    alert("Loaded", "Settings imported from settings.txt");
+    alert(trl("Loaded"), trl("Settings imported from settings.txt"));
     wheelspin();
 }
 void update_recent_wheels(const string &in name)

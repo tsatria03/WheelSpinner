@@ -12,7 +12,7 @@ Success=Éxito
 Updated=Actualizado
 Exiting=Saliendo
 
-#Main interface
+#MainMenu
 &Add Wheel=&Agregar rueda
 &Edit Wheel=&Editar rueda
 &Manage Wheels=&Administrar ruedas
@@ -136,7 +136,7 @@ Wheel '%wheel%' has been unlocked. It can now be edited or deleted.=La rueda '%w
 Locked=Bloqueada
 Wheel '%wheel%' has been locked. It can no longer be edited or deleted.=La rueda '%wheel%' ha sido bloqueada. No se puede editar ni borrar.
 
-#SpinWheelOptions
+#SpinWheelMenu
 All Wheels=Todas las ruedas
 Most Recent Wheels=Ruedas más recientes
 Most Spun Wheels=Ruedas más giradas

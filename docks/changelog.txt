@@ -1,7 +1,13 @@
+new in 1.4
+The spin settings section of the app is now translatable.
+The second spin wheel section of the app is now translatable.
+The edit wheel section of the app is now translatable.
+The manage wheel section of the app is now translatable.
+The add wheel section of the app is now translatable.
 new in 1.3
 Updated the readme file with a new guide on creating your own translation languages to use in the app.
 Added the option to directly change the language of the app in the spin settings menu.
-The spin wheel and show recent wheel sections are now translatable.
+The first spin wheel and show recent wheel sections are now translatable.
 The wheel settings section of the app is now translatable.
 The import selected wheels section of the app is now translatable.
 The import wheels section of the app is now translatable.

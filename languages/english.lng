@@ -12,7 +12,7 @@ Success=Success
 Updated=Updated
 Exiting=Exiting
 
-#Main interface
+#MainMenu
 &Add Wheel=&Add Wheel
 &Edit Wheel=&Edit Wheel
 &Manage Wheels=&Manage Wheels
@@ -137,7 +137,7 @@ Wheel '%wheel%' has been unlocked. It can now be edited or deleted.=Wheel '%whee
 Locked=Locked
 Wheel '%wheel%' has been locked. It can no longer be edited or deleted.=Wheel '%wheel%' has been locked. It can no longer be edited or deleted.
 
-#SpinWheelOptions
+#SpinWheelMenu
 All Wheels=All Wheels
 Most Recent Wheels=Most Recent Wheels
 Most Spun Wheels=Most Spun Wheels

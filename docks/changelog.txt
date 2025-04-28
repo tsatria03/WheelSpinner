@@ -1,9 +1,11 @@
 new in 1.4
+Rewrote all of the lng files with new and improved translations.
 The spin settings section of the app is now translatable.
 The second spin wheel section of the app is now translatable.
 The edit wheel section of the app is now translatable.
 The manage wheel section of the app is now translatable.
 The add wheel section of the app is now translatable.
+Rewrote the translation system from scratch.
 new in 1.3
 Updated the readme file with a new guide on creating your own translation languages to use in the app.
 Added the option to directly change the language of the app in the spin settings menu.

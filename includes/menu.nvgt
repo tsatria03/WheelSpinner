@@ -387,7 +387,7 @@ void show_recent_wheels()
         string name = recentWheels[i];
         array<string>@ opts = string_split(string(wheels[name]), ", ");
         int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
-        m.add_item(name + " (" + opts.length() + " choices, " + spins + " spins)", name);
+        m.add_item(name + " (" + opts.length() + trl(" choices, ") + spins + trl(" spins)"), name);
     }
     m.add_item(trl("Back"), "back");
     m.intro_text=trl("Pick a recently used wheel to spin again.");

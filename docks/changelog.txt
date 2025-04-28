@@ -1,4 +1,5 @@
 new in 1.4
+Fixed an issue where language translations were case-sensitive. From now on, You no longer need to duplicate entries in your language files for upper/lowercase differences. The app will load and recognise them all the same.
 Rewrote all of the lng files with new and improved translations.
 The spin settings section of the app is now translatable.
 The second spin wheel section of the app is now translatable.

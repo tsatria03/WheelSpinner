@@ -543,7 +543,7 @@ if (mostUsed)
     m.add_item(trl("Back"), "back");
    if (mostUsed)
     {
-        m.intro_text = trl("These are your most spun wheels. Choose one to spin:");
+        m.intro_text = trl("These are your most spun wheels. Choose one to spin.");
     }
     else
     {
@@ -616,11 +616,11 @@ void spinsettings()
     int ticksSlider = form.create_slider(trl("Spin tick count."), spinBaseTicks, 1, 100, 1);
     int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
     string[] languageFiles = find_files("languages\\*.lng");
+    languageFiles.sort_ascending();
     for (uint i = 0; i < languageFiles.length(); i++)
     {
         languageFiles[i] = strip_extension(strip_directory(languageFiles[i]));
     }
-    languageFiles.sort_ascending();
     int langList = form.create_list(trl("Wheel Language: "), languageFiles.length());
     for (uint i = 0; i < languageFiles.length(); i++)
     {

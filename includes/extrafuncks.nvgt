@@ -81,10 +81,24 @@ string strip_directory(string path)
         return path.substr(lastSlash + 1);
     return path;
 }
+string clean_key(string key)
+{
+    key = trim(key).lower();
+    string cleaned = "";
+    for (uint i = 0; i < key.length(); i++)
+    {
+        string c = key.substr(i, 1);
+        if (c != "." && c != ":" && c != "(" && c != ")")
+            cleaned += c;
+    }
+    return cleaned;
+}
 string trl(string key)
 {
-    if (!g_lang.exists(key)) return key;
-    return string(g_lang[key]);
+    string cleanedKey = clean_key(key);
+    if (!g_lang.exists(cleanedKey))
+        return key;
+    return string(g_lang[cleanedKey]);
 }
 string trim(const string&in str)
 {
@@ -112,7 +126,7 @@ void load_language(string langfile)
         {
             string key = trim(line.substr(0, eq));
             string value = trim(line.substr(eq + 1));
-            g_lang.set(key, value);
+            g_lang.set(clean_key(key), value);
         }
     }
 }

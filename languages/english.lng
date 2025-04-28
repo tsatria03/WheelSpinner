@@ -5,12 +5,8 @@ Only one instance of this app can run at a time.=Only one instance of this app c
 Yes=Yes
 No=No
 Cancel=Cancel
-Back=Back
-Saved=Saved
-Loaded=Loaded
-Success=Success
-Updated=Updated
 Exiting=Exiting
+Updated=Updated
 
 # Main Menu
 Wheel Spinner=Wheel Spinner
@@ -24,6 +20,7 @@ Spin Se&ttings=Spin Se&ttings
 &Quit=&Quit
 Are you sure you want to exit?=Are you sure you want to exit?
 Are you sure you want to clear the spin results history?=Are you sure you want to clear the spin results history?
+Cleared=Cleared
 Spin history cleared.=Spin history cleared.
 
 # Export Wheels
@@ -48,8 +45,6 @@ Import Selected Wheels=Import Selected Wheels
 Choose wheels to import=Choose wheels to import
 Could not create settings.txt=Could not create settings.txt
 Settings exported to data/exported/settings.txt=Settings exported to data/exported/settings.txt
-No settings.txt file found.=No settings.txt file found.
-Failed to open settings.txt=Failed to open settings.txt
 Settings imported from settings.txt=Settings imported from settings.txt
 
 # Add Wheel
@@ -60,13 +55,16 @@ Description=Description
 Enter a description for this wheel.=Enter a description for this wheel.
 Choices=Choices
 Separate your choices with commas.=Separate your choices with commas.
+Saved=Saved
 Wheel added!=Wheel added!
 
 # Edit Wheel
 Locked=Locked
 Unlocked=Unlocked
 choices.=choices.
+choices,=choices,
 spins=spins
+spins)=spins)
 Delete all wheels=Delete all wheels
 Delete selected wheels=Delete selected wheels
 Delete all unlocked wheels=Delete all unlocked wheels
@@ -75,13 +73,12 @@ Lock all wheels=Lock all wheels
 Select a wheel to edit. You have=Select a wheel to edit. You have
 wheels.=wheels.
 Are you sure you want to delete all wheels? This cannot be undone.=Are you sure you want to delete all wheels? This cannot be undone.
+Deleted=Deleted
 All wheels have been deleted.=All wheels have been deleted.
 Delete Selected Wheels=Delete Selected Wheels
 Select wheels to delete:=Select wheels to delete:
 None Selected=None Selected
 You must select at least one wheel.=You must select at least one wheel.
-Deleted=Deleted
-Selected wheels have been deleted.=Selected wheels have been deleted.
 Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.
 All unlocked wheels have been deleted.=All unlocked wheels have been deleted.
 Are you sure you want to unlock all wheels?=Are you sure you want to unlock all wheels?
@@ -102,7 +99,6 @@ Edit=Edit
 Edit your choices:=Edit your choices:
 Cancelled=Cancelled
 No changes were made.=No changes were made.
-Saved=Saved
 Changes saved.=Changes saved.
 Change Description=Change Description
 Enter a new description for this wheel:=Enter a new description for this wheel:
@@ -113,7 +109,6 @@ Rename=Rename
 Enter a new name for this wheel:=Enter a new name for this wheel:
 Renamed=Renamed
 Wheel has been renamed.=Wheel has been renamed.
-Invalid or duplicate name.=Invalid or duplicate name.
 Are you sure you want to delete the wheel '=Are you sure you want to delete the wheel '
 Wheel has been deleted.=Wheel has been deleted.
 Are you sure you want to unlock the wheel '=Are you sure you want to unlock the wheel '
@@ -135,8 +130,6 @@ Are you sure you want to import all wheels from a file?=Are you sure you want to
 # Show Recent Wheels
 No Recent Wheels=No Recent Wheels
 You haven't spun any wheels yet.=You haven't spun any wheels yet.
-choices,=choices,
-spins)=spins)
 Pick a recently used wheel to spin again.=Pick a recently used wheel to spin again.
 
 # Spin Wheel Menu
@@ -145,6 +138,8 @@ Most Recent Wheels=Most Recent Wheels
 Most Spun Wheels=Most Spun Wheels
 Search for a Wheel=Search for a Wheel
 Choose how you'd like to pick a wheel to spin=Choose how you'd like to pick a wheel to spin
+These are your most spun wheels. Choose one to spin:=These are your most spun wheels. Choose one to spin:
+Pick a wheel to spin. You have %count% wheels.=Pick a wheel to spin. You have %count% wheels.
 Search=Search
 Type part of a wheel's name to spin it=Type part of a wheel's name to spin it
 No Match=No Match
@@ -158,6 +153,7 @@ Spinning=Spinning
 The wheel landed on =The wheel landed on 
 You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun the "%wheel%" wheel.\nThe wheel landed on %result%.
 Would you like to spin the wheel again?=Would you like to spin the wheel again?
+random=random
 
 # Spin Settings
 Spin Settings=Spin Settings

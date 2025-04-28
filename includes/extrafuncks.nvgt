@@ -448,7 +448,7 @@ void export_wheel_settings()
     f.write("spinGrowth=" + spinGrowth + "\r\n");
     f.write("spinBaseTicks=" + spinBaseTicks + "\r\n");
     f.write("spinRandomRange=" + spinRandomRange + "\r\n");
-    f.write("language=" + currentlangfile + "\n");
+    f.write("currentlangfile=" + currentlangfile + "\n");
     f.write("wheeltype=" + wheeltype + "\r\n");
     f.close();
     alert("Saved", "Settings exported to data/exported/settings.txt");
@@ -482,7 +482,7 @@ void import_wheel_settings()
         else if (key == "spinBaseTicks") spinBaseTicks = parse_int(value);
         else if (key == "spinRandomRange") spinRandomRange = parse_int(value);
         else if (key == "wheeltype") wheeltype = value;
-            else if (key == "language")
+            else if (key == "currentlangfile")
             {
                 currentlangfile = value;
 load_language(currentlangfile);

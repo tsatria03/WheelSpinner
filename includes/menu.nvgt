@@ -101,7 +101,7 @@ else if (selected == "deleteselected")
             form.add_list_item(checklist, name, name);
         }
     }
-        int confirm = form.create_button(trl("&Delete"));
+        int confirm = form.create_button(trl("&Delete"), true);
         int cancel = form.create_button(trl("&Cancel"));
     form.focus(checklist);
     while (true)
@@ -658,7 +658,7 @@ wheelFolders.sort(natural_number_sort);
     form.set_list_position(wheellist, wheelIndex);
 int exportBtn = form.create_button(trl("Export Settings to File"));
 int importBtn = form.create_button(trl("Import Settings from File"));
-    int apply = form.create_button(trl("&Save Settings"));
+    int apply = form.create_button(trl("&Save Settings"), true);
     int cancel = form.create_button(trl("&Cancel"));
     form.focus(baseSlider);
     while (true)

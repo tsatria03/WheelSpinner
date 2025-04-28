@@ -1,4 +1,5 @@
 new in 1.4
+Improved the language loading system. From now on, if the selected language file is missing, empty, or contains no valid translations, the app will display a critical error and exit gracefully.
 Added some more missing entries to all of the language files.
 Fixed an issue where translations were case-sensitive. From now on, You no longer need to duplicate entries in your language files for upper/lowercase differences. The app will load and recognise them like normal.
 Rewrote all of the lng files with new and improved translations.

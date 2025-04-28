@@ -116,7 +116,14 @@ return result;
 void load_language(string langfile)
 {
     g_lang.clear();
-    string[] lines = string_split(get_file_contents("languages/" + langfile + ".lng"), "\r\n");
+    string content = get_file_contents("languages/" + langfile + ".lng");    
+    if (trim(content) == "")
+    {
+        alert("Critical Error", "The language file '" + langfile + ".lng' is missing or empty. Please fix it before running this application.");
+        exit();
+    }
+    string[] lines = string_split(content, "\r\n");
+    bool foundValidEntry = false;
     for (uint i = 0; i < lines.length(); i++)
     {
         string line = trim(lines[i]);
@@ -127,7 +134,13 @@ void load_language(string langfile)
             string key = trim(line.substr(0, eq));
             string value = trim(line.substr(eq + 1));
             g_lang.set(clean_key(key), value);
+            foundValidEntry = true;
         }
+    }
+    if (!foundValidEntry)
+    {
+        alert("Critical Error", "The language file '" + langfile + ".lng' contains no valid entries. Please fix it before running this application.");
+        exit();
     }
 }
 void setupmenu(bool music_added = true)

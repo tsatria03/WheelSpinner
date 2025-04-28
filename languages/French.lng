@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=RoueSpinner, version
+Error=Erreur
+Only one instance of this app can run at a time.=Une seule instance de cette application peut être exécutée à la fois.
+Yes=Oui
+No=Non
+Cancel=Annuler
+Exiting=Fermeture
+Updated=Mis à jour
+
+# Main Menu
+Wheel Spinner=Roue Spinner
+&Add Wheel=&Ajouter une roue
+&Edit Wheel=&Modifier une roue
+&Manage Wheels=&Gérer les roues
+&Clear Spin History=&Effacer l'historique des tours
+Spin &History=Historique des tours
+&Spin Wheel=&Faire tourner la roue
+Spin Se&ttings=Paramètres de tours
+&Quit=&Quitter
+Are you sure you want to exit?=Êtes-vous sûr de vouloir quitter ?
+Are you sure you want to clear the spin results history?=Êtes-vous sûr de vouloir effacer l'historique des tours ?
+Cleared=Effacé
+Spin history cleared.=Historique des tours effacé.
+
+# Export Wheels
+Replace file=Remplacer le fichier
+Append to file=Ajouter au fichier
+Do you want to replace the existing file, or append to it?=Voulez-vous remplacer le fichier existant ou ajouter au fichier ?
+Failed to open file for writing.=Échec de l'ouverture du fichier en écriture.
+Wheels exported to=Roues exportées vers
+No wheels to export.=Aucune roue à exporter.
+Export Selected Wheels=Exporter les roues sélectionnées
+Select wheels to export=Sélectionnez les roues à exporter
+Nothing selected=Aucune sélection
+Selected wheels exported to=Roues sélectionnées exportées vers
+
+# Import Wheels
+No wheels.txt file found.=Aucun fichier wheels.txt trouvé.
+Failed to open wheels.txt=Échec de l'ouverture de wheels.txt
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Importation terminée.\n\nRoues importées : %imported%\nDoublons ignorés : %skipped%
+No Wheels Imported=Aucune roue importée
+No wheels found in file.=Aucune roue trouvée dans le fichier.
+Import Selected Wheels=Importer des roues sélectionnées
+Choose wheels to import=Choisissez les roues à importer
+Could not create settings.txt=Impossible de créer settings.txt
+Settings exported to data/exported/settings.txt=Paramètres exportés vers data/exported/settings.txt
+Settings imported from settings.txt=Paramètres importés depuis settings.txt
+
+# Add Wheel
+New Wheel=Nouvelle roue
+Enter a name for your new wheel=Entrez un nom pour votre nouvelle roue
+Invalid or duplicate name.=Nom invalide ou dupliqué.
+Description=Description
+Enter a description for this wheel.=Entrez une description pour cette roue.
+Choices=Choix
+Separate your choices with commas.=Séparez vos choix avec des virgules.
+Saved=Enregistré
+Wheel added!=Roue ajoutée !
+
+# Edit Wheel
+Locked=Verrouillé
+Unlocked=Déverrouillé
+choices.=choix.
+choices,=choix,
+spins=tours
+spins)=tours)
+Delete all wheels=Supprimer toutes les roues
+Delete selected wheels=Supprimer les roues sélectionnées
+Delete all unlocked wheels=Supprimer toutes les roues déverrouillées
+Unlock all wheels=Déverrouiller toutes les roues
+Lock all wheels=Verrouiller toutes les roues
+Select a wheel to edit. You have=Séléctionnez une roue à modifier. Vous avez
+wheels.=roues.
+Are you sure you want to delete all wheels? This cannot be undone.=Êtes-vous sûr de vouloir supprimer toutes les roues ? Cette action est irréversible.
+Deleted=Supprimé
+All wheels have been deleted.=Toutes les roues ont été supprimées.
+Delete Selected Wheels=Supprimer les roues sélectionnées
+Select wheels to delete:=Sélectionnez les roues à supprimer :
+None Selected=Aucune sélectionnée
+You must select at least one wheel.=Vous devez sélectionner au moins une roue.
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Êtes-vous sûr de vouloir supprimer toutes les roues déverrouillées ? Les roues verrouillées ne seront pas affectées.
+All unlocked wheels have been deleted.=Toutes les roues déverrouillées ont été supprimées.
+Are you sure you want to unlock all wheels?=Êtes-vous sûr de vouloir déverrouiller toutes les roues ?
+Are you sure you want to lock all wheels?=Êtes-vous sûr de vouloir verrouiller toutes les roues ?
+All wheels unlocked=Toutes les roues déverrouillées
+All wheels have been unlocked. They can now be edited or deleted.=Toutes les roues ont été déverrouillées. Elles peuvent désormais être modifiées ou supprimées.
+All wheels locked=Toutes les roues verrouillées
+All wheels have been locked. They can no longer be edited or deleted.=Toutes les roues ont été verrouillées. Elles ne peuvent plus être modifiées ou supprimées.
+Change description=Changer la description
+Show description=Afficher la description
+Edit choices=Modifier les choix
+Delete wheel=Supprimer la roue
+Rename wheel=Renommer la roue
+Unlock wheel=Déverrouiller la roue
+Lock wheel=Verrouiller la roue
+What would you like to do with the wheel '=Que souhaitez-vous faire avec la roue '
+Edit=Modifier
+Edit your choices:=Modifiez vos choix :
+Cancelled=Annulé
+No changes were made.=Aucun changement n'a été effectué.
+Changes saved.=Changements enregistrés.
+Change Description=Changer la description
+Enter a new description for this wheel:=Entrez une nouvelle description pour cette roue :
+No Description=Pas de description
+This wheel doesn't have a description yet.=Cette roue n'a pas encore de description.
+Description for '=Description pour '
+Rename=Renommer
+Enter a new name for this wheel:=Entrez un nouveau nom pour cette roue :
+Renamed=Renommé
+Wheel has been renamed.=La roue a été renommée.
+Are you sure you want to delete the wheel '=Êtes-vous sûr de vouloir supprimer la roue '
+Wheel has been deleted.=La roue a été supprimée.
+Are you sure you want to unlock the wheel '=Êtes-vous sûr de vouloir déverrouiller la roue '
+Are you sure you want to lock the wheel '=Êtes-vous sûr de vouloir verrouiller la roue '
+Unlocked=Déverrouillé
+Wheel ' has been unlocked. It can now be edited or deleted.=La roue ' a été déverrouillée. Elle peut désormais être modifiée ou supprimée.
+Locked=Verrouillé
+Wheel ' has been locked. It can no longer be edited or deleted.=La roue ' a été verrouillée. Elle ne peut plus être modifiée ou supprimée.
+
+# Wheel Management
+Export all wheels to file=Exporter toutes les roues vers un fichier
+Export selected wheels to file=Exporter les roues sélectionnées vers un fichier
+Import all wheels from file=Importer toutes les roues depuis un fichier
+Import selected wheels from file=Importer des roues sélectionnées depuis un fichier
+Wheel Management Menu=Menu de gestion des roues
+Are you sure you want to export all wheels to a file?=Êtes-vous sûr de vouloir exporter toutes les roues vers un fichier ?
+Are you sure you want to import all wheels from a file?=Êtes-vous sûr de vouloir importer toutes les roues depuis un fichier ?
+
+# Show Recent Wheels
+No Recent Wheels=Pas de roues récentes
+You haven't spun any wheels yet.=Vous n'avez pas encore fait tourner de roue.
+Pick a recently used wheel to spin again.=Choisissez une roue récemment utilisée pour la refaire tourner.
+
+# Spin Wheel Menu
+All Wheels=Toutes les roues
+Most Recent Wheels=Roues les plus récentes
+Most Spun Wheels=Roues les plus tournées
+Search for a Wheel=Chercher une roue
+Choose how you'd like to pick a wheel to spin=Choisissez comment sélectionner une roue à faire tourner
+These are your most spun wheels. Choose one to spin:=Voici vos roues les plus tournées. Choisissez-en une pour la faire tourner :
+Pick a wheel to spin. You have %count% wheels.=Choisissez une roue à faire tourner. Vous avez %count% roues.
+Search=Recherche
+Type part of a wheel's name to spin it=Entrez une partie du nom d'une roue pour la faire tourner
+No Match=Aucune correspondance
+No wheels found matching =Aucune roue trouvée correspondant à 
+Multiple matches found. Pick one to spin.=Plusieurs correspondances trouvées. Choisissez-en une pour faire tourner.
+
+# Spin Wheel
+Invalid=Invalide
+You need at least 2 options to spin.=Vous devez avoir au moins 2 options pour faire tourner.
+Spinning=Tourne
+The wheel landed on =La roue est tombée sur 
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=Vous avez fait tourner la roue "%wheel%".\nLa roue est tombée sur %result%.
+Would you like to spin the wheel again?=Voulez-vous faire tourner la roue à nouveau ?
+random=aléatoire
+
+# Spin Settings
+Spin Settings=Paramètres de tours
+Spin base delay.=Délai de base du tour.
+Spin growth factor.=Facteur de croissance du tour.
+Spin tick count.=Nombre de ticks du tour.
+Spin randomness.=Aléatoire du tour.
+Wheel Language:=Langue de la roue :
+Wheel Pack:=Pack de roues :
+Export Settings to File=Exporter les paramètres vers un fichier
+Import Settings from File=Importer les paramètres depuis un fichier
+&Save Settings=&Enregistrer les paramètres
+&Cancel=&Annuler
+Are you sure you want to import your current spin settings from a file?=Êtes-vous sûr de vouloir importer vos paramètres de tours actuels depuis un fichier ?
+Are you sure you want to export your current spin settings to a file?=Êtes-vous sûr de vouloir exporter vos paramètres de tours actuels vers un fichier ?
+Spin settings updated!=Paramètres de tours mis à jour !

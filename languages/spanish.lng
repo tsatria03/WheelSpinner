@@ -1,3 +1,4 @@
+#General
 WheelSpinner, version=WheelSpinner, versión
 Error=Error
 Only one instance of this app can run at a time.=Solo una instancia de esta aplicación puede ejecutarse al mismo tiempo.
@@ -10,6 +11,8 @@ Loaded=Cargado
 Success=Éxito
 Updated=Actualizado
 Exiting=Saliendo
+
+#Main interface
 &Add Wheel=&Agregar rueda
 &Edit Wheel=&Editar rueda
 &Manage Wheels=&Administrar ruedas
@@ -21,37 +24,53 @@ Are you sure you want to exit?=¿Seguro que quieres salir?
 Are you sure you want to clear the spin results history?=¿Seguro que quieres borrar el historial de giros?
 Cleared=Borrado
 Spin history cleared.=El historial de giros ha sido borrado.
+
+#ExportWheels
 Replace file=Reemplazar archivo
 Append to file=Añadir al archivo
 Do you want to replace the existing file, or append to it?=¿Deseas reemplazar el archivo existente o añadir al final?
 Failed to open file for writing.=Error al abrir el archivo para escribir.
 Wheels exported to=Ruedas exportadas a
 No wheels to export.=No hay ruedas para exportar.
+
+#ExportSelectedWheels
 Export Selected Wheels=Exportar ruedas seleccionadas
 Select wheels to export:=Selecciona ruedas para exportar:
 Nothing Selected=Ninguna seleccionada
 You must select at least one wheel.=Debes seleccionar al menos una rueda.
 Selected wheels exported to=Ruedas seleccionadas exportadas a
+
+#ImportWheels
 No wheels.txt file found.=No se encontró wheels.txt
 Failed to open wheels.txt=Error al abrir wheels.txt
 Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Importación completa.\n\nRuedas importadas: %imported%\nDuplicados omitidos: %skipped%
 No Wheels Imported=No se importaron ruedas
 No wheels found in file.=No se encontraron ruedas en el archivo.
+
+#ImportSelectedWheels
 Import Selected Wheels=Importar ruedas seleccionadas
 Choose wheels to import:=Elige ruedas para importar:
+
+#WheelSettings
 Could not create settings.txt=No se pudo crear settings.txt
 Settings exported to data/exported/settings.txt=Ajustes exportados a data/exported/settings.txt
 No settings.txt file found.=No se encontró settings.txt
 Failed to open settings.txt=Error al abrir settings.txt
 Settings imported from settings.txt=Ajustes importados desde settings.txt
+
+#SpinWheelOptions
 Invalid=Inválido
 Need at least 2 options to spin.=Se necesitan al menos 2 opciones para girar.
 Spinning=Girando
 The wheel landed on %result%.=La rueda cayó en %result%.
 Would you like to spin the wheel again?=¿Quieres girar la rueda otra vez?
+
+#ShowRecentWheels
 No Recent Wheels=No hay ruedas recientes
 You haven't spun any wheels yet.=Todavía no has girado ninguna rueda.
 Pick a recently spun wheel:=Elige una rueda girada recientemente:
+
+#AddWheel
 New Wheel=Nueva rueda
 Enter a name for your new wheel:=Introduce un nombre para tu nueva rueda:
 Invalid or duplicate name.=Nombre inválido o duplicado.
@@ -60,6 +79,8 @@ Enter a description for this wheel.=Introduce una descripción para esta rueda.
 Choices=Opciones
 Separate your choices with commas.=Separa tus opciones con comas.
 Wheel added!=¡Rueda añadida!
+
+#ManageWheels
 Export all wheels to file=Exportar todas las ruedas a un archivo
 Export selected wheels to file=Exportar ruedas seleccionadas a un archivo
 Import all wheels from file=Importar todas las ruedas desde un archivo
@@ -67,6 +88,8 @@ Import selected wheels from file=Importar ruedas seleccionadas desde un archivo
 Wheel Management Menu=Menú de administración de ruedas
 Are you sure you want to export all wheels to a file?=¿Seguro que quieres exportar todas las ruedas a un archivo?
 Are you sure you want to import all wheels from a file?=¿Seguro que quieres importar todas las ruedas desde un archivo?
+
+#EditWheel
 No wheels available to edit.=No hay ruedas disponibles para editar.
 Are you sure you want to delete all wheels? This cannot be undone.=¿Seguro que quieres borrar todas las ruedas? Esta acción no se puede deshacer.
 All wheels have been deleted.=Todas las ruedas han sido borradas.
@@ -112,6 +135,8 @@ Unlocked=Desbloqueada
 Wheel '%wheel%' has been unlocked. It can now be edited or deleted.=La rueda '%wheel%' ahora puede editarse o borrarse.
 Locked=Bloqueada
 Wheel '%wheel%' has been locked. It can no longer be edited or deleted.=La rueda '%wheel%' ha sido bloqueada. No se puede editar ni borrar.
+
+#SpinWheelOptions
 All Wheels=Todas las ruedas
 Most Recent Wheels=Ruedas más recientes
 Most Spun Wheels=Ruedas más giradas
@@ -123,6 +148,8 @@ No Match=Sin coincidencias
 No wheels found matching %query%.=No se encontraron ruedas que coincidan con %query%.
 Multiple Matches Found=Múltiples coincidencias encontradas
 Pick one to spin:=Elige una para girar:
+
+#SpinSettings
 Spin Settings=Ajustes de giro
 Spin base delay.=Retraso base de giro.
 Spin growth factor.=Factor de crecimiento de giro.

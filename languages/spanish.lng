@@ -1,5 +1,5 @@
 # General
-WheelSpinner, version=WheelSpinner, versión
+WheelSpinner, version=RuedaGiratoria, versión
 Error=Error
 Only one instance of this app can run at a time.=Solo una instancia de esta aplicación puede ejecutarse al mismo tiempo.
 Yes=Sí
@@ -9,7 +9,7 @@ Exiting=Saliendo
 Updated=Actualizado
 
 # Main Menu
-Wheel Spinner=Wheel Spinner
+Wheel Spinner=Rueda Giratoria
 &Add Wheel=&Agregar rueda
 &Edit Wheel=&Editar rueda
 &Manage Wheels=&Administrar ruedas

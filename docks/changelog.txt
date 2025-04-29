@@ -1,3 +1,5 @@
+new in 1.5
+Made it so if the selected language file is missing, empty, or contains no valid translations, the app now automatically falls back to English instead of exiting. A warning message is shown once, and the selected language is reset to English in the saved settings to prevent future errors. If the fallback English file is also missing or invalid, a critical error will be displayed and the app will exit gracefully.
 new in 1.4
 Improved the language loading system. From now on, if the selected language file is missing, empty, or contains no valid translations, the app will display a critical error and exit gracefully.
 Added some more missing entries to all of the language files.

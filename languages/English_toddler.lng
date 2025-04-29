@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=Spin Spin! Yay!
+Error=Uh-oh! Broke!
+Only one instance of this app can run at a time.=Already open! Silly goose!
+Yes=Yup!
+No=Nope!
+Cancel=No wanna
+Exiting=Bye bye!
+Updated=All new! Weeee!
+
+# Main Menu
+Wheel Spinner=Spinny Spin Game!
+&Add Wheel=Make Wheel! Yay!
+&Edit Wheel=Fix it! Fix!
+&Manage Wheels=Play with Wheels!
+&Clear Spin History=Clean up! Whee!
+Spin &History=Spin Stuff
+&Spin Wheel=SPIN SPIN SPIN!
+Spin Se&ttings=Magic Buttons
+&Quit=Bye-Bye Button
+Are you sure you want to exit?=Really really leave?
+Are you sure you want to clear the spin results history?=Delete fun stuff? You sure?
+Cleared=All gone!
+Spin history cleared.=No more spin stuff! Woo!
+
+# Export Wheels
+Replace file=Squish Old File!
+Append to file=Stick More On!
+Do you want to replace the existing file, or append to it?=Squash or Stick? Pick one!
+Failed to open file for writing.=Oopsie! File no open!
+Wheels exported to=Put in box!
+No wheels to export.=Nothing to send!
+Export Selected Wheels=Send Some Wheels!
+Select wheels to export=Pick Pick Pick!
+Nothing selected=No picking! Silly!
+Selected wheels exported to=All packed! Yay!
+
+# Import Wheels
+No wheels.txt file found.=No file! Sad!
+Failed to open wheels.txt=Couldn’t find it! Oh no!
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Done! %imported% in! %skipped% skipped!
+No Wheels Imported=Got none!
+No wheels found in file.=Empty box!
+Import Selected Wheels=Bring Wheels In!
+Choose wheels to import=Pick some wheels! Fun!
+Could not create settings.txt=No settings made!
+Settings exported to data/exported/settings.txt=Settings put in box!
+Settings imported from settings.txt=Settings loaded! Zoom!
+
+# Add Wheel
+New Wheel=New Wheel! Woo!
+Enter a name for your new wheel=Gimme name! Pretty please!
+Invalid or duplicate name.=Uh-oh! Bad name!
+Description=Say What It Is!
+Enter a description for this wheel.=Tell story! Yay!
+Choices=Picky Picks
+Separate your choices with commas.=Commas! Like tiny bumps!
+Saved=Saved! Clap Clap!
+Wheel added!=New wheel made! Party!
+
+# Edit Wheel
+Locked=Locked tight!
+Unlocked=Open Open!
+choices.=choices!
+choices,=choices,
+spins=spins!
+spins)=spins!)
+Delete all wheels=Delete EVERYTHING!? Whoa!
+Delete selected wheels=Throw out a few!
+Delete all unlocked wheels=Bye bye free wheels!
+Unlock all wheels=Let Wheels Run Free!
+Lock all wheels=Shut Wheels Tight!
+Select a wheel to edit. You have=Pick one! You got
+wheels.=Wheels! Whee!
+Are you sure you want to delete all wheels? This cannot be undone.=All gone forever! You sure sure sure??
+Deleted=Poof! Gone!
+All wheels have been deleted.=Bye wheels! See ya!
+Delete Selected Wheels=Only delete some!
+Select wheels to delete:=Clicky ones!
+None Selected=You picked none! Silly you!
+You must select at least one wheel.=Pick just one! Please!
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Only delete free ones! Yay!
+All unlocked wheels have been deleted.=Free wheels... gone!
+Are you sure you want to unlock all wheels?=Open all wheels? Wheeeee!
+Are you sure you want to lock all wheels?=Lock all up? Safe safe!
+All wheels unlocked=Free like birdies!
+All wheels have been unlocked. They can now be edited or deleted.=You can play now! Yay!
+All wheels locked=All locked! Nap time!
+All wheels have been locked. They can no longer be edited or deleted.=No touchy touchy now!
+Change description=Change words!
+Show description=Peek at words!
+Edit choices=Fix Picks
+Delete wheel=Trash it!
+Rename wheel=New name time!
+Unlock wheel=Open up!
+Lock wheel=Close tight!
+What would you like to do with the wheel '=What now for '
+Edit=Fix it!
+Edit your choices:=Pick stuff again!
+Cancelled=Nevermind! It’s okay!
+No changes were made.=No change! Still good!
+Changes saved.=Safe and sound!
+Change Description=Change the story!
+Enter a new description for this wheel:=Write somethin’ fun!
+No Description=No story yet!
+This wheel doesn't have a description yet.=Still blanky blank!
+Description for '=Here’s the words:
+Rename=Rename it!
+Enter a new name for this wheel:=New name plz!
+Renamed=All new name! Yay!
+Wheel has been renamed.=Got a new name! Woohoo!
+Are you sure you want to delete the wheel '=Delete this one too? Bye bye?
+Wheel has been deleted.=Poof! Wheel gone!
+Are you sure you want to unlock the wheel '=Let’s open it?
+Are you sure you want to lock the wheel '=Keep it safe safe?
+Unlocked=Wheel open now!
+Wheel ' has been unlocked. It can now be edited or deleted.=Playtime again!
+Locked=Wheel locked up!
+Wheel ' has been locked. It can no longer be edited or deleted.=No touch! All safe!
+
+# Wheel Management
+Export all wheels to file=Save all wheels! Yay!
+Export selected wheels to file=Save just some!
+Import all wheels from file=Bring all in! Woo!
+Import selected wheels from file=Only some! Cute!
+Wheel Management Menu=Wheel Party!
+Are you sure you want to export all wheels to a file?=Save all? Big save!
+Are you sure you want to import all wheels from a file?=Bring all wheels in? Big load!
+
+# Show Recent Wheels
+No Recent Wheels=No spins yet!
+You haven't spun any wheels yet.=Go spin one! Fast fast!
+Pick a recently used wheel to spin again.=Pick old one! So good!
+
+# Spin Wheel Menu
+All Wheels=All Wheels! Wow!
+Most Recent Wheels=Last ones! Yay!
+Most Spun Wheels=Fav Wheels!
+Search for a Wheel=Look for one! Peek peek!
+Choose how you'd like to pick a wheel to spin=Pick way! Fun!
+These are your most spun wheels. Choose one to spin:=Pick your bestest one!
+Pick a wheel to spin. You have %count% wheels.=You have %count%! So many!
+Search=Find!
+Type part of a wheel's name to spin it=Type little! Find it!
+No Match=Nope! Nothing!
+No wheels found matching =Couldn’t find: 
+Multiple matches found. Pick one to spin.=Found lots! Pick pick!
+
+# Spin Wheel
+Invalid=Bad spin. Sad!
+You need at least 2 options to spin.=More picks needed! Duh!
+Spinning=Weeee! Spinny time!
+The wheel landed on =It said...
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun "%wheel%"! Got %result%! Yay yay!
+Would you like to spin the wheel again?=Spin again? Pleeease?
+
+random=random
+
+# Spin Settings
+Spin Settings=Magic Settings!
+Spin base delay.=How slow start!
+Spin growth factor.=Get faster fast!
+Spin tick count.=Spin counts!
+Spin randomness.=Make it silly!
+Wheel Language:=Pick language! Talky talk!
+Wheel Pack:=Pick wheel box!
+Export Settings to File=Save Settings!
+Import Settings from File=Load Settings!
+&Save Settings=Save All!
+Are you sure you want to import your current spin settings from a file?=Bring settings back? Yay?
+Are you sure you want to export your current spin settings to a file?=Save settings? Good job!
+Spin settings updated!=Settings safe! Happy day!

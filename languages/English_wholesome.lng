@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=WheelSpinner
+Error=Oopsie! Something didn’t work
+Only one instance of this app can run at a time.=You’ve already opened this! One is enough, lovely
+Yes=Yes, please!
+No=No, thank you
+Cancel=Never mind
+Exiting=Bye bye! See you soon!
+Updated=All fresh and updated!
+
+# Main Menu
+Wheel Spinner=Magical Wheel of Wonders
+&Add Wheel=Add a New Lovely Wheel
+&Edit Wheel=Make Some Nice Edits
+&Manage Wheels=Organize Your Wonderful Wheels
+&Clear Spin History=Let’s Clean Up the Past
+Spin &History=Spin Memory
+&Spin Wheel=Let’s Spin!
+Spin Se&ttings=Spin Preferences
+&Quit=Leave the Fun
+Are you sure you want to exit?=You’re leaving? Okay... I’ll miss you
+Are you sure you want to clear the spin results history?=Are you sure you want to erase the spin memories?
+Cleared=All Cleaned!
+Spin history cleared.=Past spins are cleared. Fresh start!
+
+# Export Wheels
+Replace file=Replace Old File
+Append to file=Add to File
+Do you want to replace the existing file, or append to it?=Would you like to replace the old file, or just add to it, sweetie?
+Failed to open file for writing.=Oh no! I couldn’t open the file
+Wheels exported to=Your wheels were saved to
+No wheels to export.=There’s nothing to export, dear
+Export Selected Wheels=Export the Ones You Picked
+Select wheels to export=Please choose the wheels to export
+Nothing selected=Oopsie! You didn’t pick anything
+Selected wheels exported to=Saved with love to
+
+# Import Wheels
+No wheels.txt file found.=I looked everywhere but couldn’t find the wheels.txt
+Failed to open wheels.txt=I tried, but couldn’t open that file
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Done! Imported: %imported% Skipped: %skipped%
+No Wheels Imported=Didn’t get anything this time
+No wheels found in file.=I opened the file, but it was empty
+Import Selected Wheels=Import Just the Ones You Want
+Choose wheels to import=Pick your favorites to bring in!
+Could not create settings.txt=Couldn’t make the settings file
+Settings exported to data/exported/settings.txt=Saved your settings safely
+Settings imported from settings.txt=Loaded your saved preferences
+
+# Add Wheel
+New Wheel=A Brand New Wheel!
+Enter a name for your new wheel=What shall we call this beautiful wheel?
+Invalid or duplicate name.=Uh-oh! That name won’t work
+Description=What’s This Wheel For?
+Enter a description for this wheel.=Write a little something about it
+Choices=Wheel Options
+Separate your choices with commas.=Use commas to keep them cozy
+Saved=Saved with a smile!
+Wheel added!=Yay! New wheel added!
+
+# Edit Wheel
+Locked=Locked
+Unlocked=Unlocked
+choices.=choices.
+choices,=choices,
+spins=spins
+spins)=spins)
+Delete all wheels=Delete Everything (be gentle!)
+Delete selected wheels=Delete Just the Picked Ones
+Delete all unlocked wheels=Remove Editable Wheels
+Unlock all wheels=Let’s Open Everything Up!
+Lock all wheels=Time to Tidy Things Up
+Select a wheel to edit. You have=Pick a wheel to tweak! You’ve got
+wheels.=wheels
+Are you sure you want to delete all wheels? This cannot be undone.=Oh wow! All of them? That’s a big choice!
+Deleted=Deleted
+All wheels have been deleted.=Poof! They’re all gone.
+Delete Selected Wheels=Let’s Remove the Ones You Picked
+Select wheels to delete:=Choose the wheels to remove
+None Selected=You didn’t pick anything!
+You must select at least one wheel.=Please pick one, sweetie
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Only the open ones will go away. Are you sure?
+All unlocked wheels have been deleted.=Done. The unlocked ones are gone
+Are you sure you want to unlock all wheels?=Want to free all the wheels?
+Are you sure you want to lock all wheels?=Time to keep things safe?
+All wheels unlocked=They’re all open now!
+All wheels have been unlocked. They can now be edited or deleted.=You can change anything now!
+All wheels locked=All nice and safe
+All wheels have been locked. They can no longer be edited or deleted.=No more changes for now
+Change description=Update the Story
+Show description=See What It Says
+Edit choices=Change the Options
+Delete wheel=Remove This One
+Rename wheel=Give It a New Name
+Unlock wheel=Open It Up
+Lock wheel=Keep It Safe
+What would you like to do with the wheel '=What would you like to do with '
+Edit=Make Edits
+Edit your choices:=Tweak your options!
+Cancelled=No worries! Cancelled
+No changes were made.=Nothing changed, and that’s okay
+Changes saved.=All saved! Good job!
+Change Description=Edit the Description
+Enter a new description for this wheel:=Write a lovely new description
+No Description=Nothing written yet
+This wheel doesn't have a description yet.=It’s waiting for your words!
+Description for '=Here’s what you said:
+Rename=Rename
+Enter a new name for this wheel:=What shall we call it now?
+Renamed=Nice new name!
+Wheel has been renamed.=All set with the new name
+Are you sure you want to delete the wheel '=Are you really really sure you want to delete '
+Wheel has been deleted.=Okay... it's gone now
+Are you sure you want to unlock the wheel '=Let’s open up '
+Are you sure you want to lock the wheel '=Shall we lock '
+Unlocked=Unlocked!
+Wheel ' has been unlocked. It can now be edited or deleted.=You can play with it now!
+Locked=Locked
+Wheel ' has been locked. It can no longer be edited or deleted.=It’s safe and sound
+
+# Wheel Management
+Export all wheels to file=Save All Your Wheels
+Export selected wheels to file=Save Just These Ones
+Import all wheels from file=Load All the Wheels!
+Import selected wheels from file=Bring In Just These
+Wheel Management Menu=Manage Everything with Love
+Are you sure you want to export all wheels to a file?=Save them all now?
+Are you sure you want to import all wheels from a file?=Ready to load a bunch of wheels?
+
+# Show Recent Wheels
+No Recent Wheels=Nothing spun yet
+You haven't spun any wheels yet.=Try spinning one, it’s fun!
+Pick a recently used wheel to spin again.=Try one you liked before!
+
+# Spin Wheel Menu
+All Wheels=All the Wheels
+Most Recent Wheels=Recently Used
+Most Spun Wheels=Your Favorites
+Search for a Wheel=Look for One
+Choose how you'd like to pick a wheel to spin=Pick your way to spin!
+These are your most spun wheels. Choose one to spin:=These are your regulars
+Pick a wheel to spin. You have %count% wheels.=Pick one! You’ve got %count%!
+Search=Search
+Type part of a wheel's name to spin it=Type a little bit to find it
+No Match=Didn’t find anything
+No wheels found matching =Nothing matches:
+Multiple matches found. Pick one to spin.=Found a few! Pick one
+
+# Spin Wheel
+Invalid=Not quite right
+You need at least 2 options to spin.=Spinning needs more than one choice, friend
+Spinning=Spinning! Hold on!
+The wheel landed on =And the result is...
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun “%wheel%” and got %result%!
+Would you like to spin the wheel again?=Want to try again?
+
+random=random
+
+# Spin Settings
+Spin Settings=Wheel Settings
+Spin base delay.=Delay before spinning
+Spin growth factor.=Spin gets faster!
+Spin tick count.=How many spin steps?
+Spin randomness.=Add a sprinkle of chaos
+Wheel Language:=What language should we use?
+Wheel Pack:=Pick your wheel collection
+Export Settings to File=Save These Settings
+Import Settings from File=Load Your Settings
+&Save Settings=&Save Everything
+Are you sure you want to import your current spin settings from a file?=Ready to bring back your saved setup?
+Are you sure you want to export your current spin settings to a file?=Let’s save these settings forever?
+Spin settings updated!=Saved! You're amazing!

@@ -1,0 +1,171 @@
+# General
+WheelSpinner, version=WheelSpinner
+Error=Error
+Only one instance of this app can run at a time.=App already running.
+Yes=Yes
+No=No
+Cancel=Cancel
+Exiting=Bye
+Updated=Updated
+
+# Main Menu
+Wheel Spinner=Wheel Spinner
+&Add Wheel=&Add
+&Edit Wheel=&Edit
+&Manage Wheels=&Manage
+&Clear Spin History=&Clear
+Spin &History=History
+&Spin Wheel=&Spin
+Spin Se&ttings=Settings
+&Quit=&Quit
+Are you sure you want to exit?=Exit?
+Are you sure you want to clear the spin results history?=Clear history?
+Cleared=Cleared
+Spin history cleared.=History cleared.
+
+# Export Wheels
+Replace file=Replace
+Append to file=Append
+Do you want to replace the existing file, or append to it?=Replace or append?
+Failed to open file for writing.=Can't write file.
+Wheels exported to=Exported to
+No wheels to export.=Nothing to export.
+Export Selected Wheels=Export Selected
+Select wheels to export=Pick wheels
+Nothing selected=None picked
+Selected wheels exported to=Exported to
+
+# Import Wheels
+No wheels.txt file found.=No wheels.txt
+Failed to open wheels.txt=Can't open wheels.txt
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Imported: %imported%, Skipped: %skipped%
+No Wheels Imported=No Import
+No wheels found in file.=File empty.
+Import Selected Wheels=Import Selected
+Choose wheels to import=Pick wheels
+Could not create settings.txt=Can't create settings.txt
+Settings exported to data/exported/settings.txt=Settings saved.
+Settings imported from settings.txt=Settings loaded.
+
+# Add Wheel
+New Wheel=New
+Enter a name for your new wheel=Name?
+Invalid or duplicate name.=Bad name.
+Description=Desc
+Enter a description for this wheel.=Wheel description?
+Choices=Options
+Separate your choices with commas.=Split with commas.
+Saved=Saved
+Wheel added!=Added!
+
+# Edit Wheel
+Locked=🔒
+Unlocked=🔓
+choices.=opts.
+choices,=opts,
+spins=spins
+spins)=spins)
+Delete all wheels=Delete All
+Delete selected wheels=Delete Picked
+Delete all unlocked wheels=Delete Unlocked
+Unlock all wheels=Unlock All
+Lock all wheels=Lock All
+Select a wheel to edit. You have=Edit wheel, total:
+wheels.=wheels.
+Are you sure you want to delete all wheels? This cannot be undone.=Delete all? No undo.
+Deleted=Deleted
+All wheels have been deleted.=All gone.
+Delete Selected Wheels=Delete Picked
+Select wheels to delete:=Pick to delete:
+None Selected=None
+You must select at least one wheel.=Pick 1+ wheels.
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Delete unlocked only?
+All unlocked wheels have been deleted.=Unlocked deleted.
+Are you sure you want to unlock all wheels?=Unlock all?
+Are you sure you want to lock all wheels?=Lock all?
+All wheels unlocked=Unlocked
+All wheels have been unlocked. They can now be edited or deleted.=Now editable.
+All wheels locked=Locked
+All wheels have been locked. They can no longer be edited or deleted.=Locked out.
+Change description=Change Desc
+Show description=Show Desc
+Edit choices=Edit Opts
+Delete wheel=Delete
+Rename wheel=Rename
+Unlock wheel=Unlock
+Lock wheel=Lock
+What would you like to do with the wheel '=Do what with '
+Edit=Edit
+Edit your choices:=Edit opts:
+Cancelled=Cancelled
+No changes were made.=No change.
+Changes saved.=Saved.
+Change Description=Change Desc
+Enter a new description for this wheel:=New desc?
+No Description=None
+This wheel doesn't have a description yet.=No desc.
+Description for '=Desc: '
+Rename=Rename
+Enter a new name for this wheel:=New name?
+Renamed=Renamed
+Wheel has been renamed.=Renamed.
+Are you sure you want to delete the wheel '=Delete '
+Wheel has been deleted.=Deleted.
+Are you sure you want to unlock the wheel '=Unlock '
+Are you sure you want to lock the wheel '=Lock '
+Unlocked=Unlocked
+Wheel ' has been unlocked. It can now be edited or deleted.=Editable now.
+Locked=Locked
+Wheel ' has been locked. It can no longer be edited or deleted.=Locked.
+
+# Wheel Management
+Export all wheels to file=Export All
+Export selected wheels to file=Export Picked
+Import all wheels from file=Import All
+Import selected wheels from file=Import Picked
+Wheel Management Menu=Manage Wheels
+Are you sure you want to export all wheels to a file?=Export all?
+Are you sure you want to import all wheels from a file?=Import all?
+
+# Show Recent Wheels
+No Recent Wheels=None Recent
+You haven't spun any wheels yet.=Spin something!
+Pick a recently used wheel to spin again.=Pick again.
+
+# Spin Wheel Menu
+All Wheels=All
+Most Recent Wheels=Recent
+Most Spun Wheels=Popular
+Search for a Wheel=Search
+Choose how you'd like to pick a wheel to spin=How to pick?
+These are your most spun wheels. Choose one to spin:=Most used, pick one:
+Pick a wheel to spin. You have %count% wheels.=Pick 1 of %count%
+Search=Search
+Type part of a wheel's name to spin it=Type name
+No Match=No Match
+No wheels found matching =No match: 
+Multiple matches found. Pick one to spin.=Multiple found, pick one.
+
+# Spin Wheel
+Invalid=Invalid
+You need at least 2 options to spin.=Need 2+ options.
+Spinning=Spinning
+The wheel landed on =Landed on 
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun "%wheel%", got %result%.
+Would you like to spin the wheel again?=Spin again?
+random=random
+
+# Spin Settings
+Spin Settings=Spin Config
+Spin base delay.=Base delay
+Spin growth factor.=Growth
+Spin tick count.=Ticks
+Spin randomness.=Randomness
+Wheel Language:=Lang:
+Wheel Pack:=Pack:
+Export Settings to File=Export Settings
+Import Settings from File=Import Settings
+&Save Settings=&Save
+Are you sure you want to import your current spin settings from a file?=Import settings?
+Are you sure you want to export your current spin settings to a file?=Export settings?
+Spin settings updated!=Updated!

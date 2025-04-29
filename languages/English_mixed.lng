@@ -1,0 +1,142 @@
+#General, confused
+WheelSpinner, version=WheelSpinner... I think?
+Error=Oh no, something? Happened? Maybe?
+Only one instance of this app can run at a time.=Uhh, it's already running? Probably?
+Yes=Yeah... I guess?
+No=No? Maybe?
+Cancel=Cancel? Is that right?
+Exiting=Leaving? I think so?
+Updated=Updated? Newer? Older? Updated??
+
+#Main Menu, bored
+Wheel Spinner=Spin thing whatever
+&Add Wheel=Add wheel... if you feel like it
+&Edit Wheel=Fix stuff. Yawn.
+&Manage Wheels=Organize junk, I guess
+&Clear Spin History=Delete old junk
+Spin &History=Spin log. Wow.
+&Spin Wheel=Spin. Or not.
+Spin Se&ttings=Settings. Snooze.
+&Quit=Leave. Bye.
+Are you sure you want to exit?=Already?
+Are you sure you want to clear the spin results history?=Erase boring history?
+Cleared=Yup. Done.
+Spin history cleared.=It’s gone. You happy?
+
+#Export Wheels, panic
+Replace file=SMASH THE OLD FILE
+Append to file=PILE MORE ON QUICK
+Do you want to replace the existing file, or append to it?=MAKE A CHOICE! HURRY!
+Failed to open file for writing.=DISASTER! FILE NO WORK!!
+Wheels exported to=SAFE! BARELY!
+No wheels to export.=NOTHING! AAAH!
+Export Selected Wheels=SAVE THESE NOW!
+Select wheels to export=CHOOSE FAST!
+Nothing selected=NOTHING CHOSEN!! OH NO!
+Selected wheels exported to=SAVED JUST IN TIME!
+
+#Import Wheels, sad
+No wheels.txt file found.=No file. Just empty space.
+Failed to open wheels.txt=Tried and failed... again.
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Done... but at what cost?
+No Wheels Imported=Nothing made it in. Nothing.
+No wheels found in file.=The file was empty. Just like my dreams.
+Import Selected Wheels=Bring in... whatever's left.
+Choose wheels to import=Pick... if it even matters.
+Could not create settings.txt=Failed. Just like everything else.
+Settings exported to data/exported/settings.txt=Settings saved. Somehow.
+Settings imported from settings.txt=Loaded. Don’t expect miracles.
+
+#Add Wheel, toddler
+New Wheel=NEW WHEEL! YAY!
+Enter a name for your new wheel=Name it! Name it quick!
+Invalid or duplicate name.=No good! Try 'gain!
+Description=What's it for? Tell me!
+Enter a description for this wheel=Say somethin' fun!
+Choices=Picky picks!
+Separate your choices with commas.=Use bumpies! (Commas!)
+Saved=All saved! Big clap!
+Wheel added!=NEW THING MADE! WOO!
+
+#Edit Wheel, angry
+Locked=LOCKED. HANDS OFF.
+Unlocked=UNLOCKED. UGH.
+choices.=choices. Fine.
+choices,=choices,
+spins=spins
+spins)=spins)
+Delete all wheels=DESTROY ALL YOUR MESS?
+Delete selected wheels=GET RID OF THESE
+Delete all unlocked wheels=TRASH THE WEAK ONES
+Unlock all wheels=LET LOOSE THE CHAOS
+Lock all wheels=CHAIN THEM UP
+Select a wheel to edit. You have=Pick one, genius. You have
+wheels.=wheels.
+Are you sure you want to delete all wheels? This cannot be undone.=DELETE EVERYTHING?! REALLY?!
+Deleted=GONE. GOOD.
+All wheels have been deleted.=BOOM. NO MORE.
+Delete Selected Wheels=DELETE THE ONES YOU CHOSE
+Select wheels to delete:=PICK SOMETHING TO DESTROY
+None Selected=NOTHING PICKED?! WHAT?!
+You must select at least one wheel.=PICK SOMETHING! NOW!
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=THEY’RE GONE IF YOU DO.
+All unlocked wheels have been deleted.=TOO LATE NOW.
+Are you sure you want to unlock all wheels?=YOU WANT CHAOS?
+Are you sure you want to lock all wheels?=CHAIN THEM UP FOREVER?
+All wheels unlocked=FREE. CHAOS!
+All wheels have been unlocked. They can now be edited or deleted.=BREAK EVERYTHING IF YOU WANT.
+All wheels locked=SEALED. FOREVER.
+All wheels have been locked. They can no longer be edited or deleted.=NO MORE TOUCHY!
+
+#Wheel Management, evil
+Export all wheels to file=Gather all the wheels... into my lair.
+Export selected wheels to file=Only the worthy ones shall be saved.
+Import all wheels from file=Summon wheels from the void.
+Import selected wheels from file=Bring forth only chosen wheels.
+Wheel Management Menu=Control Panel of Doom
+Are you sure you want to export all wheels to a file?=Save them... for later conquest?
+Are you sure you want to import all wheels from a file?=Unleash what you have summoned?
+
+#Show Recent Wheels, wholesome
+No Recent Wheels=No spins yet, but I believe in you!
+You haven't spun any wheels yet.=You can do it! Spin away, brave one!
+Pick a recently used wheel to spin again.=Pick one you loved before. It’ll be great!
+
+#Spin Wheel Menu, maniac
+All Wheels=SPIN ANYTHING! EVERYTHING! WHEEE!
+Most Recent Wheels=SPIN WHAT YOU JUST DID! GO GO!
+Most Spun Wheels=YOUR FAVORITES! GO NUTS!
+Search for a Wheel=FIND A THING QUICK!!
+Choose how you'd like to pick a wheel to spin=DECIDE FAST! NO RULES!
+These are your most spun wheels. Choose one to spin:=PICK! PICK! SPIN SPIN!
+Pick a wheel to spin. You have %count% wheels.=YOU HAVE %count%! SO MANY!! GO!!!
+Search=ZOOM FIND!
+Type part of a wheel's name to spin it=TYPE SOMETHING!! FAST!!
+No Match=NOPE NOPE NO MATCH!!
+No wheels found matching =NOTHING! NADA! AHH!
+Multiple matches found. Pick one to spin.=TOO MANY! SPIN ALL!!
+
+#Spin Wheel, panic
+Invalid=BAD! WRONG! OH NO!
+You need at least 2 options to spin.=MORE! NEED MORE!!
+Spinning=SPINNINGGGG HOLD ON!!
+The wheel landed on =IT LANDED! QUICK LOOK!!
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=YOU SPUN "%wheel%" AND LANDED ON %result%! AAAAH!
+Would you like to spin the wheel again?=AGAIN?! ARE YOU SURE!?
+
+random=random
+
+#Spin Settings, silly
+Spin Settings=Weird Spin Settings
+Spin base delay.=How long it yawns before spinning
+Spin growth factor.=How crazy fast it goes ZOOM
+Spin tick count.=How many tick-tick-tick sounds
+Spin randomness.=More silly? Less silly? Up to you.
+Wheel Language:=Talky talk language
+Wheel Pack:=Box of wheel goodies
+Export Settings to File=Stick the settings in a box
+Import Settings from File=Open the magic settings box
+&Save Settings=Press to save your weirdness
+Are you sure you want to import your current spin settings from a file?=Load old silliness? Why not!
+Are you sure you want to export your current spin settings to a file?=Save the nonsense forever?
+Spin settings updated!=Settings saved! Woohoo, you wizard!

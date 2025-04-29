@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=WheelSpinner... QUICK!!!
+Error=OH NO! Something broke!
+Only one instance of this app can run at a time.=IT’S ALREADY OPEN! WHAT DO WE DO?!
+Yes=YES YES GO GO GO
+No=NO NO ABORT
+Cancel=STOP EVERYTHING
+Exiting=RUNNING AWAY
+Updated=UPDATED! HURRY!
+
+# Main Menu
+Wheel Spinner=SPIN SPIN FAST
+&Add Wheel=ADD IT QUICK
+&Edit Wheel=FIX IT FAST
+&Manage Wheels=HANDLE THE CHAOS
+&Clear Spin History=WIPE THE EVIDENCE
+Spin &History=THE PAST... HURRY!
+&Spin Wheel=SPIN NOW SPIN NOW
+Spin Se&ttings=SETTINGS BEFORE IT’S TOO LATE
+&Quit=GET OUT NOW
+Are you sure you want to exit?=YOU’RE LEAVING?! WHAT IF SOMETHING HAPPENS?!
+Are you sure you want to clear the spin results history?=ARE YOU REALLY GONNA DELETE EVERYTHING?!?!
+Cleared=GONE! CAN’T TAKE IT BACK!
+Spin history cleared.=SPINS ERASED! HOPE THAT WAS OKAY!
+
+# Export Wheels
+Replace file=DESTROY THE OLD ONE
+Append to file=PILE IT ON QUICK
+Do you want to replace the existing file, or append to it?=PICK ONE! FAST!!
+Failed to open file for writing.=IT FAILED! DISASTER!!
+Wheels exported to=SAVED! BARELY!
+No wheels to export.=NOTHING! PANIC!!
+Export Selected Wheels=SAVE THESE BEFORE IT'S TOO LATE
+Select wheels to export=PICK SOME, HURRY
+Nothing selected=YOU PICKED NOTHING!! WHY?!?
+Selected wheels exported to=THEY’RE OUT! WE’RE SAFE... FOR NOW
+
+# Import Wheels
+No wheels.txt file found.=NO FILE! WE’RE DOOMED!
+Failed to open wheels.txt=COULDN’T OPEN IT!! OH NO!!
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=IT’S DONE!! %imported% IN! %skipped% SKIPPED! BREATHE!!
+No Wheels Imported=NOTHING CAME! EMPTY!
+No wheels found in file.=NO WHEELS! EMPTY FILE! AAAAA!!
+Import Selected Wheels=GET SOME WHEELS IN HERE!!
+Choose wheels to import=CHOOSE QUICKLY
+Could not create settings.txt=FAILED! PANIC!!!
+Settings exported to data/exported/settings.txt=SAVED!! GOOD ENOUGH!!
+Settings imported from settings.txt=LOADED! DON'T SCREW IT UP!!
+
+# Add Wheel
+New Wheel=NEW SPIN THING!! FAST!
+Enter a name for your new wheel=NAME IT QUICKLY!! NO TIME!!
+Invalid or duplicate name.=BAD NAME!! THINK FASTER!!!
+Description=WHAT IS THIS THING?!
+Enter a description for this wheel.=TYPE SOMETHING! NOW!!
+Choices=PICKY PICKS!
+Separate your choices with commas.=USE COMMAS!! DON’T FORGET!!
+Saved=SAFE! FOR NOW!!
+Wheel added!=NEW WHEEL! YES!!
+
+# Edit Wheel
+Locked=LOCKED UP TIGHT!
+Unlocked=OPEN! DANGER!
+choices.=choices.
+choices,=choices,
+spins=spins
+spins)=spins)
+Delete all wheels=NUKE EVERYTHING?!?!
+Delete selected wheels=DESTROY THE PICKED ONES!!
+Delete all unlocked wheels=GET RID OF THE UNLOCKED!!
+Unlock all wheels=UNLEASH THE CHAOS!!
+Lock all wheels=SEAL THEM FOREVER
+Select a wheel to edit. You have=HURRY PICK ONE! YOU HAVE
+wheels.=wheels!!
+Are you sure you want to delete all wheels? This cannot be undone.=ARE YOU SURE?! EVERYTHING WILL BE GONE!!!
+Deleted=GONE! CAN’T FIX IT!
+All wheels have been deleted.=EVERYTHING... IT’S GONE!!
+Delete Selected Wheels=ONLY THE ONES YOU PICKED! QUICK!
+Select wheels to delete:=PICK OR EVERYTHING WILL CRUMBLE!!
+None Selected=YOU PICKED NOTHING!! WHY!?
+You must select at least one wheel.=YOU GOTTA PICK ONE! FAST!!
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=ONLY UNLOCKED GONE! STILL SCARY!
+All unlocked wheels have been deleted.=UNLOCKED WHEELS: DESTROYED!!
+Are you sure you want to unlock all wheels?=YOU WANT THEM ALL LOOSE?!
+Are you sure you want to lock all wheels?=LOCK EVERYTHING! NOW!!!
+All wheels unlocked=FREE! EVERYTHING’S FREE! HELP!
+All wheels have been unlocked. They can now be edited or deleted.=EVERYTHING IS CHAOS NOW!!
+All wheels locked=ALL SEALED! PHEW!
+All wheels have been locked. They can no longer be edited or deleted.=SAFE. FOR NOW.
+Change description=CHANGE THE WORDS FAST
+Show description=SEE WHAT IT SAYS QUICK
+Edit choices=FIX PICKS! NOW!
+Delete wheel=DELETE THIS WHEEL! RUN!
+Rename wheel=NEW NAME, HURRY!
+Unlock wheel=UNLOCK THE BEAST!!
+Lock wheel=LOCK IT DOWN!!!
+What would you like to do with the wheel '=PICK SOMETHING FOR '
+Edit=EDIT! FAST!
+Edit your choices:=CHANGE THEM NOW!!
+Cancelled=BACKED OUT! COWARD!
+No changes were made.=NOTHING CHANGED! WASTED TIME!!
+Changes saved.=SAVED! YES!!
+Change Description=CHANGE THAT STORY!
+Enter a new description for this wheel:=WRITE IT DOWN! QUICK!
+No Description=EMPTY! DANGER!!
+This wheel doesn't have a description yet.=SOMEONE FORGOT TO WRITE!! NOO!!
+Description for '=WORDS FOR: '
+Rename=NEW NAME! GO!
+Enter a new name for this wheel:=NAME IT NOW!!!
+Renamed=NAME CHANGED!! NICE JOB!
+Wheel has been renamed.=NEW NAME! WOW!
+Are you sure you want to delete the wheel '=DELETE THIS ONE?! BE SURE!!!
+Wheel has been deleted.=GONE FOREVER!!
+Are you sure you want to unlock the wheel '=UNLOCK IT?! CHAOS AWAITS!
+Are you sure you want to lock the wheel '=LOCK IT BACK UP??
+Unlocked=UNLOCKED! PANIC TIME!!
+Wheel ' has been unlocked. It can now be edited or deleted.=MESS WITH IT NOW!
+Locked=LOCKED! FINALLY!
+Wheel ' has been locked. It can no longer be edited or deleted.=NO TOUCHY ANYMORE!
+
+# Wheel Management
+Export all wheels to file=SAVE EVERYTHING!!! GO GO GO!!
+Export selected wheels to file=SAVE A FEW! FAST!!
+Import all wheels from file=BRING THEM IN!! NOW!!
+Import selected wheels from file=BRING SOME IN! NOT ALL!!
+Wheel Management Menu=MANAGE OR DIE TRYING
+Are you sure you want to export all wheels to a file?=SAVE THEM ALL! DO IT!!
+Are you sure you want to import all wheels from a file?=LOAD ALL OF THEM?! REALLY?!
+
+# Show Recent Wheels
+No Recent Wheels=NO HISTORY! NOTHING!
+You haven't spun any wheels yet.=NO SPINS?! MOVE MOVE MOVE!!
+Pick a recently used wheel to spin again.=PICK ONE FAST!!
+
+# Spin Wheel Menu
+All Wheels=EVERYTHING!!!
+Most Recent Wheels=THE ONES YOU JUST TOUCHED!!
+Most Spun Wheels=YOUR CRAZY FAVORITES!!
+Search for a Wheel=FIND IT! QUICK!
+Choose how you'd like to pick a wheel to spin=HURRY AND PICK!!
+These are your most spun wheels. Choose one to spin:=SPIN ONE YOU TRUST! OR DON’T!!
+Pick a wheel to spin. You have %count% wheels.=THERE ARE %count% WHEELS!! PICK ONE!!!
+Search=FIND!
+Type part of a wheel's name to spin it=TYPE IT NOW!
+No Match=NO MATCH! BAD!!
+No wheels found matching =NOTHING FOUND FOR 
+Multiple matches found. Pick one to spin.=TOO MANY! PICK FAST!!
+
+# Spin Wheel
+Invalid=BAD! WRONG!!
+You need at least 2 options to spin.=TOO FEW! ADD MORE!
+Spinning=SPINNING!! HOLD ON!!
+The wheel landed on =IT LANDED ON
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=SPUN "%wheel%"!! LANDED ON %result%!!
+Would you like to spin the wheel again?=AGAIN?! YOU SURE??
+
+random=random
+
+# Spin Settings
+Spin Settings=SETTING UP THE MAYHEM
+Spin base delay.=HOW SLOW BEFORE THE CRAZINESS
+Spin growth factor.=HOW FAST IT GETS OUT OF CONTROL
+Spin tick count.=SPIN CLICKS!! FAST!!
+Spin randomness.=CHAOS LEVEL
+Wheel Language:=WHAT WE TALK IN
+Wheel Pack:=WHEELS IN A BOX
+Export Settings to File=SAVE THE SETTINGS! QUICK!
+Import Settings from File=LOAD OLD SETTINGS! FAST!
+&Save Settings=SAVE! RIGHT NOW!!
+Are you sure you want to import your current spin settings from a file?=YOU REALLY WANNA LOAD THEM?
+Are you sure you want to export your current spin settings to a file?=SAVE OR LOSE FOREVER!
+Spin settings updated!=SAVED! PHEW!!

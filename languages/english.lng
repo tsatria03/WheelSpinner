@@ -1,4 +1,4 @@
-# General
+#General
 WheelSpinner, version=WheelSpinner, version
 Error=Error
 Only one instance of this app can run at a time.=Only one instance of this app can run at a time.
@@ -8,7 +8,7 @@ Cancel=Cancel
 Exiting=Exiting
 Updated=Updated
 
-# Main Menu
+#Main Menu
 Wheel Spinner=Wheel Spinner
 &Add Wheel=&Add Wheel
 &Edit Wheel=&Edit Wheel
@@ -23,7 +23,7 @@ Are you sure you want to clear the spin results history?=Are you sure you want t
 Cleared=Cleared
 Spin history cleared.=Spin history cleared.
 
-# Export Wheels
+#Export Wheels
 Replace file=Replace file
 Append to file=Append to file
 Do you want to replace the existing file, or append to it?=Do you want to replace the existing file, or append to it?
@@ -35,7 +35,7 @@ Select wheels to export=Select wheels to export
 Nothing selected=Nothing selected
 Selected wheels exported to=Selected wheels exported to
 
-# Import Wheels
+#Import Wheels
 No wheels.txt file found.=No wheels.txt file found.
 Failed to open wheels.txt=Failed to open wheels.txt
 Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%
@@ -47,7 +47,7 @@ Could not create settings.txt=Could not create settings.txt
 Settings exported to data/exported/settings.txt=Settings exported to data/exported/settings.txt
 Settings imported from settings.txt=Settings imported from settings.txt
 
-# Add Wheel
+#Add Wheel
 New Wheel=New Wheel
 Enter a name for your new wheel=Enter a name for your new wheel
 Invalid or duplicate name.=Invalid or duplicate name.
@@ -58,7 +58,7 @@ Separate your choices with commas.=Separate your choices with commas.
 Saved=Saved
 Wheel added!=Wheel added!
 
-# Edit Wheel
+#Edit Wheel
 Locked=Locked
 Unlocked=Unlocked
 choices.=choices.
@@ -118,7 +118,7 @@ Wheel ' has been unlocked. It can now be edited or deleted.=Wheel ' has been unl
 Locked=Locked
 Wheel ' has been locked. It can no longer be edited or deleted.=Wheel ' has been locked. It can no longer be edited or deleted.
 
-# Wheel Management
+#Wheel Management
 Export all wheels to file=Export all wheels to file
 Export selected wheels to file=Export selected wheels to file
 Import all wheels from file=Import all wheels from file
@@ -127,12 +127,12 @@ Wheel Management Menu=Wheel Management Menu
 Are you sure you want to export all wheels to a file?=Are you sure you want to export all wheels to a file?
 Are you sure you want to import all wheels from a file?=Are you sure you want to import all wheels from a file?
 
-# Show Recent Wheels
+#Show Recent Wheels
 No Recent Wheels=No Recent Wheels
 You haven't spun any wheels yet.=You haven't spun any wheels yet.
 Pick a recently used wheel to spin again.=Pick a recently used wheel to spin again.
 
-# Spin Wheel Menu
+#Spin Wheel Menu
 All Wheels=All Wheels
 Most Recent Wheels=Most Recent Wheels
 Most Spun Wheels=Most Spun Wheels
@@ -146,7 +146,7 @@ No Match=No Match
 No wheels found matching =No wheels found matching 
 Multiple matches found. Pick one to spin.=Multiple matches found. Pick one to spin.
 
-# Spin Wheel
+#Spin Wheel
 Invalid=Invalid
 You need at least 2 options to spin.=You need at least 2 options to spin.
 Spinning=Spinning
@@ -155,7 +155,7 @@ You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun the "%whee
 Would you like to spin the wheel again?=Would you like to spin the wheel again?
 random=random
 
-# Spin Settings
+#Spin Settings
 Spin Settings=Spin Settings
 Spin base delay.=Spin base delay.
 Spin growth factor.=Spin growth factor.

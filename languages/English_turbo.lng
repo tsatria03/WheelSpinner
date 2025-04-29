@@ -1,0 +1,128 @@
+#General, includes the following mixed emotions: Confused, Panic, Bored, Toddler, Wholesome
+WheelSpinner, version=WheelSpinner... maybe?
+Error=Oh no, error! I'm scared!
+Only one instance of this app can run at a time.=Ugh, already open. Boring.
+Yes=YES YES YAY!
+No=Nah, why bother?
+Cancel=Cancel? Uh... maybe?
+Exiting=GOODBYE!!!
+Updated=Yay, updated! You're amazing!
+
+#Main Menu, includes the following mixed emotions: Confused, Toddler, Angry, Bored, Panic, Maniac, Wholesome
+Wheel Spinner=Spinny spin thing?
+&Add Wheel=ADD A NEW WHEEL!! YIPPEE!!
+&Edit Wheel=Fix your mess, genius.
+&Manage Wheels=Manage your junk, or don't.
+&Clear Spin History=DELETE IT ALL BEFORE IT'S TOO LATE!!!
+Spin &History=The past... boring.
+&Spin Wheel=SPIN SPIN SPIN!!!
+Spin Se&ttings=Uhhh, spin numbers?
+&Quit=Leaving? Fine. Be that way.
+Are you sure you want to exit?=It's okay, friend. I'll miss you!
+Are you sure you want to clear the spin results history?=Wipe it clean, fast!!!
+
+#Export Wheels, includes the following mixed emotions: Panic, Wholesome, Bored, Silly, Angry
+Replace file=DESTROY THE OLD FILE NOWWW!
+Append to file=Add it gently, I guess.
+Do you want to replace the existing file, or append to it?=Choose! Quick! Everything depends on it!!
+Failed to open file for writing.=Well... that didn't work. Figures.
+Wheels exported to=Saved! High five!
+No wheels to export.=Wow. Nothing. Shocking.
+Export Selected Wheels=Export! Save them like little heroes!
+Select wheels to export=Pick some, silly!
+Nothing selected=You picked nothing. Typical.
+Selected wheels exported to=It’s saved! Barely!
+
+#Import Wheels, includes the following mixed emotions: Sad, Toddler, Wholesome
+No wheels.txt file found.=No file... just sadness.
+Failed to open wheels.txt=Can't open it. *Sniff*
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=It’s done... I guess.
+No Wheels Imported=Nobody made it. Alone again.
+No wheels found in file.=Nothing here. Just dust.
+Import Selected Wheels=Pick some... if it even matters.
+Choose wheels to import=Pick wheels! YAY!!
+Could not create settings.txt=Failed. Like my dreams.
+Settings exported to data/exported/settings.txt=Saved it! You’re awesome!
+Settings imported from settings.txt=Loaded safely! Yay!
+
+#Add Wheel, includes the following mixed emotions: Toddler, Panic, Angry, Wholesome, Silly, Maniac
+New Wheel=New thing! Shiny!
+Enter a name for your new wheel=What's it called? Think fast!
+Invalid or duplicate name.=BAD NAME! BAD!!
+Description=Tell me what it does!
+Enter a description for this wheel=Write your dreams here!
+Choices=Choices. Woo!
+Separate your choices with commas.=Use the little bumpies!
+Saved=YAAAAY YOU SAVED IT!
+Wheel added=WHEEEEE! IT’S IN!
+
+#Edit Wheel, includes the following mixed emotions: Angry, Panic, Bored, Evil, Wholesome, Sad, Silly
+Locked=LOCKED DOWN FOREVER!
+Unlocked=Uh oh. It's loose.
+choices.=choices.
+choices,=choices, whatever.
+spins=spins
+spins)=spins)
+Delete all wheels=NUKE EVERYTHING!!
+Delete selected wheels=Smash only the dumb ones.
+Delete all unlocked wheels=Trash the weaklings!
+Unlock all wheels=Set the beasts free!
+Lock all wheels=LOCK ‘EM UP TIGHT!
+Select a wheel to edit. You have=Pick one fast! Time’s ticking!
+wheels.=wheels, yay!
+Are you sure you want to delete all wheels?=EVERYTHING GONE??? AHHH!!!
+Deleted=Deleted. Like regrets.
+All wheels have been deleted=Poof! Empty now!
+
+#Wheel Management, includes the following mixed emotions: Evil, Panic, Maniac
+Export all wheels to file=Save them... for my dark plans.
+Export selected wheels to file=Only save the strong ones!
+Import all wheels from file=Unleash the old chaos!
+Import selected wheels from file=Summon carefully... or not.
+Wheel Management Menu=This is where rulers are made.
+Are you sure you want to export all wheels to a file?=SAVE EVERYTHING!!!
+Are you sure you want to import all wheels from a file?=Summoning the madness...
+
+#Show Recent Wheels, includes the following mixed emotions: Wholesome
+No Recent Wheels=No spins yet... but that's okay!
+You haven't spun any wheels yet.=First time! Let's go!
+Pick a recently used wheel to spin again.=Pick your brave favorite!
+
+#Spin Wheel Menu, includes the following mixed emotions: Maniac, Wholesome, Panic, Sad
+All Wheels=ALL WHEELS! SPIN THEM ALL!!!
+Most Recent Wheels=THE NEW HOTNESS! SPIN!!!
+Most Spun Wheels=YOUR TRUE LOVE WHEELS!
+Search for a Wheel=FIND IT FASTTT!!!
+Choose how you'd like to pick a wheel to spin=Pick something!! NOW!!
+These are your most spun wheels. Choose one to spin:=You know these. Trust your gut!
+Pick a wheel to spin. You have %count% wheels.=%count% wheels??? That’s TOO MANY!!!
+Search=Type! FAST!
+Type part of a wheel's name to spin it=Tap it! Zoom! SPIN!
+No Match=No matches... sadness.
+No wheels found matching =Can't find it. Sigh.
+Multiple matches found. Pick one to spin.=PICK ONE! SPIN TIME!
+
+#Spin Wheel, includes the following mixed emotions: Angry, Panic, Maniac
+Invalid=BAD CHOICE! TRY AGAIN!
+You need at least 2 options to spin.=TOO FEW! ADD MORE!
+Spinning=SPINNING HOLD ONNNNN
+The wheel landed on=It landed!! LOOK QUICK!
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=YOU GOT "%result%"!! WOWWW!!
+Would you like to spin the wheel again?=SPIN AGAIN? SPIN FOREVER?
+
+random=random
+
+#Spin Settings, includes the following mixed emotions: Confused, Silly, Maniac, Panic
+Spin Settings=Settings? Like, real settings?
+Spin base delay.=Time before spin... I think?
+Spin growth factor.=How fast? Zoom zoom?
+Spin tick count.=Tick tick boom?
+Spin randomness.=Randomizer 9000!
+Wheel Language:=Language stuff. Probably?
+Wheel Pack:=Bunch of wheels in a box!
+Export Settings to File=Pack up your madness!
+Import Settings from File=Unbox the crazy!
+&Save Settings=Save your weird settings!
+Are you sure you want to import your current spin settings from a file?=READY TO UNLEASH CHAOS?!
+Are you sure you want to export your current spin settings to a file?=SAVE IT BEFORE IT EXPLODES!!
+Spin settings updated!=Saved! MAGIC!

@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=WheelSpinner. Whatever.
+Error=Yeah, something broke.
+Only one instance of this app can run at a time.=Already running. Don't care.
+Yes=Fine
+No=No
+Cancel=Forget it
+Exiting=Leaving. Finally.
+Updated=Updated. Woo.
+
+# Main Menu
+Wheel Spinner=Wheel Spinner, I guess
+&Add Wheel=Add One. If You Must.
+&Edit Wheel=Edit Stuff
+&Manage Wheels=Manage the Mess
+&Clear Spin History=Clear Old Spins
+Spin &History=Spin Log
+&Spin Wheel=Spin It, Whatever
+Spin Se&ttings=Settings. Yawn.
+&Quit=Quit. Bye.
+Are you sure you want to exit?=Leaving? Cool.
+Are you sure you want to clear the spin results history?=Wanna wipe the boring spins?
+Cleared=Cleared. Yay.
+Spin history cleared.=No more spin records. Happy now?
+
+# Export Wheels
+Replace file=Overwrite It
+Append to file=Stick It On
+Do you want to replace the existing file, or append to it?=Pick one. Don’t care.
+Failed to open file for writing.=Didn’t work. Shocking.
+Wheels exported to=Saved somewhere.
+No wheels to export.=Nothing here. What a surprise.
+Export Selected Wheels=Export the Chosen Ones
+Select wheels to export=Pick Some
+Nothing selected=You picked nothing. Wow.
+Selected wheels exported to=Saved. Barely.
+
+# Import Wheels
+No wheels.txt file found.=Wheels.txt isn’t here. Too bad.
+Failed to open wheels.txt=Didn’t open. Meh.
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Done. Whatever.
+No Wheels Imported=Zero wheels. Figures.
+No wheels found in file.=File was empty. Just like my enthusiasm.
+Import Selected Wheels=Import Some Junk
+Choose wheels to import=Pick whatever
+Could not create settings.txt=Failed. Again.
+Settings exported to data/exported/settings.txt=Saved settings. Sure.
+Settings imported from settings.txt=Loaded settings. I guess.
+
+# Add Wheel
+New Wheel=New Wheel. Exciting.
+Enter a name for your new wheel=Name it. Or don’t.
+Invalid or duplicate name.=Bad name. Try harder.
+Description=Description. Wow.
+Enter a description for this wheel.=Write something. If you feel like it.
+Choices=Choices
+Separate your choices with commas.=Commas. You know those, right?
+Saved=Saved. Cool.
+Wheel added!=Yay. Another wheel.
+
+# Edit Wheel
+Locked=Locked. Boring.
+Unlocked=Unlocked. Whatever.
+choices.=choices.
+choices,=choices,
+spins=spins
+spins)=spins)
+Delete all wheels=Delete Everything
+Delete selected wheels=Delete Some
+Delete all unlocked wheels=Delete Unlocked
+Unlock all wheels=Set 'em Loose
+Lock all wheels=Seal 'em Up
+Select a wheel to edit. You have=Pick one. I’m not doing it for you.
+wheels.=wheels.
+Are you sure you want to delete all wheels? This cannot be undone.=Everything’s gonna be gone. Don’t whine later.
+Deleted=Deleted. Woo.
+All wheels have been deleted.=Gone. Whatever.
+Delete Selected Wheels=Delete Chosen Ones
+Select wheels to delete:=Pick some. Or don't.
+None Selected=Picked nothing. Shocker.
+You must select at least one wheel.=Pick one already.
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Unlocked ones go bye-bye. Ok?
+All unlocked wheels have been deleted.=Deleted. Big wow.
+Are you sure you want to unlock all wheels?=Set everything free. Why not?
+Are you sure you want to lock all wheels?=Lock them all? Sure.
+All wheels unlocked=They’re free. Great.
+All wheels have been unlocked. They can now be edited or deleted.=Do whatever with them now.
+All wheels locked=All locked up. How thrilling.
+All wheels have been locked. They can no longer be edited or deleted.=No more changes. Deal with it.
+Change description=Change the Text
+Show description=Read the Blurb
+Edit choices=Fix Your List
+Delete wheel=Get Rid of It
+Rename wheel=Rename It
+Unlock wheel=Open It
+Lock wheel=Close It
+What would you like to do with the wheel '=Pick something to do with '
+Edit=Edit it. Whatever.
+Edit your choices:=Change the stuff.
+Cancelled=Cancelled. Wow.
+No changes were made.=Nothing changed. Why am I not surprised?
+Changes saved.=Saved. Yippee.
+Change Description=Edit Description
+Enter a new description for this wheel:=Type something if you can be bothered.
+No Description=No description. Shocking.
+This wheel doesn't have a description yet.=Nothing here. Move on.
+Description for '=Here’s what you said:
+Rename=Rename
+Enter a new name for this wheel:=New name? If you must.
+Renamed=New name. Big deal.
+Wheel has been renamed.=Renamed. Happy now?
+Are you sure you want to delete the wheel '=Delete this too?
+Wheel has been deleted.=Gone. Whatever.
+Are you sure you want to unlock the wheel '=Unlock this mess?
+Are you sure you want to lock the wheel '=Lock it down?
+Unlocked=Unlocked. Yay.
+Wheel ' has been unlocked. It can now be edited or deleted.=Change it. Or don't.
+Locked=Locked. Great.
+Wheel ' has been locked. It can no longer be edited or deleted.=No more changes. Deal.
+
+# Wheel Management
+Export all wheels to file=Dump everything into a file
+Export selected wheels to file=Dump some into a file
+Import all wheels from file=Bring in the chaos
+Import selected wheels from file=Import some garbage
+Wheel Management Menu=Manage Your Pile
+Are you sure you want to export all wheels to a file?=Sure? Whatever.
+Are you sure you want to import all wheels from a file?=Pull them in. Great idea.
+
+# Show Recent Wheels
+No Recent Wheels=You did nothing.
+You haven't spun any wheels yet.=Why are you even here?
+Pick a recently used wheel to spin again.=Spin something old.
+
+# Spin Wheel Menu
+All Wheels=Everything
+Most Recent Wheels=Stuff you touched recently
+Most Spun Wheels=Your bad favorites
+Search for a Wheel=Find Something
+Choose how you'd like to pick a wheel to spin=Pick something already
+These are your most spun wheels. Choose one to spin:=Pick one. Or not.
+Pick a wheel to spin. You have %count% wheels.=You made %count% wheels. Congrats?
+Search=Search
+Type part of a wheel's name to spin it=Type something. If you can.
+No Match=Nothing. Nada.
+No wheels found matching =Zero matches for 
+Multiple matches found. Pick one to spin.=Too many matches. Pick something.
+
+# Spin Wheel
+Invalid=Invalid. Shocking.
+You need at least 2 options to spin.=Spin needs more than one thing. Duh.
+Spinning=We’re spinning. Woo.
+The wheel landed on =It landed on
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=“%wheel%” landed on %result%. Big deal.
+Would you like to spin the wheel again?=Another spin? Ugh.
+
+random=random
+
+# Spin Settings
+Spin Settings=Spin Settings
+Spin base delay.=How slow it starts
+Spin growth factor.=How fast it freaks out
+Spin tick count.=How many wiggles
+Spin randomness.=How unpredictable
+Wheel Language:=Language Stuff
+Wheel Pack:=Wheel Choices
+Export Settings to File=Save Settings
+Import Settings from File=Load Settings
+&Save Settings=Save
+Are you sure you want to import your current spin settings from a file?=Load old junk?
+Are you sure you want to export your current spin settings to a file?=Save settings you’ll forget about?
+Spin settings updated!=Saved. Yawn.

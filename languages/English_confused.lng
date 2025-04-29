@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=WheelSpinner... I think?
+Error=Uhh... something broke? Maybe?
+Only one instance of this app can run at a time.=Wait, this is open already? Who did that?
+Yes=Sure? I guess?
+No=Um... no?
+Cancel=Cancel? Or undo? What does this do again?
+Exiting=Leaving... right?
+Updated=Oh! It’s... newer now?
+
+# Main Menu
+Wheel Spinner=Spinny... thing?
+&Add Wheel=Add... a circle? No, wait. A wheel.
+&Edit Wheel=Change the... thing. The spinny thing.
+&Manage Wheels=Put the wheel stuff in... order?
+&Clear Spin History=Delete the past? Was that bad?
+Spin &History=Past spins? I think?
+&Spin Wheel=Press to make it go round... I hope?
+Spin Se&ttings=Settings. For... the spinning?
+&Quit=Stop the... app? Game? Thing?
+Are you sure you want to exit?=Wait, you’re leaving? Did we finish?
+Are you sure you want to clear the spin results history?=This deletes stuff, right? Like... forever?
+Cleared=It’s... empty now?
+Spin history cleared.=Cool, I think that worked? Probably?
+
+# Export Wheels
+Replace file=Remove the old thing... and save?
+Append to file=Stick it onto the end? Right?
+Do you want to replace the existing file, or append to it?=Pick... um, one of the things? The first or second?
+Failed to open file for writing.=I couldn’t open it. Or maybe I did? No, I didn’t.
+Wheels exported to=Saved. I think. Somewhere?
+No wheels to export.=There’s nothing here. Unless I missed it?
+Export Selected Wheels=Export the ones you... maybe picked?
+Select wheels to export=Click some? Tap? I don’t know.
+Nothing selected=You didn’t pick anything. I think that’s a problem?
+Selected wheels exported to=Saved. Pretty sure that happened.
+
+# Import Wheels
+No wheels.txt file found.=Where’s... wheels.txt? Is that real?
+Failed to open wheels.txt=Nope. Didn’t open. Did I do it wrong?
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=It’s done! I think. Numbers are... there.
+No Wheels Imported=Uh... none showed up.
+No wheels found in file.=It’s empty. Maybe? Could be hidden?
+Import Selected Wheels=Bring some wheels in? Maybe?
+Choose wheels to import=Pick some. Or all? I forget how this works.
+Could not create settings.txt=Couldn’t make the thingy. That’s bad, right?
+Settings exported to data/exported/settings.txt=I saved something somewhere. Yay?
+Settings imported from settings.txt=I loaded stuff. Unless I didn’t.
+
+# Add Wheel
+New Wheel=New... spin disk?
+Enter a name for your new wheel=Name it something fun! Or boring! Wait—
+Invalid or duplicate name.=This name won’t work. I don’t know why.
+Description=Wheel explanation... thing
+Enter a description for this wheel.=Write words here. Hopefully they help.
+Choices=Stuff to pick
+Separate your choices with commas.=Use the comma! That curly dot—no, not that one.
+Saved=It’s saved. Probably. Unless it’s not.
+Wheel added!=Wheel has appeared! Or materialized. Or... loaded?
+
+# Edit Wheel
+Locked=Closed. Sealed. Uh-oh.
+Unlocked=It’s... editable now?
+choices.=options.
+choices,=options,
+spins=times spun
+spins)=spins...?)
+Delete all wheels=Press to... obliterate everything?
+Delete selected wheels=Just delete the ones with checkmarks? Right?
+Delete all unlocked wheels=Remove only the loose ones. The unlocked. Yes.
+Unlock all wheels=Unchain the circle gang!
+Lock all wheels=Keep them safe... from you?
+Select a wheel to edit. You have=Pick something. You’ve got, like...
+wheels.=a lot of wheels? Or a few? It’s unclear.
+Are you sure you want to delete all wheels? This cannot be undone.=EVERYTHING will disappear. Unless I’m wrong?
+Deleted=Gone! Unless it’s not?
+All wheels have been deleted.=Poof. I hope that’s okay?
+Delete Selected Wheels=Just those. I think.
+Select wheels to delete:=Clicky the ones you want gone.
+None Selected=You picked nothing. Intentional?
+You must select at least one wheel.=At least one, right? That’s the rule?
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Only the “open” ones vanish. Unless I misunderstood?
+All unlocked wheels have been deleted.=They’re... gone. The free ones. Not the locked ones.
+Are you sure you want to unlock all wheels?=You sure you wanna unchain everything?
+Are you sure you want to lock all wheels?=Lock everything? Like... permanently?
+All wheels unlocked=All open. What now?
+All wheels have been unlocked. They can now be edited or deleted.=They’re loose! Like... dangerously loose?
+All wheels locked=They’re safe. I think?
+All wheels have been locked. They can no longer be edited or deleted.=Touching them is now... not allowed.
+Change description=Edit the texty bit
+Show description=Reveal the secret paragraph
+Edit choices=Fix the pickable stuff
+Delete wheel=Remove the circle
+Rename wheel=Call it something else
+Unlock wheel=Set it free
+Lock wheel=Trap it
+What would you like to do with the wheel '=Um... do something with '
+Edit=Edit. That’s still an option?
+Edit your choices:=Change them, maybe?
+Cancelled=Never mind. I guess.
+No changes were made.=You did... nothing?
+Changes saved.=It saved! Unless it didn’t. No, it did.
+Change Description=New explanation time!
+Enter a new description for this wheel:=Say what it is. I hope you know.
+No Description=Blank. Just vibes.
+This wheel doesn't have a description yet.=No words here yet. Not even a little.
+Description for '=Here’s the info for:
+Rename=Rename this circle
+Enter a new name for this wheel:=Call it... um... whatever you want
+Renamed=Changed. Probably for the better?
+Wheel has been renamed.=New name confirmed. Right?
+Are you sure you want to delete the wheel '=Axing this one too?
+Wheel has been deleted.=Gone. I think it’s gone.
+Are you sure you want to unlock the wheel '=Let it breathe?
+Are you sure you want to lock the wheel '=Shut it away forever?
+Unlocked=Open for business!
+Wheel ' has been unlocked. It can now be edited or deleted.=Ready to mess with
+Locked=Sealed shut
+Wheel ' has been locked. It can no longer be edited or deleted.=You can’t touch it now. Probably.
+
+# Wheel Management
+Export all wheels to file=Dump everything into a file
+Export selected wheels to file=Only save the few you clicked
+Import all wheels from file=Load the entire mess
+Import selected wheels from file=Bring in a select mess
+Wheel Management Menu=Wheel... dashboard? Thingy?
+Are you sure you want to export all wheels to a file?=That saves them, right? Hope so.
+Are you sure you want to import all wheels from a file?=Brace yourself. I think this does something big.
+
+# Show Recent Wheels
+No Recent Wheels=There’s... nothing? No memory?
+You haven't spun any wheels yet.=You haven’t done the spin thing. I think.
+Pick a recently used wheel to spin again.=Choose the one you remember. Or not.
+
+# Spin Wheel Menu
+All Wheels=Every wheel... I think
+Most Recent Wheels=Things you just used. Probably?
+Most Spun Wheels=Your faves? Maybe?
+Search for a Wheel=Find the one with... that name? Sorta?
+Choose how you'd like to pick a wheel to spin=Pick a method. Any method. Cards? Dice? No—wheel.
+These are your most spun wheels. Choose one to spin:=You spin these the most. I think.
+Pick a wheel to spin. You have %count% wheels.=There are %count% of them. That’s a lot? Or not?
+Search=Search
+Type part of a wheel's name to spin it=Type a thing. A name thing.
+No Match=Nothing. Zip. Zilch.
+No wheels found matching =No idea what you meant by 
+Multiple matches found. Pick one to spin.=Too many match. That’s on you.
+
+# Spin Wheel
+Invalid=Not valid. That’s bad, right?
+You need at least 2 options to spin.=One isn’t enough. You knew that, right?
+Spinning=It’s spinning... maybe
+The wheel landed on =Landed on... something?
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=“%wheel%” gave you %result%. I think. I hope?
+Would you like to spin the wheel again?=Again? Was that a mistake?
+
+random=random
+
+# Spin Settings
+Spin Settings=Spinning Options... probably
+Spin base delay.=How slow it starts? I think?
+Spin growth factor.=The fastness number
+Spin tick count.=The spinny-count... thing
+Spin randomness.=How wild it goes
+Wheel Language:=Pick a language you understand. Hopefully.
+Wheel Pack:=Pick which wheels to show. I think?
+Export Settings to File=Save the confusing stuff
+Import Settings from File=Bring in even more confusing stuff
+&Save Settings=Save all this nonsense
+Are you sure you want to import your current spin settings from a file?=You sure this won’t break things?
+Are you sure you want to export your current spin settings to a file?=You wanna save these weird settings?
+Spin settings updated!=Settings changed. Did that help? Who knows.

@@ -1,3 +1,26 @@
+array<string> list_languages()
+{
+    array<string> result;
+    string[] normalLangs = find_files("languages/normal/*.lng");
+    for (uint i = 0; i < normalLangs.length(); i++)
+    {
+        string name = strip_extension(strip_directory(normalLangs[i]));
+        result.insert_last(name);
+    }
+    string[] variantLangDirs = find_directories("languages/variants/*");
+    for (uint i = 0; i < variantLangDirs.length(); i++)
+    {
+        string langFolder = strip_directory(variantLangDirs[i]);
+        string[] variants = find_files("languages/variants/" + langFolder + "/*.lng");
+        for (uint j = 0; j < variants.length(); j++)
+        {
+            string variantName = strip_extension(strip_directory(variants[j]));
+            result.insert_last(langFolder + "/" + variantName);
+        }
+    }
+    result.sort_ascending();
+    return result;
+}
 bool alt_is_down()
 {
 if(key_down(KEY_LMENU) or key_down(KEY_RMENU))
@@ -116,16 +139,37 @@ return result;
 void load_language(string langfile)
 {
     g_lang.clear();
-    bool fallback = false;    
-    string content = get_file_contents("languages/" + langfile + ".lng");
+    bool fallback = false;
+    string filepath;
+    if (langfile.find("/") != -1)
+    {
+        string[] parts = string_split(langfile, "/");
+        if (parts.length() == 2)
+        {
+            filepath = "languages/variants/" + parts[0] + "/" + parts[1] + ".lng";
+        }
+        else
+        {
+            alert("Warning", "Invalid language path format: '" + langfile + "'. Falling back to English.");
+            langfile = "English";
+            filepath = "languages/normal/English.lng";
+            fallback = true;
+        }
+    }
+    else
+    {
+        filepath = "languages/normal/" + langfile + ".lng";
+    }
+    string content = get_file_contents(filepath);
     if (trim(content) == "")
     {
         if (langfile != "English")
         {
-            alert("Warning", "The language file '" + langfile + ".lng' is missing or broken. Falling back to English.");
+            alert("Warning", "The language file '" + filepath + "' is missing or empty. Falling back to English.");
             fallback = true;
             langfile = "English";
-            content = get_file_contents("languages/English.lng");
+            filepath = "languages/normal/English.lng";
+            content = get_file_contents(filepath);
         }
         if (trim(content) == "")
         {
@@ -152,36 +196,11 @@ void load_language(string langfile)
     {
         if (langfile != "English")
         {
-            alert("Warning", "The language file '" + langfile + ".lng' contained no valid entries. Falling back to English.");
+            alert("Warning", "The language file '" + filepath + "' contained no valid entries. Falling back to English.");
             fallback = true;
             langfile = "English";
-            content = get_file_contents("languages/english.lng");
-            if (trim(content) == "")
-            {
-                alert("Critical Error", "The fallback language file 'English.lng' is missing or empty. Cannot continue.");
-                exit();
-            }
-            lines = string_split(content, "\r\n");
-            g_lang.clear();
-            foundValidEntry = false;
-            for (uint i = 0; i < lines.length(); i++)
-            {
-                string line = trim(lines[i]);
-                if (line == "" || line[0] == ';' || line[0] == '#') continue;
-                int eq = line.find("=");
-                if (eq > 0)
-                {
-                    string key = trim(line.substr(0, eq));
-                    string value = trim(line.substr(eq + 1));
-                    g_lang.set(clean_key(key), value);
-                    foundValidEntry = true;
-                }
-            }
-            if (!foundValidEntry)
-            {
-                alert("Critical Error", "The fallback language file 'English.lng' contains no valid entries. Cannot continue.");
-                exit();
-            }
+            load_language(langfile);
+            return;
         }
         else
         {
@@ -191,7 +210,7 @@ void load_language(string langfile)
     }
     if (fallback)
     {
-        currentlangfile = "english";
+        currentlangfile = "English";
         writepreffs();
     }
 }

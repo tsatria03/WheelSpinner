@@ -1,0 +1,172 @@
+# General
+WheelSpinner, version=WheelSpinner, Version
+Error=Fehler
+Only one instance of this app can run at a time.=Nur eine Instanz dieser App kann gleichzeitig ausgeführt werden.
+Yes=Ja
+No=Nein
+Cancel=Abbrechen
+Exiting=Beenden
+Updated=Aktualisiert
+
+# Main Menu
+Wheel Spinner=Rad Drehen
+&Add Wheel=Rad &Hinzufügen
+&Edit Wheel=Rad &Bearbeiten
+&Manage Wheels=Räder &Verwalten
+&Clear Spin History=Spin-Verlauf &Löschen
+Spin &History=Spin-&Verlauf
+&Spin Wheel=Rad &Drehen
+Spin Se&ttings=Spin-Eins&tellungen
+&Quit=&Beenden
+Are you sure you want to exit?=Möchtest du wirklich beenden?
+Are you sure you want to clear the spin results history?=Möchtest du wirklich den Spin-Verlauf löschen?
+Cleared=Gelöscht
+Spin history cleared.=Spin-Verlauf wurde gelöscht.
+
+# Export Wheels
+Replace file=Datei ersetzen
+Append to file=Zur Datei hinzufügen
+Do you want to replace the existing file, or append to it?=Möchtest du die bestehende Datei ersetzen oder etwas hinzufügen?
+Failed to open file for writing.=Datei konnte nicht zum Schreiben geöffnet werden.
+Wheels exported to=Räder exportiert nach
+No wheels to export.=Keine Räder zum Exportieren vorhanden.
+Export Selected Wheels=Ausgewählte Räder exportieren
+Select wheels to export=Wähle Räder zum Exportieren aus
+Nothing selected=Nichts ausgewählt
+Selected wheels exported to=Ausgewählte Räder exportiert nach
+
+# Import Wheels
+No wheels.txt file found.=Keine wheels.txt gefunden.
+Failed to open wheels.txt=Konnte wheels.txt nicht öffnen.
+Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Import abgeschlossen.\n\nImportierte Räder: %imported%\nÜbersprungene Duplikate: %skipped%
+No Wheels Imported=Keine Räder importiert
+No wheels found in file.=Keine Räder in der Datei gefunden.
+Import Selected Wheels=Ausgewählte Räder importieren
+Choose wheels to import=Wähle Räder zum Importieren aus
+Could not create settings.txt=Konnte settings.txt nicht erstellen.
+Settings exported to data/exported/settings.txt=Einstellungen exportiert nach data/exported/settings.txt
+Settings imported from settings.txt=Einstellungen importiert von settings.txt
+
+# Add Wheel
+New Wheel=Neues Rad
+Enter a name for your new wheel=Gib einen Namen für dein neues Rad ein
+Invalid or duplicate name.=Ungültiger oder doppelter Name.
+Description=Beschreibung
+Enter a description for this wheel.=Gib eine Beschreibung für dieses Rad ein
+Choices=Optionen
+Separate your choices with commas.=Trenne deine Optionen mit Kommas
+Saved=Gespeichert
+Wheel added!=Rad hinzugefügt!
+
+# Edit Wheel
+Locked=Gesperrt
+Unlocked=Entsperrt
+choices.=Optionen.
+choices,=Optionen,
+spins=Drehungen
+spins)=Drehungen)
+Delete all wheels=Alle Räder löschen
+Delete selected wheels=Ausgewählte Räder löschen
+Delete all unlocked wheels=Alle entsperrten Räder löschen
+Unlock all wheels=Alle Räder entsperren
+Lock all wheels=Alle Räder sperren
+Select a wheel to edit. You have=Wähle ein Rad zum Bearbeiten. Du hast
+wheels.=Räder.
+Are you sure you want to delete all wheels? This cannot be undone.=Möchtest du wirklich alle Räder löschen? Dies kann nicht rückgängig gemacht werden.
+Deleted=Gelöscht
+All wheels have been deleted.=Alle Räder wurden gelöscht.
+Delete Selected Wheels=Ausgewählte Räder löschen
+Select wheels to delete:=Wähle Räder zum Löschen aus:
+None Selected=Nichts ausgewählt
+You must select at least one wheel.=Du musst mindestens ein Rad auswählen.
+Are you sure you want to delete all unlocked wheels? Locked wheels will not be affected.=Möchtest du wirklich alle entsperrten Räder löschen? Gesperrte Räder bleiben erhalten.
+All unlocked wheels have been deleted.=Alle entsperrten Räder wurden gelöscht.
+Are you sure you want to unlock all wheels?=Möchtest du wirklich alle Räder entsperren?
+Are you sure you want to lock all wheels?=Möchtest du wirklich alle Räder sperren?
+All wheels unlocked=Alle Räder entsperrt
+All wheels have been unlocked. They can now be edited or deleted.=Alle Räder wurden entsperrt. Sie können jetzt bearbeitet oder gelöscht werden.
+All wheels locked=Alle Räder gesperrt
+All wheels have been locked. They can no longer be edited or deleted.=Alle Räder wurden gesperrt. Sie können nicht mehr bearbeitet oder gelöscht werden.
+Change description=Beschreibung ändern
+Show description=Beschreibung anzeigen
+Edit choices=Optionen bearbeiten
+Delete wheel=Rad löschen
+Rename wheel=Rad umbenennen
+Unlock wheel=Rad entsperren
+Lock wheel=Rad sperren
+What would you like to do with the wheel '=Was möchtest du mit dem Rad '
+Edit=Bearbeiten
+Edit your choices:=Bearbeite deine Optionen:
+Cancelled=Abgebrochen
+No changes were made.=Keine Änderungen vorgenommen.
+Changes saved.=Änderungen gespeichert.
+Change Description=Beschreibung ändern
+Enter a new description for this wheel:=Gib eine neue Beschreibung für dieses Rad ein:
+No Description=Keine Beschreibung
+This wheel doesn't have a description yet.=Dieses Rad hat noch keine Beschreibung.
+Description for '=Beschreibung für '
+Rename=Umbenennen
+Enter a new name for this wheel:=Gib einen neuen Namen für dieses Rad ein:
+Renamed=Umbenannt
+Wheel has been renamed.=Rad wurde umbenannt.
+Are you sure you want to delete the wheel '=Möchtest du wirklich das Rad löschen '
+Wheel has been deleted.=Rad wurde gelöscht.
+Are you sure you want to unlock the wheel '=Möchtest du wirklich das Rad entsperren '
+Are you sure you want to lock the wheel '=Möchtest du wirklich das Rad sperren '
+Unlocked=Entsperrt
+Wheel ' has been unlocked. It can now be edited or deleted.=Rad wurde entsperrt. Es kann jetzt bearbeitet oder gelöscht werden.
+Locked=Gesperrt
+Wheel ' has been locked. It can no longer be edited or deleted.=Rad wurde gesperrt. Es kann nicht mehr bearbeitet oder gelöscht werden.
+
+# Wheel Management
+Export all wheels to file=Alle Räder in Datei exportieren
+Export selected wheels to file=Ausgewählte Räder in Datei exportieren
+Import all wheels from file=Alle Räder aus Datei importieren
+Import selected wheels from file=Ausgewählte Räder aus Datei importieren
+Wheel Management Menu=Radverwaltungsmenü
+Are you sure you want to export all wheels to a file?=Möchtest du wirklich alle Räder exportieren?
+Are you sure you want to import all wheels from a file?=Möchtest du wirklich alle Räder importieren?
+
+# Show Recent Wheels
+No Recent Wheels=Keine kürzlichen Räder
+You haven't spun any wheels yet.=Du hast noch kein Rad gedreht.
+Pick a recently used wheel to spin again.=Wähle ein kürzlich verwendetes Rad zum erneuten Drehen.
+
+# Spin Wheel Menu
+All Wheels=Alle Räder
+Most Recent Wheels=Neueste Räder
+Most Spun Wheels=Meistgedrehte Räder
+Search for a Wheel=Rad suchen
+Choose how you'd like to pick a wheel to spin=Wähle aus, wie du ein Rad drehen möchtest
+These are your most spun wheels. Choose one to spin:=Dies sind deine meistgedrehten Räder. Wähle eines aus:
+Pick a wheel to spin. You have %count% wheels.=Wähle ein Rad zum Drehen. Du hast %count% Räder.
+Search=Suchen
+Type part of a wheel's name to spin it=Gib einen Teil des Radnamens ein, um es zu drehen
+No Match=Keine Übereinstimmung
+No wheels found matching =Keine Räder gefunden für 
+Multiple matches found. Pick one to spin.=Mehrere Übereinstimmungen gefunden. Wähle eines aus.
+
+# Spin Wheel
+Invalid=Ungültig
+You need at least 2 options to spin.=Du brauchst mindestens zwei Optionen zum Drehen.
+Spinning=Drehen...
+The wheel landed on =Das Rad stoppte bei 
+You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=Du hast das Rad "%wheel%" gedreht.\nEs stoppte bei %result%.
+Would you like to spin the wheel again?=Möchtest du das Rad erneut drehen?
+
+random=zufällig
+
+# Spin Settings
+Spin Settings=Spin-Einstellungen
+Spin base delay.=Basisverzögerung für Spin
+Spin growth factor.=Beschleunigungsfaktor
+Spin tick count.=Anzahl der Spin-Ticks
+Spin randomness.=Zufälligkeit des Spins
+Wheel Language:=Sprache des Rads:
+Wheel Pack:=Radpaket:
+Export Settings to File=Einstellungen in Datei exportieren
+Import Settings from File=Einstellungen aus Datei importieren
+&Save Settings=Einstellungen &Speichern
+Are you sure you want to import your current spin settings from a file?=Möchtest du wirklich deine aktuellen Spin-Einstellungen importieren?
+Are you sure you want to export your current spin settings to a file?=Möchtest du wirklich deine aktuellen Spin-Einstellungen exportieren?
+Spin settings updated!=Spin-Einstellungen aktualisiert!

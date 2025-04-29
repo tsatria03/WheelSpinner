@@ -20,11 +20,10 @@ All common audio formats are supported, including ogg, wav, mp3, and others. The
 You can create as many wheel packs as you want. If a pack is missing spin or ding sounds, the app will simply stay silent for that part without giving an error.
 
 Translating WheelSpinner
-To create a new translation, first go to the languages/ folder. Copy the english.lng file and rename it to your new language name (for example, spanish.lng).
-Open your .lng file in a text editor. Translate the text after each equal sign while keeping the keys intact.
-Once you have translated the necessary lines, save the file. Your new language will automatically appear in the Spin Settings menu inside the app. 
-Keep any %placeholders% in the text exactly as they are. They are dynamically replaced by the app.
-Try to preserve hotkeys (the & symbol) if possible. If you are unsure about a word, you can leave the English word as a fallback. 
-If a language file is invalid or missing, WheelSpinner will automatically fall back to English. Your selected language is saved automatically when you choose it in Spin Settings.
+To create a new translation, first go to the languages/normal/ folder. Copy the English.lng file and rename it to your new language name (for example, Spanish.lng).
+Open your .lng file in a text editor. Translate the text after each equal sign while keeping the keys intact. Once you have translated the necessary lines, save the file. Your new language will automatically appear in the Spin Settings menu inside the app.
+If you want to create variants (for example, "English/Angry" or "German/Silly"), create a folder inside languages/variants/ with your base language name, and place the variant .lng files inside it. Variant files should also be based on a copy of the original English.lng structure, but feel free to modify the tone, wording, or style however you want.
+Keep any %placeholders% in the text exactly as they are. They are dynamically replaced by the app. Try to preserve hotkeys (the & symbol) if possible. If you are unsure about a word, you can leave the English word as a fallback.
+If a language file is invalid, missing, or empty, WheelSpinner will automatically fall back to English. Your selected language is saved automatically when you choose it in Spin Settings.
 
 Enjoy, and happy spinning!

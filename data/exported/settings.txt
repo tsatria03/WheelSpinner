@@ -2,5 +2,5 @@ spinBaseDelay=20
 spinGrowth=2
 spinBaseTicks=50
 spinRandomRange=50
-currentlangfile=english
-wheeltype=wheel
+currentlangfile=English/panic
+wheeltype=wheel2

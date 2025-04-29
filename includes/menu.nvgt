@@ -615,14 +615,12 @@ void spinsettings()
     int growthSlider = form.create_slider(trl("Spin growth factor."), spinGrowth, 1, 100, 1);
     int ticksSlider = form.create_slider(trl("Spin tick count."), spinBaseTicks, 1, 100, 1);
     int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
-    array<string> languageFiles = list_languages(); // Now uses the cleaner listing function!
-    
+    array<string> languageFiles = list_languages();    
     int langList = form.create_list(trl("Wheel Language:"), languageFiles.length());
     for (uint i = 0; i < languageFiles.length(); i++)
     {
         form.add_list_item(langList, languageFiles[i], languageFiles[i]);
     }
-    
     int currentLangIndex = 0;
     for (uint i = 0; i < languageFiles.length(); i++)
     {

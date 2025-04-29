@@ -726,7 +726,7 @@ spinsettings();
             {
                 currentlangfile = languageFiles[selectedLangIndex];
 load_language(currentlangfile);
-show_game_window(trl("WheelSpinner, version") + " " + version);
+show_window(trl("WheelSpinner, version") + " " + version);
             }
             writepreffs();
             alert(trl("Updated"), trl("Spin settings updated!"));

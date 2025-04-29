@@ -20,7 +20,7 @@ audio_form@ tts_config_form = null;
 bool tts_default_interrupt = true;
 bool speak(string text, bool interrupt = tts_default_interrupt, bool translate = false, bool braille = true) {
     if (translate) {
-        text = translate_text(text);
+        text = trl(text);
     }
     speechbuff = text;
     if (text.length() > 10000) {

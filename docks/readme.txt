@@ -25,5 +25,6 @@ Open your .lng file in a text editor. Translate the text after each equal sign w
 If you want to create variants (for example, "English/Angry" or "German/Silly"), create a folder inside languages/variants/ with your base language name, and place the variant .lng files inside it. Variant files should also be based on a copy of the original English.lng structure, but feel free to modify the tone, wording, or style however you want.
 Keep any %placeholders% in the text exactly as they are. They are dynamically replaced by the app. Try to preserve hotkeys (the & symbol) if possible. If you are unsure about a word, you can leave the English word as a fallback.
 If a language file is invalid, missing, or empty, WheelSpinner will automatically fall back to English. Your selected language is saved automatically when you choose it in Spin Settings.
+If you want to disable the translation system entirely, you can do so in the Spin Settings menu by selecting the "None" language option. This will make the app use its built-in English text for all labels and messages, just like it would if no language files were provided.
 
 Enjoy, and happy spinning!

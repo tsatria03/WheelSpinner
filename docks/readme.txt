@@ -18,6 +18,8 @@ You can add as many spin and ding sounds as you want, and the app will randomly 
 Any file that contains "spin" in its name will be used during spinning. Any file that contains "ding" in its name will be used when the wheel lands.
 All common audio formats are supported, including ogg, wav, mp3, and others. The folder name you create will appear as the pack name inside the Spin Settings menu.
 You can create as many wheel packs as you want. If a pack is missing spin or ding sounds, the app will simply stay silent for that part without giving an error.
+You can also create custom sound packs for individual wheels by placing spin and ding sounds inside a folder named after the wheel. If no custom sounds are found for that wheel, the app will automatically fall back to the currently selected global wheel pack.
+Per-wheel sound packs take priority when spinning that specific wheel. If a custom sound folder exists for a wheel, such as sounds/wheels/Animals, it will always use those sounds during the spin, regardless of which global wheel pack is selected in the settings menu.
 
 Translating WheelSpinner
 To create a new translation, first go to the languages/normal/ folder. Copy the English.lng file and rename it to your new language name (for example, Spanish.lng).

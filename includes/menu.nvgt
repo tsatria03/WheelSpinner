@@ -553,7 +553,8 @@ uint idx = random(0, options.length() - 1);
         if (options.length() == 1)
         {
             usedSpinOptions.erase(key);
-            alert(trl("Reset"), trl("All options have been used. The list will reset next spin."));
+            alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
+wheelspin();
         }
     }
     string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
@@ -568,7 +569,14 @@ uint idx = random(0, options.length() - 1);
     setupmenu(false);
     m.add_item(trl("yes"), "again");
     m.add_item(trl("no"), "back");
+if (noRepeatSpins && usedSpinOptions.exists(chosen)) {
+    array<string>@ allOpts = string_split(string(wheels[chosen]), ",", true);
+    array<string>@ used = cast<array<string>@>(usedSpinOptions[chosen]);
+    int remaining = allOpts.length() - used.length();
+    m.intro_text = trl("Would you like to spin the wheel again?") + " " + trl("You have ") + format_int(remaining) + trl(" options left for this wheel.");
+} else {
     m.intro_text = trl("Would you like to spin the wheel again?");
+}
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "again")
         spin_same_wheel(chosen);
@@ -614,7 +622,8 @@ uint idx = random(0, options.length() - 1);
         if (options.length() == 1)
         {
             usedSpinOptions.erase(key);
-            alert(trl("Reset"), trl("All options have been used. The list will reset next spin."));
+            alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
+wheelspin();
         }
     }
     string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
@@ -630,7 +639,14 @@ uint idx = random(0, options.length() - 1);
     setupmenu(false);
     m.add_item(trl("yes"), "again");
     m.add_item(trl("no"), "back");
+if (noRepeatSpins && usedSpinOptions.exists(chosen)) {
+    array<string>@ allOpts = string_split(string(wheels[chosen]), ",", true);
+    array<string>@ used = cast<array<string>@>(usedSpinOptions[chosen]);
+    int remaining = allOpts.length() - used.length();
+    m.intro_text = trl("Would you like to spin the wheel again?") + " " + trl("You have ") + format_int(remaining) + trl(" options left for this wheel.");
+} else {
     m.intro_text = trl("Would you like to spin the wheel again?");
+}
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "again")
         spin_same_wheel(chosen);

@@ -38,9 +38,7 @@ Total spins across all wheels:=Total spins across all wheels:
 
 #No Repeat Spins: These are peases of text related to the optional setting that prevents the same option from being chosen more than once until all options have been used.
 
-No Repeat Spins=No Repeat Spins
-You have used all options for this wheel.=You have used all options for this wheel.
-Resetting used options so the wheel can be spun again.=Resetting used options so the wheel can be spun again.
+All options for this wheel have been used. The list will reset on the next spin.=All options for this wheel have been used. The list will reset on the next spin.
 
 #Export Wheels: These are prompts and labels related to exporting wheels to files.
 
@@ -175,12 +173,14 @@ Multiple matches found. Pick one to spin.=Multiple matches found. Pick one to sp
 #Spin Wheel: These are in-game spinning messages and results.
 
 Invalid=Invalid
-You need at least 2 options to spin.=You need at least 2 options to spin.
+You need at least 1 valid option to spin.=You need at least 1 valid option to spin.
+random=random
 Spinning=Spinning
 The wheel landed on =The wheel landed on 
 You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun the "%wheel%" wheel.\nThe wheel landed on %result%.
 Would you like to spin the wheel again?=Would you like to spin the wheel again?
-random=random
+You have =You have
+options left for this wheel.=options left for this wheel.
 
 #Spin Settings: These are controls and prompts for changing spin behavior, language, and sound pack.
 

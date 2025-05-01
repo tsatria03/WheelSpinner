@@ -1,4 +1,5 @@
 new in 1.6
+Added a message to the re-spin prompt. The prompt shown after spinning a wheel now includes how many options remain for that wheel when the No Repeat Spins option is enabled. This gives users clear feedback on how many spins are left before the options reset for that particular wheel.
 Introduced a setting toggle for No Repeat Spins in the Spin Settings menu, allowing players to easily enable or disable this behavior per session.
 Added support for No Repeat Spins, which temporarily removes chosen options from a wheel after being spun, preventing them from appearing again until reset.
 Added helpfull descriptions to all of the sections found in the other language varients. This makes it easier for those who like contributing to various languages.

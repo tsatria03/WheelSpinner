@@ -16,7 +16,7 @@ int spinRandomRange = 50;
 int spinBaseDelay = 20;
 int spinGrowth = 2;
 string currentlangfile = "None";
-string version="1.5";
+string version="1.6";
 string wheeltype="wheel";
 dictionary g_lang;
 dictionary spinCounts;

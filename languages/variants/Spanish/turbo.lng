@@ -1,24 +1,23 @@
-#General: add your stuff here.
+#General: These are core messages used across the app, such as errors, confirmations, and status updates.
 
-#Main Menu: add your stuff here.
+#Main Menu: These are main screen buttons and exit prompts.
 
-#Stats: add your stuff here.
+#Stats: These are peases of text used in the Wheel Statistics screen, such as total spins and most common options.
 
-#Export Wheels: add your stuff here.
+#Export Wheels: These are prompts and labels related to exporting wheels to files.
 
-#Import Wheels: add your stuff here.
+#Import Wheels: These are prompts and labels related to importing wheels or settings from files.
 
-#Add Wheel: add your stuff here.
+#Add Wheel: These are dialog messages shown when creating a new wheel.
 
-#Edit Wheel: add your stuff here.
+#Edit Wheel: These are menu options and prompts for editing, locking, renaming, or deleting wheels.
 
-#Wheel Management: add your stuff here.
+#Wheel Management: These are menus for bulk importing/exporting wheels.
 
-#Show Recent Wheels: add your stuff here.
+#Show Recent Wheels: These are peases of text used when showing and selecting recently used wheels.
 
-#Spin Wheel Menu: add your stuff here.
+#Spin Wheel Menu: These are menus for starting a spin, such as  All, Most Recent, and Search).
 
-#Spin Wheel: add your stuff here.
+#Spin Wheel: These are in-game spinning messages and results.
 
-#Spin Settings: add your stuff here.
-
+#Spin Settings: These are controls and prompts for changing spin behavior, language, and sound pack.

@@ -1,4 +1,5 @@
 new in 1.5
+Added a global spin counter to the Wheel Stats menu. You can now see the total number of spins across all wheels. This is shown at the top of the statistics screen for quick insight into your overall usage stats for all of your wheels.
 Updated the readme file with  Expanded sound pack guides to include the support for per-wheel custom sound folders. The new section explains how wheel-specific sounds override global wheel packs automatically during spins, and provides guidance for structuring custom sound folders effectively.
 Added support for per-wheel custom sound packs. Each wheel can now have its own spin and ding sounds by placing them in a sounds/wheels/<wheelName>/ folder. If no custom sounds are found, the app will fall back to the default global wheel type sounds as before.
 You can now disable the translation system entirely in the spin settings menu. When you select the none option, the app completely disables the loading of translation files and falls back to using the built-in hardcoded English strings.

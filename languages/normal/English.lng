@@ -4,6 +4,7 @@ Error=Error
 Only one instance of this app can run at a time.=Only one instance of this app can run at a time.
 Yes=Yes
 No=No
+Back=Back
 Cancel=Cancel
 Exiting=Exiting
 Updated=Updated
@@ -30,7 +31,7 @@ No Wheels=No Wheels
 There are no wheels to show statistics for.=There are no wheels to show statistics for.
 spins=spins
 most common:=most common:
-Back=Back
+Total spins across all wheels:=Total spins across all wheels:
 
 #Export Wheels
 Replace file=Replace file

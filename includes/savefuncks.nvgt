@@ -5,6 +5,7 @@ void readdata()
     lockedWheels.clear();
     spinCounts.clear();
     spinOptionCounts.clear();
+    usedSpinOptions.clear();
     wheelDescriptions.clear();
     recentWheels.resize(0);
     resultsHistory.resize(0);
@@ -36,6 +37,9 @@ void readdata()
                     string optKey = "opt_" + name + "/" + opt;
                     if (sd.d.exists(optKey))
                         spinOptionCounts[optKey] = sd.read_int(optKey);
+                    string usedKey = "used_" + name + "/" + opt;
+                    if (sd.d.exists(usedKey) && sd.read_bool(usedKey))
+                        usedSpinOptions[usedKey] = true;
                 }
             }
         }
@@ -83,6 +87,9 @@ void writedata()
             string optKey = "opt_" + name + "/" + opt;
             int count = spinOptionCounts.exists(optKey) ? int(spinOptionCounts[optKey]) : 0;
             sd.add(optKey, count);
+            string usedKey = "used_" + name + "/" + opt;
+            bool used = usedSpinOptions.exists(usedKey) && bool(usedSpinOptions[usedKey]);
+            sd.add(usedKey, used);
         }
     }
     for (uint i = 0; i < 5; i++)
@@ -122,6 +129,10 @@ if (st.d.exists("spinRandomRange"))
 {
 spinRandomRange = st.read_int("spinRandomRange");
 }
+if (st.d.exists("noRepeatSpins"))
+    {
+noRepeatSpins = st.read_bool("noRepeatSpins");
+}
     if (st.d.exists("currentlangfile"))
     {
         currentlangfile = st.read_string("currentlangfile");
@@ -143,6 +154,7 @@ st.add("spinBaseDelay", spinBaseDelay);
 st.add("spinGrowth", spinGrowth);
 st.add("spinBaseTicks", spinBaseTicks);
 st.add("spinRandomRange", spinRandomRange);
+st.add("noRepeatSpins", noRepeatSpins);
 st.add("currentlangfile", currentlangfile);
 st.add("wheeltype", wheeltype);
 st.save();

@@ -1,4 +1,6 @@
 new in 1.6
+Introduced a setting toggle for No Repeat Spins in the Spin Settings menu, allowing players to easily enable or disable this behavior per session.
+Added support for No Repeat Spins, which temporarily removes chosen options from a wheel after being spun, preventing them from appearing again until reset.
 Added helpfull descriptions to all of the sections found in the other language varients. This makes it easier for those who like contributing to various languages.
 Made it so wheel data gets aughtomaticly saved upon exiting the program.
 new in 1.5

@@ -11,6 +11,7 @@
 #include "includes/virtual_dialogs.nvgt"
 array<string> recentWheels;
 array<string> resultsHistory;
+bool noRepeatSpins = false;
 int spinBaseTicks = 50;
 int spinRandomRange = 50;
 int spinBaseDelay = 20;
@@ -24,6 +25,7 @@ dictionary spinOptionCounts;
 dictionary lockedWheels;
 dictionary wheels;
 dictionary wheelDescriptions;
+dictionary usedSpinOptions;
 audio_form form;
 instance app("wspin");
 menu m;

@@ -1,4 +1,5 @@
-#General
+#General: These are core messages used across the app, such as errors, confirmations, and status updates.
+
 WheelSpinner, version=WheelSpinner, version
 Error=Error
 Only one instance of this app can run at a time.=Only one instance of this app can run at a time.
@@ -9,7 +10,8 @@ Cancel=Cancel
 Exiting=Exiting
 Updated=Updated
 
-#Main Menu
+#Main Menu: These are main screen buttons and exit prompts.
+
 Wheel Spinner=Wheel Spinner
 &Add Wheel=&Add Wheel
 &Edit Wheel=&Edit Wheel
@@ -25,7 +27,8 @@ Are you sure you want to clear the spin results history?=Are you sure you want t
 Cleared=Cleared
 Spin history cleared.=Spin history cleared.
 
-#Stats
+#Stats: These are peases of text used in the Wheel Statistics screen, such as total spins and most common options.
+
 These are your current wheel statistics.=These are your current wheel statistics.
 No Wheels=No Wheels
 There are no wheels to show statistics for.=There are no wheels to show statistics for.
@@ -33,7 +36,14 @@ spins=spins
 most common:=most common:
 Total spins across all wheels:=Total spins across all wheels:
 
-#Export Wheels
+#No Repeat Spins: These are peases of text related to the optional setting that prevents the same option from being chosen more than once until all options have been used.
+
+No Repeat Spins=No Repeat Spins
+You have used all options for this wheel.=You have used all options for this wheel.
+Resetting used options so the wheel can be spun again.=Resetting used options so the wheel can be spun again.
+
+#Export Wheels: These are prompts and labels related to exporting wheels to files.
+
 Replace file=Replace file
 Append to file=Append to file
 Do you want to replace the existing file, or append to it?=Do you want to replace the existing file, or append to it?
@@ -45,7 +55,8 @@ Select wheels to export=Select wheels to export
 Nothing selected=Nothing selected
 Selected wheels exported to=Selected wheels exported to
 
-#Import Wheels
+#Import Wheels: These are prompts and labels related to importing wheels or settings from files.
+
 No wheels.txt file found.=No wheels.txt file found.
 Failed to open wheels.txt=Failed to open wheels.txt
 Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%=Import complete.\n\nWheels imported: %imported%\nDuplicates skipped: %skipped%
@@ -57,7 +68,8 @@ Could not create settings.txt=Could not create settings.txt
 Settings exported to data/exported/settings.txt=Settings exported to data/exported/settings.txt
 Settings imported from settings.txt=Settings imported from settings.txt
 
-#Add Wheel
+#Add Wheel: These are dialog messages shown when creating a new wheel.
+
 New Wheel=New Wheel
 Enter a name for your new wheel=Enter a name for your new wheel
 Invalid or duplicate name.=Invalid or duplicate name.
@@ -68,7 +80,8 @@ Separate your choices with commas.=Separate your choices with commas.
 Saved=Saved
 Wheel added!=Wheel added!
 
-#Edit Wheel
+#Edit Wheel: These are menu options and prompts for editing, locking, renaming, or deleting wheels.
+
 Locked=Locked
 Unlocked=Unlocked
 choices.=choices.
@@ -128,7 +141,8 @@ Wheel ' has been unlocked. It can now be edited or deleted.=Wheel ' has been unl
 Locked=Locked
 Wheel ' has been locked. It can no longer be edited or deleted.=Wheel ' has been locked. It can no longer be edited or deleted.
 
-#Wheel Management
+#Wheel Management: These are menus for bulk importing/exporting wheels.
+
 Export all wheels to file=Export all wheels to file
 Export selected wheels to file=Export selected wheels to file
 Import all wheels from file=Import all wheels from file
@@ -137,12 +151,14 @@ Wheel Management Menu=Wheel Management Menu
 Are you sure you want to export all wheels to a file?=Are you sure you want to export all wheels to a file?
 Are you sure you want to import all wheels from a file?=Are you sure you want to import all wheels from a file?
 
-#Show Recent Wheels
+#Show Recent Wheels: These are peases of text used when showing and selecting recently used wheels.
+
 No Recent Wheels=No Recent Wheels
 You haven't spun any wheels yet.=You haven't spun any wheels yet.
 Pick a recently used wheel to spin again.=Pick a recently used wheel to spin again.
 
-#Spin Wheel Menu
+#Spin Wheel Menu: These are menus for starting a spin, such as  All, Most Recent, and Search).
+
 All Wheels=All Wheels
 Most Recent Wheels=Most Recent Wheels
 Most Spun Wheels=Most Spun Wheels
@@ -156,7 +172,8 @@ No Match=No Match
 No wheels found matching =No wheels found matching 
 Multiple matches found. Pick one to spin.=Multiple matches found. Pick one to spin.
 
-#Spin Wheel
+#Spin Wheel: These are in-game spinning messages and results.
+
 Invalid=Invalid
 You need at least 2 options to spin.=You need at least 2 options to spin.
 Spinning=Spinning
@@ -165,12 +182,14 @@ You spun the "%wheel%" wheel.\nThe wheel landed on %result%.=You spun the "%whee
 Would you like to spin the wheel again?=Would you like to spin the wheel again?
 random=random
 
-#Spin Settings
+#Spin Settings: These are controls and prompts for changing spin behavior, language, and sound pack.
+
 Spin Settings=Spin Settings
 Spin base delay.=Spin base delay.
 Spin growth factor.=Spin growth factor.
 Spin tick count.=Spin tick count.
 Spin randomness.=Spin randomness.
+Remove chosen option from future spins.=Remove chosen option from future spins.
 Wheel Translation Language:=Wheel Translation Language:
 Wheel Sound Pack:=Wheel Sound Pack:
 Export Settings to File=Export Settings to File

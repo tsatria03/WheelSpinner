@@ -516,118 +516,126 @@ wheelspin();
 }
 void spin_same_wheel(string chosen)
 {
-    array<string>@ options = string_split(string(wheels[chosen]), ", ");
-    if (options.length() < 2)
+    array<string>@ allOptions = string_split(string(wheels[chosen]), ", ");
+    array<string> options;
+    for (uint i = 0; i < allOptions.length(); i++)
     {
-        alert(trl("Invalid"), trl("You need at least 2 options to spin."));
+        string opt = trim(allOptions[i]);
+        string key = chosen + "/used";
+        string used = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
+        if (!noRepeatSpins || used.find(opt) == -1)
+            options.insert_last(opt);
+    }
+    if (options.length() < 1)
+    {
+        alert(trl("Invalid"), trl("You need at least 1 valid option to spin."));
         wheelspin();
     }
-string spinSoundPath;
-string dingSoundPath;
-if (directory_exists("sounds/wheels/" + chosen))
-{
-    spinSoundPath = "sounds/wheels/" + chosen + "/*spin*";
-    dingSoundPath = "sounds/wheels/" + chosen + "/*ding*";
-}
-else
-{
-    spinSoundPath = "sounds/wheels/" + wheeltype + "/*spin*";
-    dingSoundPath = "sounds/wheels/" + wheeltype + "/*ding*";
-}
-    int spinTicks = spinBaseTicks + random(0, spinRandomRange);
-speak(trl("Spinning ") + chosen);
-    for (uint i = 0; i < spinTicks; i++)
-    {
-        uint idx = random(0, options.length() - 1);
-pool.play_stationary(find_sound(spinSoundPath), false);
-        wait(spinBaseDelay + i * spinGrowth);
-    }
-    string result = trim(options[random(0, options.length() - 1)]);
-pool.play_stationary(find_sound(dingSoundPath), false);
-    dlg(trl("The wheel landed on ") + result + ".");
-string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
-msg = string_replace(msg, "%wheel%", chosen, true);
-msg = string_replace(msg, "%result%", result, true);
-resultsHistory.insert_last(msg);
-if (resultsHistory.length() > 100)
-{
-    resultsHistory.remove_at(0);
-}
-spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
-string key = chosen + "/" + result;
-spinOptionCounts[key] = (spinOptionCounts.exists(key) ? int(spinOptionCounts[key]) : 0) + 1;
-writedata();
-    setupmenu(false);
-    m.add_item(trl("yes"), "again");
-    m.add_item(trl("no"), "back");
-    m.intro_text=trl("Would you like to spin the wheel again?");
-    int choice = m.run();
-    if (m.get_item_id(m.get_selected_item()) == "again")
-    {
-        spin_same_wheel(chosen);
-    }
-    else
-    {
-        wheelspin();
-    }
-}
-void spin_selected_wheel(string chosen)
-{
-    array<string>@ options = string_split(string(wheels[chosen]), ", ");
-    if (options.length() < 2)
-    {
-        alert(trl("Invalid"), trl("You need at least 2 options to spin."));
-        wheelspin();
-    }
-string spinSoundPath;
-string dingSoundPath;
-if (directory_exists("sounds/wheels/" + chosen))
-{
-    spinSoundPath = "sounds/wheels/" + chosen + "/*spin*";
-    dingSoundPath = "sounds/wheels/" + chosen + "/*ding*";
-}
-else
-{
-    spinSoundPath = "sounds/wheels/" + wheeltype + "/*spin*";
-    dingSoundPath = "sounds/wheels/" + wheeltype + "/*ding*";
-}
+    string spinSoundPath = directory_exists("sounds/wheels/" + chosen) ? "sounds/wheels/" + chosen + "/*spin*" : "sounds/wheels/" + wheeltype + "/*spin*";
+    string dingSoundPath = directory_exists("sounds/wheels/" + chosen) ? "sounds/wheels/" + chosen + "/*ding*" : "sounds/wheels/" + wheeltype + "/*ding*";
     int spinTicks = spinBaseTicks + random(0, spinRandomRange);
     speak(trl("Spinning ") + chosen);
     for (uint i = 0; i < spinTicks; i++)
     {
-        uint idx = random(0, options.length() - 1);
-pool.play_stationary(find_sound(spinSoundPath), false);
+uint idx = random(0, options.length() - 1);
+        pool.play_stationary(find_sound(spinSoundPath), false);
         wait(spinBaseDelay + i * spinGrowth);
     }
     string result = trim(options[random(0, options.length() - 1)]);
-pool.play_stationary(find_sound(dingSoundPath), false);
+    pool.play_stationary(find_sound(dingSoundPath), false);
     dlg(trl("The wheel landed on ") + result + ".");
-string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
-msg = string_replace(msg, "%wheel%", chosen, true);
-msg = string_replace(msg, "%result%", result, true);
-resultsHistory.insert_last(msg);
-if (resultsHistory.length() > 100)
-{
-    resultsHistory.remove_at(0);
-}
+    if (noRepeatSpins)
+    {
+        string key = chosen + "/used";
+        string current = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
+        current += result + ",";
+        usedSpinOptions[key] = current;
+        if (options.length() == 1)
+        {
+            usedSpinOptions.erase(key);
+            alert(trl("Reset"), trl("All options have been used. The list will reset next spin."));
+        }
+    }
+    string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
+    msg = string_replace(msg, "%wheel%", chosen, true);
+    msg = string_replace(msg, "%result%", result, true);
+    resultsHistory.insert_last(msg);
+    if (resultsHistory.length() > 100) resultsHistory.remove_at(0);
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
-string key = chosen + "/" + result;
-spinOptionCounts[key] = (spinOptionCounts.exists(key) ? int(spinOptionCounts[key]) : 0) + 1;
+    string countKey = chosen + "/" + result;
+    spinOptionCounts[countKey] = (spinOptionCounts.exists(countKey) ? int(spinOptionCounts[countKey]) : 0) + 1;
+    writedata();
+    setupmenu(false);
+    m.add_item(trl("yes"), "again");
+    m.add_item(trl("no"), "back");
+    m.intro_text = trl("Would you like to spin the wheel again?");
+    int choice = m.run();
+    if (m.get_item_id(m.get_selected_item()) == "again")
+        spin_same_wheel(chosen);
+    else
+        wheelspin();
+}
+void spin_selected_wheel(string chosen)
+{
+    array<string>@ allOptions = string_split(string(wheels[chosen]), ", ");
+    array<string> options;
+    for (uint i = 0; i < allOptions.length(); i++)
+    {
+        string opt = trim(allOptions[i]);
+        string key = chosen + "/used";
+        string used = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
+        if (!noRepeatSpins || used.find(opt) == -1)
+            options.insert_last(opt);
+    }
+    if (options.length() < 1)
+    {
+        alert(trl("Invalid"), trl("You need at least 1 valid option to spin."));
+        wheelspin();
+    }
+    string spinSoundPath = directory_exists("sounds/wheels/" + chosen) ? "sounds/wheels/" + chosen + "/*spin*" : "sounds/wheels/" + wheeltype + "/*spin*";
+    string dingSoundPath = directory_exists("sounds/wheels/" + chosen) ? "sounds/wheels/" + chosen + "/*ding*" : "sounds/wheels/" + wheeltype + "/*ding*";
+    int spinTicks = spinBaseTicks + random(0, spinRandomRange);
+    speak(trl("Spinning ") + chosen);
+    for (uint i = 0; i < spinTicks; i++)
+    {
+uint idx = random(0, options.length() - 1);
+        pool.play_stationary(find_sound(spinSoundPath), false);
+        wait(spinBaseDelay + i * spinGrowth);
+    }
+    string result = trim(options[random(0, options.length() - 1)]);
+    pool.play_stationary(find_sound(dingSoundPath), false);
+    dlg(trl("The wheel landed on ") + result + ".");
+    if (noRepeatSpins)
+    {
+        string key = chosen + "/used";
+        string current = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
+        current += result + ",";
+        usedSpinOptions[key] = current;
+        if (options.length() == 1)
+        {
+            usedSpinOptions.erase(key);
+            alert(trl("Reset"), trl("All options have been used. The list will reset next spin."));
+        }
+    }
+    string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
+    msg = string_replace(msg, "%wheel%", chosen, true);
+    msg = string_replace(msg, "%result%", result, true);
+    resultsHistory.insert_last(msg);
+    if (resultsHistory.length() > 100) resultsHistory.remove_at(0);
+    spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
+    string countKey = chosen + "/" + result;
+    spinOptionCounts[countKey] = (spinOptionCounts.exists(countKey) ? int(spinOptionCounts[countKey]) : 0) + 1;
     update_recent_wheels(chosen);
     writedata();
     setupmenu(false);
     m.add_item(trl("yes"), "again");
     m.add_item(trl("no"), "back");
-    m.intro_text=trl("Would you like to spin the wheel again?");
+    m.intro_text = trl("Would you like to spin the wheel again?");
     int choice = m.run();
     if (m.get_item_id(m.get_selected_item()) == "again")
-    {
         spin_same_wheel(chosen);
-    }
     else
-    {
         wheelspin();
-    }
 }
 void spin_from_list(bool mostUsed)
 {
@@ -685,6 +693,7 @@ void spinsettings()
     int growthSlider = form.create_slider(trl("Spin growth factor."), spinGrowth, 1, 100, 1);
     int ticksSlider = form.create_slider(trl("Spin tick count."), spinBaseTicks, 1, 100, 1);
     int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
+int repeatToggle = form.create_checkbox(trl("Remove chosen option from future spins."), noRepeatSpins);
     array<string> languageFiles = list_languages();    
 languageFiles.insert_at(0, "None");
     int langList = form.create_list(trl("Wheel Translation Language:"), languageFiles.length());
@@ -741,6 +750,7 @@ pool.play_stationary(find_sound("sounds/wheels/" + wheeltype + "/*spin*"), false
         spinGrowth = form.get_slider(growthSlider);
         spinBaseTicks = form.get_slider(ticksSlider);
         spinRandomRange = form.get_slider(rangeSlider);
+noRepeatSpins = form.is_checked(repeatToggle);
         if (key_pressed(KEY_ESCAPE))
         {
             wheelspin();

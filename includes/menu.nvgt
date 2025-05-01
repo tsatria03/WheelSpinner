@@ -565,16 +565,26 @@ wheelspin();
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
     string countKey = chosen + "/" + result;
     spinOptionCounts[countKey] = (spinOptionCounts.exists(countKey) ? int(spinOptionCounts[countKey]) : 0) + 1;
+usedSpinOptions[countKey] = true;
     writedata();
-    setupmenu(false);
-    m.add_item(trl("yes"), "again");
-    m.add_item(trl("no"), "back");
-if (noRepeatSpins && usedSpinOptions.exists(chosen)) {
-    array<string>@ allOpts = string_split(string(wheels[chosen]), ",", true);
-    array<string>@ used = cast<array<string>@>(usedSpinOptions[chosen]);
-    int remaining = allOpts.length() - used.length();
+int remaining = 0;
+array<string> allOpts = string_split(string(wheels[chosen]), ",", true);
+for (uint i = 0; i < allOpts.length(); i++)
+{
+    string option = trim(allOpts[i]);
+    string key = chosen + "/" + option;
+    if (!usedSpinOptions.exists(key))
+        remaining++;
+}
+setupmenu(false);
+m.add_item(trl("yes"), "again");
+m.add_item(trl("no"), "back");
+if (noRepeatSpins)
+{
     m.intro_text = trl("Would you like to spin the wheel again?") + " " + trl("You have ") + format_int(remaining) + trl(" options left for this wheel.");
-} else {
+}
+else
+{
     m.intro_text = trl("Would you like to spin the wheel again?");
 }
     int choice = m.run();
@@ -634,17 +644,27 @@ wheelspin();
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
     string countKey = chosen + "/" + result;
     spinOptionCounts[countKey] = (spinOptionCounts.exists(countKey) ? int(spinOptionCounts[countKey]) : 0) + 1;
+usedSpinOptions[countKey] = true;
     update_recent_wheels(chosen);
     writedata();
-    setupmenu(false);
-    m.add_item(trl("yes"), "again");
-    m.add_item(trl("no"), "back");
-if (noRepeatSpins && usedSpinOptions.exists(chosen)) {
-    array<string>@ allOpts = string_split(string(wheels[chosen]), ",", true);
-    array<string>@ used = cast<array<string>@>(usedSpinOptions[chosen]);
-    int remaining = allOpts.length() - used.length();
+int remaining = 0;
+array<string> allOpts = string_split(string(wheels[chosen]), ",", true);
+for (uint i = 0; i < allOpts.length(); i++)
+{
+    string option = trim(allOpts[i]);
+    string key = chosen + "/" + option;
+    if (!usedSpinOptions.exists(key))
+        remaining++;
+}
+setupmenu(false);
+m.add_item(trl("yes"), "again");
+m.add_item(trl("no"), "back");
+if (noRepeatSpins)
+{
     m.intro_text = trl("Would you like to spin the wheel again?") + " " + trl("You have ") + format_int(remaining) + trl(" options left for this wheel.");
-} else {
+}
+else
+{
     m.intro_text = trl("Would you like to spin the wheel again?");
 }
     int choice = m.run();

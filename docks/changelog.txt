@@ -1,5 +1,7 @@
 new in 1.6
-Added a message to the re-spin prompt. The prompt shown after spinning a wheel now includes how many options remain for that wheel when the No Repeat Spins option is enabled. This gives users clear feedback on how many spins are left before the options reset for that particular wheel.
+Fixed an issue where the remaining option count for “No Repeat Spins” was incorrect after spinning. The app now correctly subtracts the most recently spun option before calculating how many choices are remaining for that wheel.
+Fixed a bug where spinning a wheel with repeat prevention enabled showed the full original count instead of the updated remaining options.
+Added an extra message to the re-spin prompt. The prompt shown after spinning a wheel now includes how many options remain for that wheel when the No Repeat Spins option is enabled. This gives users clear feedback on how many spins are left before the options reset for that particular wheel.
 Introduced a setting toggle for No Repeat Spins in the Spin Settings menu, allowing players to easily enable or disable this behavior per session.
 Added support for No Repeat Spins, which temporarily removes chosen options from a wheel after being spun, preventing them from appearing again until reset.
 Added helpfull descriptions to all of the sections found in the other language varients. This makes it easier for those who like contributing to various languages.

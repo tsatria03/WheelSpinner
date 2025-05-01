@@ -681,7 +681,7 @@ void spinsettings()
     int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
     array<string> languageFiles = list_languages();    
 languageFiles.insert_at(0, "None");
-    int langList = form.create_list(trl("Wheel Language:"), languageFiles.length());
+    int langList = form.create_list(trl("Wheel Translation Language:"), languageFiles.length());
     for (uint i = 0; i < languageFiles.length(); i++)
     {
         form.add_list_item(langList, languageFiles[i], languageFiles[i]);
@@ -698,7 +698,7 @@ for (uint i = 0; i < languageFiles.length(); i++)
     form.set_list_position(langList, currentLangIndex);
 string[] wheelFolders = find_directories("sounds/wheels/*");
 wheelFolders.sort(natural_number_sort);
-    int wheellist = form.create_list(trl("Wheel Pack: "), wheelFolders.length());
+    int wheellist = form.create_list(trl("Wheel Sound Pack: "), wheelFolders.length());
     array<string> wheelOptions;
     for (uint i = 0; i < wheelFolders.length(); i++)
     {

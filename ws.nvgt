@@ -82,6 +82,7 @@ wheelspin();
     {
         speak(trl("Exiting"));
         wait(500);
+writedata();
         exit();
     }
     if (m.get_item_id(m.get_selected_item()) == "no")
@@ -148,6 +149,7 @@ wheelspin();
     {
         speak(trl("Exiting"));
         wait(500);
+writedata();
         exit();
     }
     if (m.get_item_id(m.get_selected_item()) == "no")

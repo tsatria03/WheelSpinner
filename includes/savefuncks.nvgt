@@ -4,6 +4,7 @@ void readdata()
     wheels.clear();
     lockedWheels.clear();
     spinCounts.clear();
+    spinOptionCounts.clear();
     wheelDescriptions.clear();
     recentWheels.resize(0);
     resultsHistory.resize(0);
@@ -28,6 +29,14 @@ void readdata()
                     spinCounts[name] = sd.read_int(spinKey);
                 if (sd.d.exists(descKey))
                     wheelDescriptions[name] = sd.read_string(descKey);
+                array<string> optList = string_split(options, ",", true);
+                for (uint j = 0; j < optList.length(); j++)
+                {
+                    string opt = trim(optList[j]);
+                    string optKey = "opt_" + name + "/" + opt;
+                    if (sd.d.exists(optKey))
+                        spinOptionCounts[optKey] = sd.read_int(optKey);
+                }
             }
         }
     }
@@ -67,6 +76,14 @@ void writedata()
         sd.add(lockKey, lockedWheels.exists(name));
         sd.add(spinKey, spinCounts.exists(name) ? int(spinCounts[name]) : 0);
         sd.add(descKey, wheelDescriptions.exists(name) ? string(wheelDescriptions[name]) : "");
+        array<string> optList = string_split(string(wheels[name]), ",", true);
+        for (uint j = 0; j < optList.length(); j++)
+        {
+            string opt = trim(optList[j]);
+            string optKey = "opt_" + name + "/" + opt;
+            int count = spinOptionCounts.exists(optKey) ? int(spinOptionCounts[optKey]) : 0;
+            sd.add(optKey, count);
+        }
     }
     for (uint i = 0; i < 5; i++)
     {

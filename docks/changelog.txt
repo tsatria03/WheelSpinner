@@ -1,4 +1,6 @@
 new in 1.5
+You can now view spin statistics for each wheel in it's own dedicated wheel stats menu. The stats includes total spins and the most commonly landed option for each wheel, making it easy to track usage patterns and favorites for that wheel over time.
+Added support for tracking and saving individual option spin counts. Each time a wheel lands on a specific option, that choice's spin count is recorded.
 Updated the readme file with expanded translation guides to include support for language variants, along with clearer instructions for creating both base and styled translations.
 Revamped the language selection list found in the spin settings menu. The language selection interface has been streamlined into a single list that includes both base languages and their variants. This makes it easier to browse all of the options while keeping things accessible via first-letter navigation.
 Reorganized the language file structure. Base languages such as English and Spanish are now stored in the normal folder. Variants of these languages such as English/Angry, English/Happy, and English/Sad are placed in the variants folder under their respective language subfolders for better organization and scalability.

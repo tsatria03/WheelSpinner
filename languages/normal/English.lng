@@ -13,6 +13,7 @@ Wheel Spinner=Wheel Spinner
 &Add Wheel=&Add Wheel
 &Edit Wheel=&Edit Wheel
 &Manage Wheels=&Manage Wheels
+&View Wheel Stats=&View Wheel Stats
 &Clear Spin History=&Clear Spin History
 Spin &History=Spin &History
 &Spin Wheel=&Spin Wheel
@@ -22,6 +23,14 @@ Are you sure you want to exit?=Are you sure you want to exit?
 Are you sure you want to clear the spin results history?=Are you sure you want to clear the spin results history?
 Cleared=Cleared
 Spin history cleared.=Spin history cleared.
+
+#Stats
+These are your current wheel statistics.=These are your current wheel statistics.
+No Wheels=No Wheels
+There are no wheels to show statistics for.=There are no wheels to show statistics for.
+spins=spins
+most common:=most common:
+Back=Back
 
 #Export Wheels
 Replace file=Replace file

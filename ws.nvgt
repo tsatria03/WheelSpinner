@@ -20,6 +20,7 @@ string version="1.5";
 string wheeltype="wheel";
 dictionary g_lang;
 dictionary spinCounts;
+dictionary spinOptionCounts;
 dictionary lockedWheels;
 dictionary wheels;
 dictionary wheelDescriptions;
@@ -56,6 +57,7 @@ form.create_window(trl("Wheel Spinner"), false);
 int add = form.create_button(trl("&Add Wheel"));
 int edit = form.create_button(trl("&Edit Wheel"));
 int manage = form.create_button(trl("&Manage Wheels"));
+int stats = form.create_button(trl("&View Wheel Stats"));
     int clearHistory = form.create_button(trl("&Clear Spin History"));
     int resultsBox = form.create_input_box(trl("Spin &History"), join(resultsHistory, "\n"), "", 0, true, true, true);
 int spin = form.create_button(trl("&Spin Wheel"));
@@ -98,6 +100,10 @@ edit_wheel();
 if (form.is_pressed(manage))
 {
 manage_wheels();
+}
+if (form.is_pressed(stats))
+{
+view_stats();
 }
 if (form.is_pressed(spin))
 {

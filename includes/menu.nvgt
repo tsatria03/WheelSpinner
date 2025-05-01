@@ -366,6 +366,42 @@ else if (selected == "import_selected")
         wheelspin();
     }
 }
+void view_stats()
+{
+    array<string>@ keys = wheels.get_keys();
+    keys.sort_ascending();
+    if (keys.length() == 0)
+    {
+        alert(trl("No Wheels"), trl("There are no wheels to show statistics for."));
+        wheelspin();
+    }
+    setupmenu(false);
+    for (uint i = 0; i < keys.length(); i++)
+    {
+        string name = keys[i];
+        int spins = spinCounts.exists(name) ? int(spinCounts[name]) : 0;
+        array<string>@ options = string_split(string(wheels[name]), ", ", true);
+        string mostCommon = " none";
+        int mostCount = 0;
+        for (uint j = 0; j < options.length(); j++)
+        {
+            string option = trim(options[j]);
+            string key = name + "/" + option;
+            int count = spinOptionCounts.exists(key) ? int(spinOptionCounts[key]) : 0;
+            if (count > mostCount)
+            {
+                mostCount = count;
+                mostCommon = option;
+            }
+        }
+        string summary = name + ": " + format_int(spins) + trl(" spins") + ", " + trl("most common: ") + mostCommon;
+        m.add_item(summary, name);
+    }
+    m.add_item(trl("Back"), "back");
+    m.intro_text=trl("These are your current wheel statistics.");
+    int res = m.run();
+    wheelspin();
+}
 void show_recent_wheels()
 {
     for (int i = int(recentWheels.length()) - 1; i >= 0; i--)
@@ -500,6 +536,8 @@ if (resultsHistory.length() > 100)
     resultsHistory.remove_at(0);
 }
 spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
+string key = chosen + "/" + result;
+spinOptionCounts[key] = (spinOptionCounts.exists(key) ? int(spinOptionCounts[key]) : 0) + 1;
 writedata();
     setupmenu(false);
     m.add_item(trl("yes"), "again");
@@ -591,6 +629,8 @@ if (resultsHistory.length() > 100)
     resultsHistory.remove_at(0);
 }
     spinCounts[chosen] = (spinCounts.exists(chosen) ? int(spinCounts[chosen]) : 0) + 1;
+string key = chosen + "/" + result;
+spinOptionCounts[key] = (spinOptionCounts.exists(key) ? int(spinOptionCounts[key]) : 0) + 1;
     update_recent_wheels(chosen);
     writedata();
     setupmenu(false);

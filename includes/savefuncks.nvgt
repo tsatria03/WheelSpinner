@@ -1,4 +1,4 @@
-void readdata()
+void readdata() 
 {
     sd.load();
     wheels.clear();
@@ -37,9 +37,10 @@ void readdata()
                     string optKey = "opt_" + name + "/" + opt;
                     if (sd.d.exists(optKey))
                         spinOptionCounts[optKey] = sd.read_int(optKey);
-                    string usedKey = "used_" + name + "/" + opt;
-                    if (sd.d.exists(usedKey) && sd.read_bool(usedKey))
-                        usedSpinOptions[usedKey] = true;
+                    string usedKeyDisk = "used_" + name + "/" + opt;
+                    string usedKeyMem = name + "/" + opt;
+                    if (sd.d.exists(usedKeyDisk) && sd.read_bool(usedKeyDisk))
+                        usedSpinOptions[usedKeyMem] = true;
                 }
             }
         }
@@ -87,9 +88,10 @@ void writedata()
             string optKey = "opt_" + name + "/" + opt;
             int count = spinOptionCounts.exists(optKey) ? int(spinOptionCounts[optKey]) : 0;
             sd.add(optKey, count);
-            string usedKey = "used_" + name + "/" + opt;
-            bool used = usedSpinOptions.exists(usedKey) && bool(usedSpinOptions[usedKey]);
-            sd.add(usedKey, used);
+            string usedKeyMem = name + "/" + opt;
+            string usedKeyDisk = "used_" + name + "/" + opt;
+            bool used = usedSpinOptions.exists(usedKeyMem) && bool(usedSpinOptions[usedKeyMem]);
+            sd.add(usedKeyDisk, used);
         }
     }
     for (uint i = 0; i < 5; i++)

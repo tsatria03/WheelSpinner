@@ -64,6 +64,22 @@ bool put_file_contents(const string& in filename, const string& in content, bool
 	f.close();
 	return s;
 }
+bool string_starts_with(const string& in str, const string& in start)
+{
+if (str.length()>=start.length())
+{
+return (str.substr(0, start.length()) == start);
+}
+return false;
+}
+bool string_ends_with(const string& in str,const string& in ending)
+{
+if (str.length()>=ending.length())
+{
+return (str.substr(str.length()-ending.length())==ending);
+}
+return false;
+}
 string find_sound(string soundname)
 {
 string[] snd=find_files(soundname);

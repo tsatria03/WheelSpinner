@@ -550,12 +550,21 @@ uint idx = random(0, options.length() - 1);
         string current = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
         current += result + ",";
         usedSpinOptions[key] = current;
-        if (options.length() == 1)
-        {
-            usedSpinOptions.erase(key);
-            alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
-wheelspin();
-        }
+if (options.length() == 1)
+{
+    array<string>@ keysToRemove;
+    array<string>@ allUsedKeys = usedSpinOptions.get_keys();
+    for (uint i = 0; i < allUsedKeys.length(); i++)
+    {
+        if (allUsedKeys[i].starts_with(chosen + "/"))
+            keysToRemove.insert_last(allUsedKeys[i]);
+    }
+    for (uint i = 0; i < keysToRemove.length(); i++)
+        usedSpinOptions.erase(keysToRemove[i]);
+    alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
+    writedata();
+    wheelspin();
+}
     }
     string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
     msg = string_replace(msg, "%wheel%", chosen, true);
@@ -629,12 +638,21 @@ uint idx = random(0, options.length() - 1);
         string current = usedSpinOptions.exists(key) ? string(usedSpinOptions[key]) : "";
         current += result + ",";
         usedSpinOptions[key] = current;
-        if (options.length() == 1)
-        {
-            usedSpinOptions.erase(key);
-            alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
-wheelspin();
-        }
+if (options.length() == 1)
+{
+    array<string>@ keysToRemove;
+    array<string>@ allUsedKeys = usedSpinOptions.get_keys();
+    for (uint i = 0; i < allUsedKeys.length(); i++)
+    {
+        if (allUsedKeys[i].starts_with(chosen + "/"))
+            keysToRemove.insert_last(allUsedKeys[i]);
+    }
+    for (uint i = 0; i < keysToRemove.length(); i++)
+        usedSpinOptions.erase(keysToRemove[i]);
+    alert(trl("Reset"), trl("All options for this wheel have been used. The list will reset on the next spin."));
+    writedata();
+    wheelspin();
+}
     }
     string msg = trl("You spun the \"%wheel%\" wheel.\nThe wheel landed on %result%.");
     msg = string_replace(msg, "%wheel%", chosen, true);

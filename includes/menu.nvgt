@@ -462,7 +462,7 @@ void spin_same_wheel(string chosen)
     speak(trl("Spinning ") + chosen);
     for (uint i = 0; i < spinTicks; i++)
 {
-    uint idx = random(0, options.length() - 1); // Restore this line
+    uint idx = random(0, options.length() - 1);
         pool.play_stationary(find_sound(spinSoundPath), false);
         wait(spinBaseDelay + i * spinGrowth);
     }

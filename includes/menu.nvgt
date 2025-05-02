@@ -639,7 +639,7 @@ void spinsettings()
     int growthSlider = form.create_slider(trl("Spin growth factor."), spinGrowth, 1, 100, 1);
     int ticksSlider = form.create_slider(trl("Spin tick count."), spinBaseTicks, 1, 100, 1);
     int rangeSlider = form.create_slider(trl("Spin randomness."), spinRandomRange, 1, 100, 1);
-int repeatToggle = form.create_checkbox(trl("Remove chosen option from future spins."), noRepeatSpins);
+int repeatToggle = form.create_checkbox(trl("Enable Removing chosen options from future spins."), noRepeatSpins);
     array<string> languageFiles = list_languages();    
 languageFiles.insert_at(0, "None");
     int langList = form.create_list(trl("Wheel Translation Language:"), languageFiles.length());
